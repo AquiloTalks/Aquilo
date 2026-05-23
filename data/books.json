@@ -1,0 +1,780 @@
+[
+  {
+    "id": 1,
+    "title": "Lessons in Chemistry",
+    "author": "Bonnie Garmus",
+    "year": "",
+    "status": "unread",
+    "readDates": [],
+    "mood": "female-led literary fiction",
+    "tags": [
+      "fiction",
+      "women",
+      "science"
+    ],
+    "authorInfo": {
+      "nationality": "American",
+      "genre": "Contemporary Fiction",
+      "knownFor": "female-led literary fiction"
+    }
+  },
+  {
+    "id": 2,
+    "title": "Dark Matter",
+    "author": "Blake Crouch",
+    "year": "",
+    "status": "unread",
+    "readDates": [],
+    "mood": "multiverse and speculative fiction",
+    "tags": [
+      "science fiction",
+      "multiverse",
+      "thriller"
+    ],
+    "authorInfo": {
+      "nationality": "American",
+      "genre": "Science Fiction Thriller",
+      "knownFor": "multiverse and speculative fiction"
+    }
+  },
+  {
+    "id": 3,
+    "title": "Siddhartha",
+    "author": "Hermann Hesse",
+    "year": "",
+    "status": "unread",
+    "readDates": [],
+    "mood": "spiritual and existential literature",
+    "tags": [
+      "philosophy",
+      "spirituality",
+      "classic"
+    ],
+    "authorInfo": {
+      "nationality": "German-Swiss",
+      "genre": "Philosophical Fiction",
+      "knownFor": "spiritual and existential literature"
+    }
+  },
+  {
+    "id": 4,
+    "title": "Yours Truly",
+    "author": "Abby Jimenez",
+    "year": "",
+    "status": "unread",
+    "readDates": [],
+    "mood": "emotional contemporary romance",
+    "tags": [
+      "romance",
+      "contemporary"
+    ],
+    "authorInfo": {
+      "nationality": "American",
+      "genre": "Romance",
+      "knownFor": "emotional contemporary romance"
+    }
+  },
+  {
+    "id": 5,
+    "title": "The Heaven & Earth Grocery Store",
+    "author": "James McBride",
+    "year": "",
+    "status": "unread",
+    "readDates": [],
+    "mood": "community-centered storytelling",
+    "tags": [
+      "literary fiction",
+      "community",
+      "history"
+    ],
+    "authorInfo": {
+      "nationality": "American",
+      "genre": "Literary Fiction",
+      "knownFor": "community-centered storytelling"
+    }
+  },
+  {
+    "id": 6,
+    "title": "One Hundred Years of Solitude",
+    "author": "Gabriel García Márquez",
+    "year": "",
+    "status": "unread",
+    "readDates": [],
+    "mood": "Latin American literary fiction",
+    "tags": [
+      "magical realism",
+      "family",
+      "history"
+    ],
+    "authorInfo": {
+      "nationality": "Colombian",
+      "genre": "Magical Realism",
+      "knownFor": "Latin American literary fiction"
+    }
+  },
+  {
+    "id": 7,
+    "title": "The Snows of Kilimanjaro",
+    "author": "Ernest Hemingway",
+    "year": "",
+    "status": "unread",
+    "readDates": [],
+    "mood": "minimalist prose and war writing",
+    "tags": [
+      "classic",
+      "short stories",
+      "existential"
+    ],
+    "authorInfo": {
+      "nationality": "American",
+      "genre": "Modernist Fiction",
+      "knownFor": "minimalist prose and war writing"
+    }
+  },
+  {
+    "id": 8,
+    "title": "Lady Chatterley's Lover",
+    "author": "D. H. Lawrence",
+    "year": "",
+    "status": "unread",
+    "readDates": [],
+    "mood": "relationships and emotional intimacy",
+    "tags": [
+      "relationships",
+      "desire",
+      "classic"
+    ],
+    "authorInfo": {
+      "nationality": "British",
+      "genre": "Psychological Fiction",
+      "knownFor": "relationships and emotional intimacy"
+    }
+  },
+  {
+    "id": 9,
+    "title": "Women in Love",
+    "author": "D. H. Lawrence",
+    "year": "",
+    "status": "unread",
+    "readDates": [],
+    "mood": "modern relationships and industrial society",
+    "tags": [
+      "psychology",
+      "relationships",
+      "modernism"
+    ],
+    "authorInfo": {
+      "nationality": "British",
+      "genre": "Psychological Fiction",
+      "knownFor": "modern relationships and industrial society"
+    }
+  },
+  {
+    "id": 10,
+    "title": "Sense and Sensibility",
+    "author": "Jane Austen",
+    "year": "",
+    "status": "unread",
+    "readDates": [],
+    "mood": "social satire and relationships",
+    "tags": [
+      "classic",
+      "romance",
+      "society"
+    ],
+    "authorInfo": {
+      "nationality": "British",
+      "genre": "Classic Romance",
+      "knownFor": "social satire and relationships"
+    }
+  },
+  {
+    "id": 11,
+    "title": "Persuasion",
+    "author": "Jane Austen",
+    "year": "",
+    "status": "unread",
+    "readDates": [],
+    "mood": "subtle emotional realism",
+    "tags": [
+      "classic",
+      "romance"
+    ],
+    "authorInfo": {
+      "nationality": "British",
+      "genre": "Classic Romance",
+      "knownFor": "subtle emotional realism"
+    }
+  },
+  {
+    "id": 12,
+    "title": "Wuthering Heights",
+    "author": "Emily Brontë",
+    "year": "",
+    "status": "unread",
+    "readDates": [],
+    "mood": "dark emotional intensity",
+    "tags": [
+      "gothic",
+      "love",
+      "classic"
+    ],
+    "authorInfo": {
+      "nationality": "British",
+      "genre": "Gothic Fiction",
+      "knownFor": "dark emotional intensity"
+    }
+  },
+  {
+    "id": 13,
+    "title": "Talking to Strangers",
+    "author": "Malcolm Gladwell",
+    "year": "",
+    "status": "unread",
+    "readDates": [],
+    "mood": "popular social psychology writing",
+    "tags": [
+      "psychology",
+      "society",
+      "communication"
+    ],
+    "authorInfo": {
+      "nationality": "Canadian",
+      "genre": "Nonfiction",
+      "knownFor": "popular social psychology writing"
+    }
+  },
+  {
+    "id": 14,
+    "title": "The Years",
+    "author": "Annie Ernaux",
+    "year": "",
+    "status": "unread",
+    "readDates": [],
+    "mood": "memory and collective history",
+    "tags": [
+      "memory",
+      "identity",
+      "history"
+    ],
+    "authorInfo": {
+      "nationality": "French",
+      "genre": "Memoir / Autofiction",
+      "knownFor": "memory and collective history"
+    }
+  },
+  {
+    "id": 15,
+    "title": "Kafka on the Shore",
+    "author": "Haruki Murakami",
+    "year": "",
+    "status": "unread",
+    "readDates": [],
+    "mood": "dreamlike surrealism and loneliness",
+    "tags": [
+      "surreal",
+      "identity",
+      "dream"
+    ],
+    "authorInfo": {
+      "nationality": "Japanese",
+      "genre": "Literary Fiction",
+      "knownFor": "dreamlike surrealism and loneliness"
+    }
+  },
+  {
+    "id": 16,
+    "title": "Pride and Prejudice",
+    "author": "Jane Austen",
+    "year": "",
+    "status": "unread",
+    "readDates": [],
+    "mood": "social observation and wit",
+    "tags": [
+      "classic",
+      "romance",
+      "society"
+    ],
+    "authorInfo": {
+      "nationality": "British",
+      "genre": "Classic Romance",
+      "knownFor": "social observation and wit"
+    }
+  },
+  {
+    "id": 17,
+    "title": "Moby-Dick",
+    "author": "Herman Melville",
+    "year": "",
+    "status": "unread",
+    "readDates": [],
+    "mood": "obsession and symbolism",
+    "tags": [
+      "sea",
+      "obsession",
+      "classic"
+    ],
+    "authorInfo": {
+      "nationality": "American",
+      "genre": "Adventure / Philosophical Fiction",
+      "knownFor": "obsession and symbolism"
+    }
+  },
+  {
+    "id": 18,
+    "title": "All the Lovers in the Night",
+    "author": "Mieko Kawakami",
+    "year": "",
+    "status": "unread",
+    "readDates": [],
+    "mood": "loneliness and urban alienation",
+    "tags": [
+      "loneliness",
+      "urban life",
+      "identity"
+    ],
+    "authorInfo": {
+      "nationality": "Japanese",
+      "genre": "Contemporary Literary Fiction",
+      "knownFor": "loneliness and urban alienation"
+    }
+  },
+  {
+    "id": 19,
+    "title": "To Kill a Mockingbird",
+    "author": "Harper Lee",
+    "year": "",
+    "status": "unread",
+    "readDates": [],
+    "mood": "justice and morality in America",
+    "tags": [
+      "justice",
+      "childhood",
+      "america"
+    ],
+    "authorInfo": {
+      "nationality": "American",
+      "genre": "Southern Gothic",
+      "knownFor": "justice and morality in America"
+    }
+  },
+  {
+    "id": 20,
+    "title": "East of Eden",
+    "author": "John Steinbeck",
+    "year": "",
+    "status": "unread",
+    "readDates": [],
+    "mood": "family sagas and moral conflict",
+    "tags": [
+      "family",
+      "good and evil",
+      "america"
+    ],
+    "authorInfo": {
+      "nationality": "American",
+      "genre": "American Literary Fiction",
+      "knownFor": "family sagas and moral conflict"
+    }
+  },
+  {
+    "id": 21,
+    "title": "The Grapes of Wrath",
+    "author": "John Steinbeck",
+    "year": "",
+    "status": "unread",
+    "readDates": [],
+    "mood": "Depression-era American fiction",
+    "tags": [
+      "poverty",
+      "migration",
+      "america"
+    ],
+    "authorInfo": {
+      "nationality": "American",
+      "genre": "Social Realism",
+      "knownFor": "Depression-era American fiction"
+    }
+  },
+  {
+    "id": 22,
+    "title": "Jane Eyre",
+    "author": "Charlotte Brontë",
+    "year": "",
+    "status": "unread",
+    "readDates": [],
+    "mood": "female independence and emotional realism",
+    "tags": [
+      "gothic",
+      "romance",
+      "independence"
+    ],
+    "authorInfo": {
+      "nationality": "British",
+      "genre": "Gothic Romance",
+      "knownFor": "female independence and emotional realism"
+    }
+  },
+  {
+    "id": 23,
+    "title": "The Hunger Games",
+    "author": "Suzanne Collins",
+    "year": "",
+    "status": "unread",
+    "readDates": [],
+    "mood": "political young adult fiction",
+    "tags": [
+      "dystopia",
+      "survival",
+      "power"
+    ],
+    "authorInfo": {
+      "nationality": "American",
+      "genre": "Dystopian Fiction",
+      "knownFor": "political young adult fiction"
+    }
+  },
+  {
+    "id": 24,
+    "title": "Dune",
+    "author": "Frank Herbert",
+    "year": "",
+    "status": "unread",
+    "readDates": [],
+    "mood": "Dune series",
+    "tags": [
+      "empire",
+      "ecology",
+      "religion",
+      "power"
+    ],
+    "authorInfo": {
+      "nationality": "American",
+      "genre": "Science Fiction",
+      "knownFor": "Dune series"
+    }
+  },
+  {
+    "id": 25,
+    "title": "Foundation",
+    "author": "Isaac Asimov",
+    "year": "",
+    "status": "unread",
+    "readDates": [],
+    "mood": "Foundation and Robot series",
+    "tags": [
+      "civilization",
+      "empire",
+      "systems"
+    ],
+    "authorInfo": {
+      "nationality": "American",
+      "genre": "Science Fiction",
+      "knownFor": "Foundation and Robot series"
+    }
+  },
+  {
+    "id": 26,
+    "title": "Solaris",
+    "author": "Stanisław Lem",
+    "year": "",
+    "status": "unread",
+    "readDates": [],
+    "mood": "AI and consciousness themes",
+    "tags": [
+      "consciousness",
+      "alien intelligence",
+      "philosophy"
+    ],
+    "authorInfo": {
+      "nationality": "Polish",
+      "genre": "Philosophical Science Fiction",
+      "knownFor": "AI and consciousness themes"
+    }
+  },
+  {
+    "id": 27,
+    "title": "A Wizard of Earthsea",
+    "author": "Ursula K. Le Guin",
+    "year": "",
+    "status": "unread",
+    "readDates": [],
+    "mood": "Earthsea cycle and Taoist themes",
+    "tags": [
+      "fantasy",
+      "balance",
+      "identity"
+    ],
+    "authorInfo": {
+      "nationality": "American",
+      "genre": "Fantasy",
+      "knownFor": "Earthsea cycle and Taoist themes"
+    }
+  },
+  {
+    "id": 28,
+    "title": "2001: A Space Odyssey",
+    "author": "Arthur C. Clarke",
+    "year": "",
+    "status": "unread",
+    "readDates": [],
+    "mood": "space exploration and futurism",
+    "tags": [
+      "space",
+      "AI",
+      "cosmos"
+    ],
+    "authorInfo": {
+      "nationality": "British",
+      "genre": "Science Fiction",
+      "knownFor": "space exploration and futurism"
+    }
+  },
+  {
+    "id": 29,
+    "title": "美的历程",
+    "author": "李泽厚",
+    "year": "",
+    "status": "unread",
+    "readDates": [],
+    "mood": "Chinese aesthetics and philosophy",
+    "tags": [
+      "aesthetics",
+      "culture",
+      "philosophy"
+    ],
+    "authorInfo": {
+      "nationality": "Chinese",
+      "genre": "Philosophy / Aesthetics",
+      "knownFor": "Chinese aesthetics and philosophy"
+    }
+  },
+  {
+    "id": 30,
+    "title": "浮生六记",
+    "author": "沈复",
+    "year": "",
+    "status": "unread",
+    "readDates": [],
+    "mood": "everyday life and emotional intimacy",
+    "tags": [
+      "memoir",
+      "qing dynasty",
+      "daily life"
+    ],
+    "authorInfo": {
+      "nationality": "Chinese",
+      "genre": "Classical Memoir",
+      "knownFor": "everyday life and emotional intimacy"
+    }
+  },
+  {
+    "id": 31,
+    "title": "庆余年",
+    "author": "猫腻",
+    "year": "",
+    "status": "unread",
+    "readDates": [],
+    "mood": "political web fiction",
+    "tags": [
+      "web novel",
+      "power",
+      "strategy"
+    ],
+    "authorInfo": {
+      "nationality": "Chinese",
+      "genre": "Historical Fantasy",
+      "knownFor": "political web fiction"
+    }
+  },
+  {
+    "id": 32,
+    "title": "静静的顿河",
+    "author": "米哈伊尔·肖洛霍夫",
+    "year": "",
+    "status": "unread",
+    "readDates": [],
+    "mood": "Cossack life and war",
+    "tags": [
+      "war",
+      "history",
+      "russian literature"
+    ],
+    "authorInfo": {
+      "nationality": "Russian",
+      "genre": "Historical Fiction",
+      "knownFor": "Cossack life and war"
+    }
+  },
+  {
+    "id": 33,
+    "title": "卡拉马佐夫兄弟",
+    "author": "费奥多尔·陀思妥耶夫斯基",
+    "year": "",
+    "status": "unread",
+    "readDates": [],
+    "mood": "existential and moral psychology",
+    "tags": [
+      "faith",
+      "morality",
+      "psychology"
+    ],
+    "authorInfo": {
+      "nationality": "Russian",
+      "genre": "Philosophical Fiction",
+      "knownFor": "existential and moral psychology"
+    }
+  },
+  {
+    "id": 34,
+    "title": "罪与罚",
+    "author": "费奥多尔·陀思妥耶夫斯基",
+    "year": "",
+    "status": "unread",
+    "readDates": [],
+    "mood": "crime, guilt, and redemption",
+    "tags": [
+      "guilt",
+      "morality",
+      "psychology"
+    ],
+    "authorInfo": {
+      "nationality": "Russian",
+      "genre": "Psychological Fiction",
+      "knownFor": "crime, guilt, and redemption"
+    }
+  },
+  {
+    "id": 35,
+    "title": "沉默的大多数",
+    "author": "王小波",
+    "year": "",
+    "status": "unread",
+    "readDates": [],
+    "mood": "individual freedom and rational thought",
+    "tags": [
+      "freedom",
+      "individualism",
+      "essay"
+    ],
+    "authorInfo": {
+      "nationality": "Chinese",
+      "genre": "Essay",
+      "knownFor": "individual freedom and rational thought"
+    }
+  },
+  {
+    "id": 36,
+    "title": "1984",
+    "author": "George Orwell",
+    "year": "",
+    "status": "unread",
+    "readDates": [],
+    "mood": "anti-authoritarian political fiction",
+    "tags": [
+      "surveillance",
+      "authoritarianism",
+      "dystopia"
+    ],
+    "authorInfo": {
+      "nationality": "British",
+      "genre": "Dystopian Fiction",
+      "knownFor": "anti-authoritarian political fiction"
+    }
+  },
+  {
+    "id": 37,
+    "title": "Animal Farm",
+    "author": "George Orwell",
+    "year": "",
+    "status": "unread",
+    "readDates": [],
+    "mood": "anti-totalitarian allegory",
+    "tags": [
+      "power",
+      "politics",
+      "revolution"
+    ],
+    "authorInfo": {
+      "nationality": "British",
+      "genre": "Political Satire",
+      "knownFor": "anti-totalitarian allegory"
+    }
+  },
+  {
+    "id": 38,
+    "title": "秋园",
+    "author": "杨本芬",
+    "year": "",
+    "status": "unread",
+    "readDates": [],
+    "mood": "family memory and women's lives",
+    "tags": [
+      "family",
+      "memory",
+      "women"
+    ],
+    "authorInfo": {
+      "nationality": "Chinese",
+      "genre": "Literary Fiction",
+      "knownFor": "family memory and women's lives"
+    }
+  },
+  {
+    "id": 39,
+    "title": "战争与和平",
+    "author": "列夫·托尔斯泰",
+    "year": "",
+    "status": "unread",
+    "readDates": [],
+    "mood": "epic realism",
+    "tags": [
+      "war",
+      "history",
+      "society"
+    ],
+    "authorInfo": {
+      "nationality": "Russian",
+      "genre": "Historical Fiction",
+      "knownFor": "epic realism"
+    }
+  },
+  {
+    "id": 40,
+    "title": "安娜·卡列尼娜",
+    "author": "列夫·托尔斯泰",
+    "year": "",
+    "status": "unread",
+    "readDates": [],
+    "mood": "realism and emotional complexity",
+    "tags": [
+      "love",
+      "society",
+      "family"
+    ],
+    "authorInfo": {
+      "nationality": "Russian",
+      "genre": "Literary Fiction",
+      "knownFor": "realism and emotional complexity"
+    }
+  },
+  {
+    "id": 41,
+    "title": "复活",
+    "author": "列夫·托尔斯泰",
+    "year": "",
+    "status": "unread",
+    "readDates": [],
+    "mood": "morality and redemption",
+    "tags": [
+      "morality",
+      "religion",
+      "redemption"
+    ],
+    "authorInfo": {
+      "nationality": "Russian",
+      "genre": "Philosophical Fiction",
+      "knownFor": "morality and redemption"
+    }
+  }
+]

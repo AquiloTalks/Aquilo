@@ -1,0 +1,1047 @@
+{
+  "en": {
+    "modules": {
+      "reading": {
+        "number": "01",
+        "label": "Reading Archive",
+        "title": "I am what I read",
+        "summary": "A personal archive for books, moods, notes, and the traces reading leaves behind.",
+        "description": "This is the central reading archive: the place for books, dates, quotes, first impressions, rereads, and the small evidence of how a text stayed with you.",
+        "includes": [
+          [
+            "Book notes",
+            "Title, author, dates, quotes, reading mood, and quick response."
+          ],
+          [
+            "Reading traces",
+            "Questions, obsessions, and small details that keep returning after you finish."
+          ],
+          [
+            "Reading timeline",
+            "A chronological view of what you read and what themes occupied you then."
+          ]
+        ],
+        "sampleTitle": "Book entry",
+        "sample": [
+          [
+            "Book",
+            "Mrs Dalloway / Virginia Woolf / 1925"
+          ],
+          [
+            "Reading mood",
+            "quiet, fragmented, alert to city sounds"
+          ],
+          [
+            "Motifs",
+            "time, city, flowers, consciousness"
+          ],
+          [
+            "Next link",
+            "Close Reading Lab: opening sentence and movement through London"
+          ]
+        ]
+      },
+      "criticism": {
+        "number": "02",
+        "label": "My fiction",
+        "title": "Welcome to my silly world",
+        "summary": "Characters, fragments, scenes, and the private logic of unfinished stories.",
+        "description": "This is the writing room: playful, strange, unfinished, and full of fragments that may become characters, scenes, or entire worlds.",
+        "includes": [
+          [
+            "Characters",
+            "Names, voices, contradictions, desires, and private histories."
+          ],
+          [
+            "Fragments",
+            "Loose scenes, images, opening lines, endings, and sentences that want a home."
+          ],
+          [
+            "World notes",
+            "Rules, places, atmospheres, and recurring objects."
+          ]
+        ],
+        "sampleTitle": "Fiction seed",
+        "sample": [
+          [
+            "World",
+            "A house that remembers more than its owner does"
+          ],
+          [
+            "Voice",
+            "Tender, suspicious, sometimes too dramatic on purpose"
+          ],
+          [
+            "Object",
+            "A blue cup that appears in every room"
+          ],
+          [
+            "Status",
+            "collecting fragments"
+          ]
+        ]
+      },
+      "context": {
+        "number": "03",
+        "label": "Reflection",
+        "title": "Don't lie to me",
+        "summary": "Close reading, sharper claims, uncomfortable questions, and honest criticism.",
+        "description": "This is where the archive becomes more exacting. It asks whether an interpretation is honest, whether the evidence holds, and what the text is really doing.",
+        "includes": [
+          [
+            "Close reading",
+            "Quote, image, syntax, rhythm, context, and claim."
+          ],
+          [
+            "Argument check",
+            "What the claim says, what supports it, and where it might be weak."
+          ],
+          [
+            "Theory notes",
+            "Terms, methods, and frameworks that clarify the reading."
+          ]
+        ],
+        "sampleTitle": "Critical note",
+        "sample": [
+          [
+            "Claim",
+            "The room is not only private space; it is a test of who is allowed to think."
+          ],
+          [
+            "Evidence",
+            "Woolf's rooms, Morrison's houses, inherited memory"
+          ],
+          [
+            "Weak point",
+            "Needs a clearer distinction between room and house"
+          ],
+          [
+            "Status",
+            "revising"
+          ]
+        ]
+      },
+      "fiction": {
+        "number": "04",
+        "label": "Extra",
+        "title": "And more...",
+        "summary": "Loose notes, side quests, experiments, and anything that does not fit neatly elsewhere.",
+        "description": "This is the overflow drawer: extra thoughts, small experiments, lists, links, and future sections that are not ready to become their own room yet.",
+        "includes": [
+          [
+            "Loose notes",
+            "Small thoughts, saved lines, links, and ideas to revisit later."
+          ],
+          [
+            "Experiments",
+            "Formats, visual ideas, interactive sketches, and possible future blocks."
+          ],
+          [
+            "Parking lot",
+            "Things that may become a full section later."
+          ]
+        ],
+        "sampleTitle": "Extra note",
+        "sample": [
+          [
+            "Idea",
+            "A small page for favorite sentences"
+          ],
+          [
+            "Maybe later",
+            "A map of books by emotional weather"
+          ],
+          [
+            "Status",
+            "not urgent"
+          ],
+          [
+            "Next step",
+            "Decide whether it belongs on Home or Extra"
+          ]
+        ]
+      }
+    },
+    "tools": {
+      "motifs": {
+        "label": "Motif Atlas",
+        "group": "Reading + criticism",
+        "body": "Track images like room, mirror, city, sea, silence, body, and memory across books and drafts.",
+        "title": "Motif Atlas",
+        "description": "A cross-book map for recurring images. Motifs help you notice what your reading and writing keep returning to.",
+        "fields": [
+          [
+            "Motif",
+            "room, mirror, city, sea, silence, body, garden, illness, memory"
+          ],
+          [
+            "Appears in",
+            "Books, passages, authors, essays, and fiction drafts"
+          ],
+          [
+            "Question",
+            "What changes when the same image appears in another context?"
+          ]
+        ],
+        "examples": [
+          "room → privacy / gender / thought",
+          "sea → migration / scale / return",
+          "mirror → identity / gaze / doubling"
+        ]
+      },
+      "closeReading": {
+        "label": "Close Reading Lab",
+        "group": "Critical studio",
+        "body": "Build a small analysis from quote, image, syntax, rhythm, context, and claim.",
+        "title": "Close Reading Lab",
+        "description": "A compact workspace for one passage. It is smaller than an essay but deep enough to become one.",
+        "fields": [
+          [
+            "Quote",
+            "Exact passage, page number, edition, and translation"
+          ],
+          [
+            "Language",
+            "Diction, image, syntax, rhythm, repetition, silence"
+          ],
+          [
+            "Claim",
+            "What this passage reveals about the whole work"
+          ]
+        ],
+        "examples": [
+          "Opening sentence analysis",
+          "One image across three paragraphs",
+          "Narrator reliability in a single scene"
+        ]
+      },
+      "author": {
+        "label": "Author Dossier",
+        "group": "Author & context",
+        "body": "Collect life timeline, historical pressure, places, works, influence, and reception.",
+        "title": "Author Dossier",
+        "description": "A contextual file for understanding form, not a biography dump. The point is to ask why this writer's work sounds and moves the way it does.",
+        "fields": [
+          [
+            "Timeline",
+            "Life events, works, publication dates, historical events"
+          ],
+          [
+            "Context",
+            "Class, gender, migration, politics, language, education, publishing world"
+          ],
+          [
+            "Patterns",
+            "Themes, motifs, formal habits, repeated tensions"
+          ]
+        ],
+        "examples": [
+          "Virginia Woolf and rooms",
+          "Toni Morrison and historical memory",
+          "Calvino and imaginary structures"
+        ]
+      },
+      "seeds": {
+        "label": "Essay Seeds",
+        "group": "Critical studio",
+        "body": "Keep unfinished questions until they become outlines, comparisons, or essays.",
+        "title": "Essay Seeds",
+        "description": "A holding place for questions that are not ready to become essays yet. This keeps ideas alive without forcing them to be polished too early.",
+        "fields": [
+          [
+            "Question",
+            "A sharp problem, not a topic"
+          ],
+          [
+            "Evidence to collect",
+            "Books, quotes, motifs, author context, theory terms"
+          ],
+          [
+            "Status",
+            "seed, collecting quotes, outline, draft, published"
+          ]
+        ],
+        "examples": [
+          "Why do some novels break time?",
+          "When does silence become narration?",
+          "Can a house be a memory container?"
+        ]
+      },
+      "comparison": {
+        "label": "Comparison Desk",
+        "group": "Comparative literature",
+        "body": "Place two books, authors, motifs, or periods side by side around one clear question.",
+        "title": "Comparison Desk",
+        "description": "A structured space for comparative literature. It prevents comparison from becoming two separate summaries.",
+        "fields": [
+          [
+            "Pair",
+            "Book/book, author/author, motif/motif, period/period"
+          ],
+          [
+            "Shared question",
+            "The one problem both texts help you think about"
+          ],
+          [
+            "Difference",
+            "What changes across form, history, language, or politics"
+          ]
+        ],
+        "examples": [
+          "Woolf / Morrison on memory",
+          "Calvino / Borges on imaginary systems",
+          "Rooms / houses across women writers"
+        ]
+      },
+      "fictionStudio": {
+        "label": "Fiction Studio",
+        "group": "Writing workshop",
+        "body": "Develop characters, scenes, fragments, deleted lines, voice tests, and influences.",
+        "title": "Fiction Studio",
+        "description": "A creative area for your own writing. It keeps drafts connected to the reading archive without making them feel secondary.",
+        "fields": [
+          [
+            "Characters",
+            "Desire, contradiction, fear, voice, history"
+          ],
+          [
+            "Scenes",
+            "Place, action, sensory detail, conflict, emotional turn"
+          ],
+          [
+            "Influence trail",
+            "Books, motifs, forms, and sentences that shaped the draft"
+          ]
+        ],
+        "examples": [
+          "Character card",
+          "Scene fragment",
+          "Deleted line archive"
+        ]
+      }
+    },
+    "features": {
+      "bookDeepDive": {
+        "label": "Book Deep Dive",
+        "group": "Research Hub",
+        "body": "Comprehensive research space for a single book—author, context, themes, and your analysis.",
+        "title": "Book Deep Dive",
+        "description": "A detailed research hub connected to all your reading notes. Organize author biography, historical context, themes, and your close readings in one place.",
+        "fields": [
+          [
+            "Overview",
+            "Basic bibliographic info, your rating, reading dates, and initial mood"
+          ],
+          [
+            "Author",
+            "Life timeline, influences, recurring concerns, and other works"
+          ],
+          [
+            "Context",
+            "Historical events, cultural movements, publication story"
+          ],
+          [
+            "Themes",
+            "Main ideas, motifs, recurring images, questions the book raises"
+          ],
+          [
+            "Your Review",
+            "Close readings, essay seeds, favorite quotes, your interpretation"
+          ]
+        ],
+        "examples": [
+          "Create a deep dive for a favorite novel",
+          "Research an author's influences",
+          "Map themes across multiple books"
+        ]
+      },
+      "interactiveReview": {
+        "label": "Interactive Reviews",
+        "group": "Engagement Tools",
+        "body": "Turn your thoughts into interactive Q&A, comparisons, and explorations for readers.",
+        "title": "Interactive Reviews",
+        "description": "Make your reading reflections engaging and dynamic. Create Q&A formats, side-by-side comparisons, or interactive explorations of the book.",
+        "fields": [
+          [
+            "Q&A Format",
+            "Ask yourself questions and reveal your thoughts progressively"
+          ],
+          [
+            "Comparison",
+            "Place two books side-by-side to highlight differences and similarities"
+          ],
+          [
+            "Timeline",
+            "Map out key events or character arcs visually"
+          ],
+          [
+            "Theme Explorer",
+            "Click through different themes and their manifestations"
+          ]
+        ],
+        "examples": [
+          "Key questions about the novel",
+          "Compare with similar works",
+          "Character relationship map",
+          "Timeline of events"
+        ]
+      },
+      "motifMapper": {
+        "label": "Motif Mapper",
+        "group": "Visual Tools",
+        "body": "See connections between recurring images and themes across your entire library.",
+        "title": "Motif & Theme Mapper",
+        "description": "Visualize how certain images, themes, or ideas appear across different books and your own writing. Discover your reading and writing patterns.",
+        "fields": [
+          [
+            "Track Motifs",
+            "room, silence, memory, death, garden, mirror, journey, inheritance"
+          ],
+          [
+            "Cross-book Links",
+            "See which books share the same themes"
+          ],
+          [
+            "Your Patterns",
+            "Discover what your reading and writing obsess over"
+          ],
+          [
+            "Create New",
+            "Define custom themes to track across your library"
+          ]
+        ],
+        "examples": [
+          "Room across Woolf, Morrison, and your novel",
+          "Inheritance and family secrets",
+          "Urban spaces and isolation",
+          "Time as a character"
+        ]
+      }
+    }
+  },
+  "zh": {
+    "modules": {
+      "reading": {
+        "number": "01",
+        "label": "阅读档案",
+        "title": "我即我所读",
+        "summary": "保存书、心情、笔记，以及阅读留下的痕迹。",
+        "description": "这里是核心阅读档案：书目、日期、摘录、第一印象、重读，以及一本书如何留在你身上的证据。",
+        "includes": [
+          [
+            "书籍笔记",
+            "标题、作者、日期、摘录、阅读心情和快速回应。"
+          ],
+          [
+            "阅读痕迹",
+            "读完后仍反复出现的问题、迷恋和细节。"
+          ]
+        ],
+        "sampleTitle": "书籍条目",
+        "sample": [
+          [
+            "书名",
+            "《达洛维夫人》 / 弗吉尼亚·伍尔夫 / 1925"
+          ],
+          [
+            "阅读心情",
+            "安静、碎片化、对城市声音很敏感"
+          ]
+        ]
+      },
+      "criticism": {
+        "number": "02",
+        "label": "我的小说",
+        "title": "欢迎来到我的荒唐世界",
+        "summary": "人物、片段、场景，以及未完成故事的私人逻辑。",
+        "description": "这里是写作房间：好玩、奇怪、未完成，充满可能变成人物、场景或完整世界的碎片。",
+        "includes": [
+          [
+            "人物",
+            "名字、声音、矛盾、欲望和私人历史。"
+          ],
+          [
+            "片段",
+            "松散场景、意象、开头句、结尾和等待归处的句子。"
+          ]
+        ],
+        "sampleTitle": "小说种子",
+        "sample": [
+          [
+            "世界",
+            "一栋比主人记得更多的房子"
+          ],
+          [
+            "声音",
+            "温柔、多疑，有时故意过分戏剧化"
+          ]
+        ]
+      },
+      "context": {
+        "number": "03",
+        "label": "思考札记",
+        "title": "不要对我说谎",
+        "summary": "细读、更锋利的论点、不舒服的问题和诚实的批评。",
+        "description": "这里让档案变得更严格：解释是否诚实，证据是否站得住，文本到底在做什么。",
+        "includes": [
+          [
+            "文本细读",
+            "引文、意象、句法、节奏、语境和论点。"
+          ],
+          [
+            "论点检查",
+            "论点说了什么、证据在哪里、薄弱处是什么。"
+          ]
+        ],
+        "sampleTitle": "批评笔记",
+        "sample": [
+          [
+            "论点",
+            "房间不只是私人空间，也测试谁被允许思考。"
+          ],
+          [
+            "证据",
+            "伍尔夫的房间、莫里森的房屋、继承的记忆"
+          ]
+        ]
+      },
+      "fiction": {
+        "number": "04",
+        "label": "其他",
+        "title": "还有更多……",
+        "summary": "松散笔记、支线任务、实验，以及暂时无处安放的东西。",
+        "description": "这里是溢出的抽屉：额外想法、小实验、清单、链接和还没准备好成为独立房间的未来 section。",
+        "includes": [
+          [
+            "松散笔记",
+            "小想法、保存的句子、链接和以后再看的东西。"
+          ],
+          [
+            "实验",
+            "形式、视觉想法、互动草图和未来可能的 block。"
+          ]
+        ],
+        "sampleTitle": "额外笔记",
+        "sample": [
+          [
+            "想法",
+            "做一个喜欢的句子页面"
+          ],
+          [
+            "也许以后",
+            "按情绪天气给书做地图"
+          ]
+        ]
+      }
+    },
+    "tools": {
+      "motifs": {
+        "label": "母题地图",
+        "group": "阅读 + 批评",
+        "body": "追踪房间、镜子、城市、海、沉默、身体和记忆等反复出现的意象。",
+        "title": "母题地图",
+        "description": "跨书追踪反复出现的意象，帮助你看见阅读和写作持续回到哪里。",
+        "fields": [
+          [
+            "母题",
+            "房间、镜子、城市、海、沉默、身体、花园、疾病、记忆"
+          ],
+          [
+            "出现位置",
+            "书籍、段落、作者、论文和小说草稿"
+          ]
+        ],
+        "examples": [
+          "房间 → 私密 / 性别 / 思想",
+          "海 → 迁徙 / 尺度 / 返回"
+        ]
+      },
+      "closeReading": {
+        "label": "文本细读",
+        "group": "批评工作室",
+        "body": "从引文、意象、句法、节奏、语境和论点搭建小型分析。",
+        "title": "文本细读",
+        "description": "这是一个处理单个段落的小工作区，比论文更轻，但足够深入。",
+        "fields": [
+          [
+            "引文",
+            "准确段落、页码、版本和译本"
+          ],
+          [
+            "语言",
+            "措辞、意象、句法、节奏、重复和沉默"
+          ]
+        ],
+        "examples": [
+          "开头句分析",
+          "一个意象在三段中的变化"
+        ]
+      },
+      "author": {
+        "label": "作者档案",
+        "group": "作者与语境",
+        "body": "收集生命时间线、历史压力、地点、作品、影响和接受史。",
+        "title": "作者档案",
+        "description": "这里不是传记堆积，而是用语境理解形式。",
+        "fields": [
+          [
+            "时间线",
+            "生命事件、作品、出版日期、历史事件"
+          ],
+          [
+            "语境",
+            "阶级、性别、迁徙、政治、语言、教育和出版环境"
+          ]
+        ],
+        "examples": [
+          "伍尔夫与房间",
+          "莫里森与历史记忆"
+        ]
+      },
+      "seeds": {
+        "label": "论文种子",
+        "group": "批评工作室",
+        "body": "保存尚未完成的问题，直到它们成为提纲、比较或文章。",
+        "title": "论文种子",
+        "description": "这里容纳还没有准备好成为论文的问题，让想法先活着。",
+        "fields": [
+          [
+            "问题",
+            "一个尖锐的问题，而不只是一个主题"
+          ],
+          [
+            "待收集证据",
+            "书籍、引文、母题、作者语境、理论词"
+          ]
+        ],
+        "examples": [
+          "为什么有些小说打碎时间？",
+          "沉默什么时候成为叙述？"
+        ]
+      },
+      "comparison": {
+        "label": "比较书桌",
+        "group": "比较文学",
+        "body": "围绕一个清晰问题并置两本书、两位作者、两个母题或两个时期。",
+        "title": "比较书桌",
+        "description": "这里让比较不只是两段摘要，而是真正围绕同一个问题展开。",
+        "fields": [
+          [
+            "并置对象",
+            "书/书、作者/作者、母题/母题、时期/时期"
+          ],
+          [
+            "共同问题",
+            "两部文本共同帮助你思考的问题"
+          ]
+        ],
+        "examples": [
+          "伍尔夫 / 莫里森与记忆",
+          "卡尔维诺 / 博尔赫斯与想象系统"
+        ]
+      },
+      "fictionStudio": {
+        "label": "小说工作室",
+        "group": "写作",
+        "body": "发展人物、场景、片段、删去的句子、声音实验和影响来源。",
+        "title": "小说工作室",
+        "description": "这里保存你自己的创作，同时让草稿和阅读档案保持联系。",
+        "fields": [
+          [
+            "人物",
+            "欲望、矛盾、恐惧、声音、历史"
+          ],
+          [
+            "场景",
+            "地点、行动、感官细节、冲突、情绪转折"
+          ]
+        ],
+        "examples": [
+          "人物卡",
+          "场景片段"
+        ]
+      }
+    },
+    "features": {
+      "bookDeepDive": {
+        "label": "单书深读",
+        "group": "研究中心",
+        "body": "为一本书整理作者、语境、主题和你的分析。",
+        "title": "单书深读",
+        "description": "把作者、历史语境、主题和细读集中到同一个研究页面。",
+        "fields": [
+          [
+            "概览",
+            "书目信息、评分、阅读日期和初始心情"
+          ],
+          [
+            "作者",
+            "生命时间线、影响、反复关切和其他作品"
+          ],
+          [
+            "语境",
+            "历史事件、文化运动、出版故事"
+          ]
+        ],
+        "examples": [
+          "为喜欢的小说建立深读页",
+          "研究作者的影响来源"
+        ]
+      },
+      "interactiveReview": {
+        "label": "互动书评",
+        "group": "互动工具",
+        "body": "把想法变成问答、比较和可探索的阅读笔记。",
+        "title": "互动书评",
+        "description": "用问答、并置比较或主题探索，让书评更有层次。",
+        "fields": [
+          [
+            "问答形式",
+            "逐步展开你的想法"
+          ],
+          [
+            "比较",
+            "并排放置两本书，显示差异与相似"
+          ],
+          [
+            "时间线",
+            "视觉化关键事件或人物弧线"
+          ]
+        ],
+        "examples": [
+          "关于小说的关键问题",
+          "和相近作品比较"
+        ]
+      },
+      "motifMapper": {
+        "label": "母题关系图",
+        "group": "视觉工具",
+        "body": "查看意象和主题如何在整个书库中互相连接。",
+        "title": "母题与主题图",
+        "description": "可视化主题、意象和想法在不同书籍及你自己的写作中如何出现。",
+        "fields": [
+          [
+            "追踪母题",
+            "房间、沉默、记忆、死亡、花园、镜子、旅程、继承"
+          ],
+          [
+            "跨书连接",
+            "查看哪些书共享相同主题"
+          ],
+          [
+            "个人模式",
+            "发现你的阅读和写作反复迷恋什么"
+          ]
+        ],
+        "examples": [
+          "房间横跨伍尔夫、莫里森和你的小说",
+          "继承与家族秘密"
+        ]
+      }
+    }
+  },
+  "translations": {
+    "en": {
+      "htmlLang": "en",
+      "toggle": "中文",
+      "navHome": "Home",
+      "navFiction": "Fiction",
+      "navCritical": "Reflection",
+      "navExtra": "Extra",
+      "navLibrary": "Library",
+      "navTimeline": "Timeline",
+      "heroKicker": "A private literature cabinet",
+      "heroTagline": "What survives after reading.",
+      "heroDeck": "Books, fragments, reflection, and memory.",
+      "toolsKicker": "Inside the cabinet",
+      "toolsHeading": "A few tools that make the archive feel alive",
+      "toolsDescription": "The main structure stays simple, but these recurring tools give the site room for criticism, comparison, and creative work.",
+      "featuresKicker": "Enhanced: Interactive & Visual",
+      "featuresHeading": "New ways to explore your reading",
+      "featuresDescription": "Interactive reviews, motif mapping, and deep research hubs help you understand what you read.",
+      "fictionTitle": "Fiction",
+      "fictionSubtitle": "Characters, scenes, fragments, and voice experiments",
+      "fictionCardOneKicker": "Characters",
+      "fictionCardOneTitle": "Character Notes",
+      "fictionCardOneBody": "Desire, contradiction, voice, backstory, and private history.",
+      "fictionCardTwoKicker": "Scenes",
+      "fictionCardTwoTitle": "Scene Fragments",
+      "fictionCardTwoBody": "Place, sensory detail, conflict, and the emotional turn.",
+      "fictionCardThreeKicker": "Influence",
+      "fictionCardThreeTitle": "Influence Trail",
+      "fictionCardThreeBody": "Books, motifs, structures, and sentences that shape a draft.",
+      "libraryTitle": "Library",
+      "librarySubtitle": "A shelf of books, notes, moods, and traces",
+      "libraryModuleSummary": "{count} books in the cabinet: {unread} unread, {completed} completed.",
+      "libraryModuleDescription": "This archive is generated from your Library. Its current traces gather around: {themes}.",
+      "libraryShelfCount": "Books in cabinet",
+      "libraryShelfCountBody": "{count} volumes currently gathered.",
+      "libraryUnreadCount": "Unread shelf",
+      "libraryUnreadCountBody": "{count} books are waiting to be read.",
+      "libraryCompletedCount": "Read traces",
+      "libraryCompletedCountBody": "{count} books have been marked completed.",
+      "libraryShelfSample": "From the shelf",
+      "noThemeTrace": "unlabeled traces",
+      "searchPlaceholder": "Search the cabinet...",
+      "filterAll": "All",
+      "filterUnread": "Unread",
+      "filterCompleted": "Completed",
+      "filterReading": "Reading",
+      "filterReread": "Reread",
+      "addBook": "Add book",
+      "updateBook": "Update book",
+      "cancelEdit": "Cancel edit",
+      "editBook": "Edit",
+      "markAsRead": "Mark read",
+      "markAsUnread": "Mark unread",
+      "bookTitlePlaceholder": "Title",
+      "bookAuthorPlaceholder": "Author",
+      "bookYearPlaceholder": "Year",
+      "bookMoodPlaceholder": "Mood or short note",
+      "bookTagsPlaceholder": "Tags, comma separated",
+      "bookRelatedPlaceholder": "Related books",
+      "bookWhyPlaceholder": "Why I read this",
+      "bookQuotePlaceholder": "Favorite quote",
+      "bookThemesPlaceholder": "Key themes",
+      "bookContextPlaceholder": "Historical or literary context",
+      "bookReviewPlaceholder": "Personal review",
+      "addBookPanel": "Add a book to the cabinet",
+      "libraryEmpty": "No books yet. Start by adding your first book to the library.",
+      "timelineTitle": "Reading Timeline",
+      "timelineSubtitle": "Books, reviews, and writing activity by date",
+      "timelineEmpty": "No timeline entries yet. Add a book or save a review to begin.",
+      "noBooksFilter": "No books with this filter.",
+      "tabOverview": "Overview",
+      "tabAuthor": "Author",
+      "tabContext": "Context",
+      "tabThemes": "Themes",
+      "tabReview": "Review",
+      "examples": "Examples",
+      "modalAuthor": "Author",
+      "modalPublication": "Publication",
+      "modalMood": "Your Mood",
+      "modalStatus": "Status",
+      "modalTags": "Tags",
+      "aboutAuthor": "About the Author",
+      "authorPlaceholder": "Add author biography, life timeline, influences, and recurring themes in their work here. Update this as you research the author.",
+      "historicalContext": "Historical Context",
+      "historicalEvents": "Historical Events",
+      "historicalEventsBody": "Document the historical period, cultural movements, and events that influenced this work.",
+      "publicationStory": "Publication Story",
+      "publicationStoryBody": "Add notes about how the book was received, its reception history, and its impact.",
+      "themesMotifs": "Themes & Motifs",
+      "mainThemes": "Main Themes",
+      "mainThemesBody": "List the primary ideas and questions the book explores.",
+      "recurringImages": "Recurring Images",
+      "recurringImagesBody": "Document motifs and symbols that appear throughout the work.",
+      "yourReview": "Your Review",
+      "firstImpressions": "First Impressions",
+      "firstImpressionsBody": "Your initial thoughts and reactions to the book.",
+      "closeReadings": "Close Readings",
+      "closeReadingsBody": "Passages you want to analyze in detail, with notes on significance.",
+      "essayIdeas": "Essay Ideas",
+      "essayIdeasBody": "Questions and topics for potential essays or deeper exploration.",
+      "whyIReadThis": "Why I read this",
+      "favoriteQuote": "Favorite quote",
+      "relatedBooks": "Related books",
+      "closeModal": "Close",
+      "writingKicker": "Your writing",
+      "writingHeading": "Add a writing piece",
+      "writingTitlePlaceholder": "Title",
+      "writingCategoryPlaceholder": "Category or project",
+      "writingBodyPlaceholder": "Paste your writing here...",
+      "uploadWriting": "Upload .txt / .md",
+      "saveWriting": "Save writing",
+      "noWriting": "No writing pieces yet.",
+      "deleteItem": "Delete",
+      "timelineBookType": "Book",
+      "timelineWritingType": "Review",
+      "timelineCriticalType": "Critical note",
+      "timelineExtraType": "Extra",
+      "draftLabel": "Draft",
+      "latestFiction": "Latest fiction piece",
+      "fictionModuleSummary": "{count} fiction piece(s) saved. Latest: {title}.",
+      "fictionModuleDescription": "This block now follows your Fiction page. It updates when you save or upload writing.",
+      "criticalModuleSummary": "{count} critical note(s) saved. Latest: {title}.",
+      "criticalModuleDescription": "This studio now holds your uploaded or pasted criticism notes.",
+      "criticalDefaultCategory": "Critical note",
+      "criticalPageTitle": "Reflection",
+      "criticalPageSubtitle": "Close readings, essay seeds, evidence, and honest criticism",
+      "latestCritical": "Latest critical note",
+      "criticalFormKicker": "Reflection",
+      "criticalFormHeading": "Upload or paste a critical note",
+      "criticalTitlePlaceholder": "Title or claim",
+      "criticalCategoryPlaceholder": "Book, theme, or method",
+      "criticalBodyPlaceholder": "Paste close reading, evidence, essay seed, or criticism here...",
+      "uploadCritical": "Upload .txt / .md",
+      "saveCritical": "Save critical note",
+      "noCritical": "No critical notes yet.",
+      "latestExtra": "Latest extra post",
+      "extraModuleSummary": "{count} extra post(s) saved. Latest: {title}.",
+      "extraModuleDescription": "This block is your overflow drawer. It updates whenever you post a loose note.",
+      "extraDefaultBody": "Loose note",
+      "extraPageTitle": "Extra",
+      "extraPageSubtitle": "Loose notes, links, side quests, and experiments",
+      "extraFormKicker": "Extra",
+      "extraFormHeading": "Post something extra",
+      "extraTitlePlaceholder": "Post title",
+      "extraBodyPlaceholder": "Small thought, link, list, idea, or experiment...",
+      "saveExtra": "Post",
+      "noExtra": "No extra posts yet.",
+      "openFictionPage": "Open Fiction page",
+      "openCriticalPage": "Open Critical page",
+      "openExtraPage": "Open Extra page"
+    },
+    "zh": {
+      "htmlLang": "zh-CN",
+      "toggle": "EN",
+      "navHome": "首页",
+      "navFiction": "小说",
+      "navCritical": "思考",
+      "navExtra": "其他",
+      "navLibrary": "书库",
+      "navTimeline": "时间线",
+      "heroKicker": "私人文学档案柜",
+      "heroTagline": "窣地春袍",
+      "heroDeck": "书、碎片、反思与记忆。",
+      "toolsKicker": "档案柜内部",
+      "toolsHeading": "让档案保持活力的小工具",
+      "toolsDescription": "主结构保持简单，这些工具为批评、比较和创作留下空间。",
+      "featuresKicker": "增强：互动与视觉",
+      "featuresHeading": "用新的方式探索阅读",
+      "featuresDescription": "互动书评、母题地图和深读页面帮助你理解读过的书。",
+      "fictionTitle": "小说",
+      "fictionSubtitle": "人物、场景、片段和声音实验",
+      "fictionCardOneKicker": "人物",
+      "fictionCardOneTitle": "人物笔记",
+      "fictionCardOneBody": "欲望、矛盾、声音、背景和私人历史。",
+      "fictionCardTwoKicker": "场景",
+      "fictionCardTwoTitle": "场景片段",
+      "fictionCardTwoBody": "地点、感官细节、冲突和情绪转折。",
+      "fictionCardThreeKicker": "影响",
+      "fictionCardThreeTitle": "影响轨迹",
+      "fictionCardThreeBody": "塑造草稿的书籍、母题、结构和句子。",
+      "libraryTitle": "书库",
+      "librarySubtitle": "一架保存书、笔记、心情和痕迹的私人书架",
+      "libraryModuleSummary": "档案柜里有 {count} 本书：{unread} 本未读，{completed} 本已读。",
+      "libraryModuleDescription": "这个阅读档案根据你的书库自动生成。现在反复出现的痕迹有：{themes}。",
+      "libraryShelfCount": "档案柜藏书",
+      "libraryShelfCountBody": "目前收有 {count} 本书。",
+      "libraryUnreadCount": "未读书架",
+      "libraryUnreadCountBody": "{count} 本书还在等待被阅读。",
+      "libraryCompletedCount": "已读痕迹",
+      "libraryCompletedCountBody": "{count} 本书已标记为读完。",
+      "libraryShelfSample": "书架摘录",
+      "noThemeTrace": "尚未标记的痕迹",
+      "searchPlaceholder": "搜索档案柜...",
+      "filterAll": "全部",
+      "filterUnread": "未读",
+      "filterCompleted": "已读完",
+      "filterReading": "在读",
+      "filterReread": "重读",
+      "addBook": "添加书籍",
+      "updateBook": "更新书籍",
+      "cancelEdit": "取消编辑",
+      "editBook": "编辑",
+      "markAsRead": "标记已读",
+      "markAsUnread": "标记未读",
+      "bookTitlePlaceholder": "书名",
+      "bookAuthorPlaceholder": "作者",
+      "bookYearPlaceholder": "年份",
+      "bookMoodPlaceholder": "心情或短笔记",
+      "bookTagsPlaceholder": "标签，用逗号分隔",
+      "bookRelatedPlaceholder": "相关书籍",
+      "bookWhyPlaceholder": "为什么读这本书",
+      "bookQuotePlaceholder": "喜欢的句子",
+      "bookThemesPlaceholder": "关键主题",
+      "bookContextPlaceholder": "历史或文学语境",
+      "bookReviewPlaceholder": "个人书评",
+      "addBookPanel": "把一本书放入档案柜",
+      "libraryEmpty": "还没有书。先添加第一本书吧。",
+      "timelineTitle": "阅读时间线",
+      "timelineSubtitle": "按日期排列的书籍、书评和写作记录",
+      "timelineEmpty": "还没有时间线记录。添加书籍或保存书评后会出现在这里。",
+      "noBooksFilter": "这个筛选下没有书。",
+      "tabOverview": "概览",
+      "tabAuthor": "作者",
+      "tabContext": "语境",
+      "tabThemes": "主题",
+      "tabReview": "书评",
+      "examples": "示例",
+      "modalAuthor": "作者",
+      "modalPublication": "出版",
+      "modalMood": "阅读心情",
+      "modalStatus": "状态",
+      "modalTags": "标签",
+      "aboutAuthor": "关于作者",
+      "authorPlaceholder": "在这里添加作者生平、生命时间线、影响来源和作品中反复出现的主题。",
+      "historicalContext": "历史语境",
+      "historicalEvents": "历史事件",
+      "historicalEventsBody": "记录影响这部作品的历史时期、文化运动和事件。",
+      "publicationStory": "出版故事",
+      "publicationStoryBody": "添加这本书的接受史、出版背景和影响。",
+      "themesMotifs": "主题与母题",
+      "mainThemes": "主要主题",
+      "mainThemesBody": "列出这本书探索的核心想法和问题。",
+      "recurringImages": "反复出现的意象",
+      "recurringImagesBody": "记录贯穿作品的母题和象征。",
+      "yourReview": "我的书评",
+      "firstImpressions": "第一印象",
+      "firstImpressionsBody": "你对这本书最初的想法和反应。",
+      "closeReadings": "文本细读",
+      "closeReadingsBody": "想深入分析的段落，以及它们的重要性。",
+      "essayIdeas": "论文想法",
+      "essayIdeasBody": "可以继续发展为文章或研究的问题。",
+      "whyIReadThis": "为什么读这本书",
+      "favoriteQuote": "喜欢的句子",
+      "relatedBooks": "相关书籍",
+      "closeModal": "关闭",
+      "writingKicker": "你的写作",
+      "writingHeading": "添加写作片段",
+      "writingTitlePlaceholder": "标题",
+      "writingCategoryPlaceholder": "分类或项目",
+      "writingBodyPlaceholder": "把你的文字粘贴到这里……",
+      "uploadWriting": "上传 .txt / .md",
+      "saveWriting": "保存写作",
+      "noWriting": "还没有写作片段。",
+      "deleteItem": "删除",
+      "timelineBookType": "书籍",
+      "timelineWritingType": "书评",
+      "timelineCriticalType": "批评笔记",
+      "timelineExtraType": "其他",
+      "draftLabel": "草稿",
+      "latestFiction": "最新小说片段",
+      "fictionModuleSummary": "已保存 {count} 个小说/写作片段。最新：{title}。",
+      "fictionModuleDescription": "这个 block 现在会跟随 Fiction 页面：保存或上传写作后会自动更新。",
+      "criticalModuleSummary": "已保存 {count} 条批评笔记。最新：{title}。",
+      "criticalModuleDescription": "这里现在可以保存你上传或粘贴的批评笔记。",
+      "criticalDefaultCategory": "批评笔记",
+      "criticalPageTitle": "思考札记",
+      "criticalPageSubtitle": "细读、论文种子、证据和诚实的批评",
+      "latestCritical": "最新批评笔记",
+      "criticalFormKicker": "思考札记",
+      "criticalFormHeading": "上传或粘贴批评笔记",
+      "criticalTitlePlaceholder": "标题或论点",
+      "criticalCategoryPlaceholder": "书名、主题或方法",
+      "criticalBodyPlaceholder": "在这里粘贴细读、证据、论文种子或批评内容……",
+      "uploadCritical": "上传 .txt / .md",
+      "saveCritical": "保存批评笔记",
+      "noCritical": "还没有批评笔记。",
+      "latestExtra": "最新其他内容",
+      "extraModuleSummary": "已保存 {count} 条其他内容。最新：{title}。",
+      "extraModuleDescription": "这个 block 是你的溢出抽屉。每次发布松散笔记后都会自动更新。",
+      "extraDefaultBody": "松散笔记",
+      "extraPageTitle": "其他",
+      "extraPageSubtitle": "松散笔记、链接、支线任务和实验",
+      "extraFormKicker": "其他",
+      "extraFormHeading": "发布其他内容",
+      "extraTitlePlaceholder": "标题",
+      "extraBodyPlaceholder": "小想法、链接、清单、点子或实验……",
+      "saveExtra": "发布",
+      "noExtra": "还没有其他内容。",
+      "openFictionPage": "打开 Fiction 页面",
+      "openCriticalPage": "打开 Critical 页面",
+      "openExtraPage": "打开 Extra 页面"
+    }
+  }
+}
