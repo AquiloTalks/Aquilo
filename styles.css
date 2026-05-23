@@ -22,7 +22,7 @@
   --section-accent: var(--green);
   --section-accent-soft: rgba(143, 160, 105, 0.08);
   --section-accent-line: rgba(143, 160, 105, 0.22);
-  --garden-image: url("https://commons.wikimedia.org/wiki/Special:FilePath/Monet%20-%20La%20Seine%20%C3%A0%20Argenteuil%20-%20SFMOMA.jpg?width=1800");
+  --garden-image: url("assets/monet-la-seine-argenteuil.jpg");
 
   /* Shadows */
   --shadow-sm: 0 1px 3px rgba(120, 134, 130, 0.035);

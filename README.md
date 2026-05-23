@@ -15,3 +15,7 @@ Then open `http://localhost:8000`.
 This site is plain HTML, CSS, and JavaScript. It can be deployed directly with GitHub Pages from the repository root.
 
 Note: user-added books, writing pieces, reflection notes, and extra posts are saved in the visitor's browser via `localStorage`.
+
+## Assets
+
+The painted page background is saved locally at `assets/monet-la-seine-argenteuil.jpg` so the site does not depend on a remote image URL at runtime.
