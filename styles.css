@@ -487,10 +487,6 @@ button {
   font-size: 20px;
 }
 
-.compact-entry-form {
-  gap: 10px;
-}
-
 .content-list {
   display: grid;
   gap: 10px;
@@ -701,89 +697,13 @@ button {
   line-height: 1.6;
 }
 
-.editor-panel {
+.content-panel {
   margin-top: 28px;
   padding: 22px;
   border: 1px solid var(--section-accent-line);
   border-left: 3px solid color-mix(in srgb, var(--section-accent) 55%, white);
   border-radius: var(--radius);
   background: rgba(255, 255, 255, 0.78);
-}
-
-.entry-form {
-  display: grid;
-  gap: 12px;
-}
-
-.form-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-  gap: 10px;
-}
-
-.entry-form input,
-.entry-form select,
-.entry-form textarea {
-  width: 100%;
-  padding: 11px 12px;
-  border: 1px solid var(--section-accent-line);
-  border-radius: var(--radius);
-  background: rgba(255, 255, 255, 0.82);
-  color: var(--ink);
-  font: inherit;
-  font-size: 14px;
-}
-
-.entry-form textarea {
-  resize: vertical;
-  min-height: 150px;
-}
-
-.entry-form input:focus,
-.entry-form select:focus,
-.entry-form textarea:focus {
-  outline: none;
-  border-color: var(--section-accent);
-  box-shadow: 0 0 0 3px var(--section-accent-soft);
-}
-
-.form-row {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  justify-content: space-between;
-  gap: 10px;
-}
-
-.file-input-label,
-.form-submit,
-.delete-button {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  min-height: 36px;
-  padding: 8px 14px;
-  border: 1px solid var(--section-accent-line);
-  border-radius: 999px;
-  background: rgba(255, 255, 255, 0.78);
-  color: var(--ink);
-  font-size: 13px;
-  transition: all var(--transition-base);
-}
-
-.file-input-label:hover,
-.form-submit:hover,
-.delete-button:hover {
-  border-color: var(--section-accent);
-  background: var(--section-accent-soft);
-}
-
-.file-input-label input {
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  opacity: 0;
-  pointer-events: none;
 }
 
 .writing-list {
@@ -909,6 +829,11 @@ button {
   transform: translateY(-1px);
 }
 
+.book-card:focus-visible {
+  outline: 2px solid var(--section-accent);
+  outline-offset: 3px;
+}
+
 .book-cover {
   width: 58px;
   height: 76px;
@@ -953,48 +878,8 @@ button {
   line-height: 1.55;
 }
 
-.book-actions {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 8px;
-  margin-top: auto;
-}
-
-.book-actions .delete-button {
-  min-height: 30px;
-  padding: 6px 10px;
-  font-size: 12px;
-}
-
 .is-hidden {
   display: none !important;
-}
-
-.archive-entry-panel {
-  margin-top: 34px;
-  padding: 0;
-  border-top: 1px solid var(--section-accent-line);
-}
-
-.archive-entry-panel summary {
-  display: inline-flex;
-  margin-top: 18px;
-  color: var(--ink);
-  font-family: var(--font-display);
-  font-size: 20px;
-  cursor: pointer;
-}
-
-.archive-entry-panel summary::marker {
-  color: var(--section-accent);
-}
-
-.archive-entry-panel .entry-form {
-  margin-top: 18px;
-  padding: 22px;
-  border: 1px solid var(--section-accent-line);
-  border-radius: var(--radius);
-  background: rgba(255, 255, 255, 0.58);
 }
 
 .library-empty {

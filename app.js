@@ -6,9 +6,9 @@ let features = {};
 let sampleBooks = [];
 let translations = { en: {}, zh: {} };
 let siteContent = null;
-let publicWritingPieces = [];
-let publicCriticalNotes = [];
-let publicExtraPosts = [];
+let writingPieces = [];
+let criticalNotes = [];
+let extraPosts = [];
 
 async function loadJSON(path) {
   const response = await fetch(path);
@@ -30,11 +30,10 @@ async function loadContentData() {
   siteContent = content;
   translations = content.translations || translations;
   sampleBooks = books;
-  publicWritingPieces = normalizePublicEntries(fiction, "fiction");
-  publicCriticalNotes = normalizePublicEntries(reflections, "reflection");
-  publicExtraPosts = normalizePublicEntries(extra, "extra");
+  writingPieces = normalizePublicEntries(fiction, "fiction");
+  criticalNotes = normalizePublicEntries(reflections, "reflection");
+  extraPosts = normalizePublicEntries(extra, "extra");
   setLanguageContent(currentLanguage);
-  syncEditableContent();
 }
 
 function cloneContent(value) {
@@ -55,31 +54,8 @@ let selectedFeatureId = "bookDeepDive";
 let activeLibraryFilter = "all";
 let activeBook = null;
 let lastFocusedElement = null;
-let editingBookId = null;
-let customBooks = loadFromStorage("aquilo.customBooks", []);
-let bookEdits = loadFromStorage("aquilo.bookEdits", {});
-let deletedBookIds = loadFromStorage("aquilo.deletedBookIds", []);
-let localWritingPieces = loadFromStorage("aquilo.writingPieces", []);
-let localCriticalNotes = loadFromStorage("aquilo.criticalNotes", []);
-let localExtraPosts = loadFromStorage("aquilo.extraPosts", []);
-let writingPieces = [];
-let criticalNotes = [];
-let extraPosts = [];
 
 // ===== Helper Functions =====
-
-function loadFromStorage(key, fallback) {
-  try {
-    const value = localStorage.getItem(key);
-    return value ? JSON.parse(value) : fallback;
-  } catch {
-    return fallback;
-  }
-}
-
-function saveToStorage(key, value) {
-  localStorage.setItem(key, JSON.stringify(value));
-}
 
 function normalizePublicEntries(items, prefix) {
   return (Array.isArray(items) ? items : []).map((item, index) => ({
@@ -89,23 +65,8 @@ function normalizePublicEntries(items, prefix) {
   }));
 }
 
-function normalizeLocalEntries(items) {
-  return (Array.isArray(items) ? items : []).map((item) => ({
-    ...item,
-    source: item.source || "local",
-  }));
-}
-
-function syncEditableContent() {
-  writingPieces = [...publicWritingPieces, ...normalizeLocalEntries(localWritingPieces)];
-  criticalNotes = [...publicCriticalNotes, ...normalizeLocalEntries(localCriticalNotes)];
-  extraPosts = [...publicExtraPosts, ...normalizeLocalEntries(localExtraPosts)];
-}
-
 function getVisibleBooks() {
-  const deleted = new Set(deletedBookIds.map(String));
-  const editedSamples = sampleBooks.map((book) => ({ ...book, ...(bookEdits[String(book.id)] || {}) }));
-  return [...editedSamples, ...customBooks].filter((book) => !deleted.has(String(book.id)));
+  return sampleBooks;
 }
 
 function refreshBookViews() {
@@ -113,13 +74,6 @@ function refreshBookViews() {
   renderTimeline();
   updateDynamicCards();
   renderModule(selectedModuleId);
-}
-
-function normalizeTags(value) {
-  return value
-    .split(",")
-    .map((tag) => tag.trim())
-    .filter(Boolean);
 }
 
 function escapeHTML(value) {
@@ -313,7 +267,6 @@ function applyLanguage(language) {
   renderWritingPieces();
   renderCriticalNotes();
   renderExtraPosts();
-  if (editingBookId === null) clearBookEditMode();
 
   if (document.querySelector("#book-modal").open && activeBook) {
     const translatedBook = sampleBooks.find((book) => book.id === activeBook.id) || activeBook;
@@ -378,7 +331,7 @@ function renderModule(moduleId) {
   });
 }
 
-function createContentList(items, emptyText, type, deleteHandler) {
+function createContentList(items, emptyText, type) {
   const list = document.createElement("div");
   list.className = "content-list";
 
@@ -387,7 +340,7 @@ function createContentList(items, emptyText, type, deleteHandler) {
     return list;
   }
 
-  items.slice(0, 4).forEach((item) => {
+  items.forEach((item) => {
     const card = document.createElement("article");
     card.className = "content-mini-card";
     card.id = `${type}-${item.id}`;
@@ -395,11 +348,7 @@ function createContentList(items, emptyText, type, deleteHandler) {
       <p class="writing-meta">${escapeHTML(item.category || type)} · ${formatDate(item.createdAt)}</p>
       <h3>${escapeHTML(item.title)}</h3>
       <p>${escapeHTML(makePreview(item.body, item.category))}</p>
-      ${deleteHandler && item.source !== "public" ? `<button class="delete-button" type="button" data-entry-id="${escapeHTML(item.id)}">${t("deleteItem")}</button>` : ""}
     `;
-    if (deleteHandler && item.source !== "public") {
-      card.querySelector(".delete-button").addEventListener("click", () => deleteHandler(item.id));
-    }
     list.append(card);
   });
 
@@ -491,6 +440,7 @@ function renderLibrary(filter = "all") {
   filtered.forEach((book) => {
     const card = document.createElement("div");
     card.className = "book-card";
+    card.tabIndex = 0;
     card.innerHTML = `
       <div class="book-cover">${escapeHTML(book.title.charAt(0))}</div>
       <div class="book-info">
@@ -499,26 +449,13 @@ function renderLibrary(filter = "all") {
         <div class="book-meta">${escapeHTML(book.year)}</div>
         <p class="book-note">${escapeHTML(makePreview(book.mood || book.why || (book.tags || []).join(", "), ""))}</p>
       </div>
-      <div class="book-actions">
-        <button class="delete-button book-status-toggle" type="button" data-book-id="${book.id}">
-          ${book.status === "unread" ? t("markAsRead") : t("markAsUnread")}
-        </button>
-        <button class="delete-button book-edit" type="button" data-book-id="${book.id}">${t("editBook")}</button>
-        <button class="delete-button book-delete" type="button" data-book-id="${book.id}">${t("deleteItem")}</button>
-      </div>
     `;
     card.addEventListener("click", () => openBookDetail(book));
-    card.querySelector(".book-status-toggle").addEventListener("click", (event) => {
-      event.stopPropagation();
-      toggleBookReadStatus(book.id);
-    });
-    card.querySelector(".book-edit").addEventListener("click", (event) => {
-      event.stopPropagation();
-      startBookEdit(book.id);
-    });
-    card.querySelector(".book-delete").addEventListener("click", (event) => {
-      event.stopPropagation();
-      deleteBook(book.id);
+    card.addEventListener("keydown", (event) => {
+      if (event.key === "Enter" || event.key === " ") {
+        event.preventDefault();
+        openBookDetail(book);
+      }
     });
     libraryGrid.append(card);
   });
@@ -537,36 +474,6 @@ function getBookSearchText(book) {
     ...(book.tags || []),
     ...(book.relatedBooks || []),
   ].filter(Boolean).join(" ").toLowerCase();
-}
-
-function getBookById(bookId) {
-  return getVisibleBooks().find((book) => String(book.id) === String(bookId));
-}
-
-function persistBookUpdate(bookId, updates) {
-  const id = String(bookId);
-  const customIndex = customBooks.findIndex((book) => String(book.id) === id);
-  if (customIndex >= 0) {
-    customBooks[customIndex] = { ...customBooks[customIndex], ...updates };
-    saveToStorage("aquilo.customBooks", customBooks);
-  } else {
-    bookEdits = {
-      ...bookEdits,
-      [id]: { ...(bookEdits[id] || {}), ...updates },
-    };
-    saveToStorage("aquilo.bookEdits", bookEdits);
-  }
-}
-
-function toggleBookReadStatus(bookId) {
-  const book = getBookById(bookId);
-  if (!book) return;
-  const nextStatus = book.status === "unread" ? "completed" : "unread";
-  persistBookUpdate(bookId, {
-    status: nextStatus,
-    readDates: nextStatus === "completed" ? [new Date().toISOString().slice(0, 10)] : [],
-  });
-  refreshBookViews();
 }
 
 // ===== Render Timeline =====
@@ -660,104 +567,6 @@ function renderTimeline() {
     });
 }
 
-function addBookFromForm(event) {
-  event.preventDefault();
-  const title = document.querySelector("#book-title-input").value.trim();
-  const author = document.querySelector("#book-author-input").value.trim();
-  if (!title || !author) return;
-
-  const bookData = getBookFormData();
-  if (editingBookId !== null) {
-    persistBookUpdate(editingBookId, bookData);
-    clearBookEditMode();
-    event.currentTarget.reset();
-    refreshBookViews();
-    return;
-  }
-
-  const book = {
-    id: `custom-${Date.now()}`,
-    ...bookData,
-  };
-
-  customBooks = [book, ...customBooks];
-  saveToStorage("aquilo.customBooks", customBooks);
-  event.currentTarget.reset();
-  refreshBookViews();
-}
-
-function getBookFormData() {
-  const yearValue = document.querySelector("#book-year-input").value;
-  const dateValue = document.querySelector("#book-date-input").value;
-  const status = document.querySelector("#book-status-input").value;
-  return {
-    title: document.querySelector("#book-title-input").value.trim(),
-    author: document.querySelector("#book-author-input").value.trim(),
-    year: yearValue ? Number(yearValue) : "",
-    status,
-    rating: null,
-    readDates: status === "unread" ? [] : [dateValue || new Date().toISOString().slice(0, 10)],
-    mood: document.querySelector("#book-mood-input").value.trim(),
-    tags: normalizeTags(document.querySelector("#book-tags-input").value),
-    why: document.querySelector("#book-why-input").value.trim(),
-    favoriteQuote: document.querySelector("#book-quote-input").value.trim(),
-    keyThemes: document.querySelector("#book-themes-input").value.trim(),
-    literaryContext: document.querySelector("#book-context-input").value.trim(),
-    personalReview: document.querySelector("#book-review-input").value.trim(),
-    relatedBooks: normalizeTags(document.querySelector("#book-related-input").value),
-  };
-}
-
-function startBookEdit(bookId) {
-  const book = getBookById(bookId);
-  if (!book) return;
-
-  editingBookId = bookId;
-  document.querySelector(".archive-entry-panel").open = true;
-  document.querySelector("#book-title-input").value = book.title || "";
-  document.querySelector("#book-author-input").value = book.author || "";
-  document.querySelector("#book-year-input").value = book.year || "";
-  document.querySelector("#book-status-input").value = book.status || "unread";
-  document.querySelector("#book-date-input").value = book.readDates?.[0] || "";
-  document.querySelector("#book-mood-input").value = book.mood || "";
-  document.querySelector("#book-tags-input").value = (book.tags || []).join(", ");
-  document.querySelector("#book-related-input").value = (book.relatedBooks || []).join(", ");
-  document.querySelector("#book-why-input").value = book.why || "";
-  document.querySelector("#book-quote-input").value = book.favoriteQuote || "";
-  document.querySelector("#book-themes-input").value = book.keyThemes || "";
-  document.querySelector("#book-context-input").value = book.literaryContext || "";
-  document.querySelector("#book-review-input").value = book.personalReview || "";
-
-  document.querySelector("#book-form .form-submit").textContent = t("updateBook");
-  document.querySelector("#book-edit-cancel").classList.remove("is-hidden");
-  document.querySelector(".archive-entry-panel").scrollIntoView({ behavior: "smooth", block: "start" });
-  document.querySelector("#book-title-input").focus();
-}
-
-function clearBookEditMode() {
-  editingBookId = null;
-  document.querySelector("#book-form .form-submit").textContent = t("addBook");
-  document.querySelector("#book-edit-cancel").classList.add("is-hidden");
-}
-
-function deleteBook(bookId) {
-  customBooks = customBooks.filter((book) => String(book.id) !== String(bookId));
-  const editCopy = { ...bookEdits };
-  delete editCopy[String(bookId)];
-  bookEdits = editCopy;
-  if (!deletedBookIds.map(String).includes(String(bookId))) {
-    deletedBookIds = [...deletedBookIds, bookId];
-  }
-  saveToStorage("aquilo.customBooks", customBooks);
-  saveToStorage("aquilo.bookEdits", bookEdits);
-  saveToStorage("aquilo.deletedBookIds", deletedBookIds);
-  if (activeBook && String(activeBook.id) === String(bookId)) {
-    document.querySelector("#book-modal").close();
-    activeBook = null;
-  }
-  refreshBookViews();
-}
-
 function renderWritingPieces() {
   const writingList = document.querySelector("#writing-list");
   if (!writingList) return;
@@ -776,148 +585,21 @@ function renderWritingPieces() {
       <p class="writing-meta">${escapeHTML(piece.category || "Draft")} · ${new Date(piece.createdAt).toLocaleDateString()}</p>
       <h3>${escapeHTML(piece.title)}</h3>
       <div class="writing-body">${escapeHTML(piece.body || "")}</div>
-      ${piece.source !== "public" ? `<button class="delete-button writing-delete" type="button" data-writing-id="${piece.id}">${t("deleteItem")}</button>` : ""}
     `;
-    card.querySelector(".writing-delete")?.addEventListener("click", () => deleteWritingPiece(piece.id));
     writingList.append(card);
   });
-}
-
-function addWritingFromForm(event) {
-  event.preventDefault();
-  const title = document.querySelector("#writing-title").value.trim();
-  if (!title) return;
-
-  const piece = {
-    id: `writing-${Date.now()}`,
-    title,
-    category: document.querySelector("#writing-category").value.trim(),
-    body: document.querySelector("#writing-body").value.trim(),
-    createdAt: new Date().toISOString(),
-    source: "local",
-  };
-
-  localWritingPieces = [piece, ...localWritingPieces];
-  saveToStorage("aquilo.writingPieces", localWritingPieces);
-  syncEditableContent();
-  event.currentTarget.reset();
-  renderWritingPieces();
-  renderTimeline();
-  updateDynamicCards();
-  renderModule(selectedModuleId);
-}
-
-function deleteWritingPiece(pieceId) {
-  localWritingPieces = localWritingPieces.filter((piece) => String(piece.id) !== String(pieceId));
-  saveToStorage("aquilo.writingPieces", localWritingPieces);
-  syncEditableContent();
-  renderWritingPieces();
-  renderTimeline();
-  updateDynamicCards();
-  renderModule(selectedModuleId);
-}
-
-function handleWritingUpload(event) {
-  const file = event.target.files?.[0];
-  if (!file) return;
-
-  const reader = new FileReader();
-  reader.addEventListener("load", () => {
-    document.querySelector("#writing-title").value = file.name.replace(/\.(txt|md)$/i, "");
-    document.querySelector("#writing-body").value = String(reader.result || "");
-  });
-  reader.readAsText(file);
 }
 
 function renderCriticalNotes() {
   const criticalList = document.querySelector("#critical-list");
   if (!criticalList) return;
-  criticalList.replaceChildren(createContentList(criticalNotes, t("noCritical"), "critical", deleteCriticalNote));
+  criticalList.replaceChildren(createContentList(criticalNotes, t("noCritical"), "critical"));
 }
 
 function renderExtraPosts() {
   const extraList = document.querySelector("#extra-list");
   if (!extraList) return;
-  extraList.replaceChildren(createContentList(extraPosts, t("noExtra"), "extra", deleteExtraPost));
-}
-
-function addCriticalFromForm(event) {
-  event.preventDefault();
-  const title = document.querySelector("#critical-title")?.value.trim();
-  if (!title) return;
-
-  const note = {
-    id: `critical-${Date.now()}`,
-    title,
-    category: document.querySelector("#critical-category")?.value.trim() || t("criticalDefaultCategory"),
-    body: document.querySelector("#critical-body")?.value.trim() || "",
-    createdAt: new Date().toISOString(),
-    source: "local",
-  };
-
-  localCriticalNotes = [note, ...localCriticalNotes];
-  saveToStorage("aquilo.criticalNotes", localCriticalNotes);
-  syncEditableContent();
-  event.currentTarget.reset();
-  renderCriticalNotes();
-  renderTimeline();
-  updateDynamicCards();
-  renderModule(selectedModuleId);
-}
-
-function deleteCriticalNote(noteId) {
-  localCriticalNotes = localCriticalNotes.filter((note) => String(note.id) !== String(noteId));
-  saveToStorage("aquilo.criticalNotes", localCriticalNotes);
-  syncEditableContent();
-  renderCriticalNotes();
-  renderTimeline();
-  updateDynamicCards();
-  renderModule(selectedModuleId);
-}
-
-function handleCriticalUpload(event) {
-  const file = event.target.files?.[0];
-  if (!file) return;
-
-  const reader = new FileReader();
-  reader.addEventListener("load", () => {
-    document.querySelector("#critical-title").value = file.name.replace(/\.(txt|md)$/i, "");
-    document.querySelector("#critical-body").value = String(reader.result || "");
-  });
-  reader.readAsText(file);
-}
-
-function addExtraFromForm(event) {
-  event.preventDefault();
-  const title = document.querySelector("#extra-title")?.value.trim();
-  if (!title) return;
-
-  const post = {
-    id: `extra-${Date.now()}`,
-    title,
-    body: document.querySelector("#extra-body")?.value.trim() || "",
-    createdAt: new Date().toISOString(),
-    source: "local",
-  };
-
-  localExtraPosts = [post, ...localExtraPosts];
-  saveToStorage("aquilo.extraPosts", localExtraPosts);
-  syncEditableContent();
-  event.currentTarget.reset();
-  renderExtraPosts();
-  renderTimeline();
-  updateDynamicCards();
-  renderModule(selectedModuleId);
-}
-
-function deleteExtraPost(postId) {
-  localExtraPosts = localExtraPosts.filter((post) => String(post.id) !== String(postId));
-  saveToStorage("aquilo.extraPosts", localExtraPosts);
-  syncEditableContent();
-  renderExtraPosts();
-  renderTimeline();
-  updateDynamicCards();
-  renderModule(selectedModuleId);
+  extraList.replaceChildren(createContentList(extraPosts, t("noExtra"), "extra"));
 }
 
 // ===== Book Detail Modal =====
@@ -1129,24 +811,6 @@ function attachEventListeners() {
   document.querySelector("#language-toggle").addEventListener("click", () => {
     applyLanguage(currentLanguage === "en" ? "zh" : "en");
   });
-  
-  // Editable library
-  document.querySelector("#book-form").addEventListener("submit", addBookFromForm);
-  document.querySelector("#book-edit-cancel").addEventListener("click", () => {
-    document.querySelector("#book-form").reset();
-    clearBookEditMode();
-  });
-  
-  // Editable writing
-  document.querySelector("#writing-form").addEventListener("submit", addWritingFromForm);
-  document.querySelector("#writing-upload").addEventListener("change", handleWritingUpload);
-  
-  // Editable critical studio
-  document.querySelector("#critical-form").addEventListener("submit", addCriticalFromForm);
-  document.querySelector("#critical-upload").addEventListener("change", handleCriticalUpload);
-  
-  // Editable extra
-  document.querySelector("#extra-form").addEventListener("submit", addExtraFromForm);
   
   // Library filters
   document.querySelectorAll(".filter-tab").forEach((btn) => {

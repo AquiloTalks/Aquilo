@@ -14,11 +14,9 @@ Then open `http://localhost:8000`.
 
 This site is plain HTML, CSS, and JavaScript. It can be deployed directly with GitHub Pages from the repository root.
 
-Note: user-added books, writing pieces, reflection notes, and extra posts are saved in the visitor's browser via `localStorage`.
-
 ## Editing Published Content
 
-Edit the files in `data/`, then commit and push to update the deployed site:
+The public website is read-only. Edit the files in `data/`, then commit and push to update the deployed site:
 
 - `data/books.json`: Library books.
 - `data/fiction.json`: Fiction pieces.
