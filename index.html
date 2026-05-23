@@ -1,0 +1,242 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Aquilo - Literature Cabinet</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <main class="page-shell">
+      <!-- Navigation -->
+      <nav class="site-nav">
+        <div class="nav-links">
+          <a href="#cabinet" class="nav-link is-active" data-section="cabinet" data-i18n="navHome">Home</a>
+          <a href="#library" class="nav-link" data-section="library" data-i18n="navLibrary">Library</a>
+          <a href="#fiction" class="nav-link" data-section="fiction" data-i18n="navFiction">Fiction</a>
+          <a href="#critical" class="nav-link" data-section="critical" data-i18n="navCritical">Reflection</a>
+          <a href="#extra" class="nav-link" data-section="extra" data-i18n="navExtra">Extra</a>
+          <a href="#timeline" class="nav-link" data-section="timeline" data-i18n="navTimeline">Timeline</a>
+          <button class="language-toggle" id="language-toggle" type="button" aria-pressed="false">中文</button>
+        </div>
+      </nav>
+
+      <!-- ===== VIEW 1: Cabinet (Home) ===== -->
+      <section class="section is-active" id="cabinet" data-section="cabinet" aria-label="Literature Cabinet">
+        <header class="hero-header">
+          <div class="brand-section">
+            <p class="hero-kicker" data-i18n="heroKicker">A private literature cabinet</p>
+            <h1 class="page-title">Aquilo</h1>
+            <p class="hero-deck" data-i18n="heroDeck">Books, fragments, reflection, and memory.</p>
+          </div>
+          <p class="hero-tagline" data-i18n="heroTagline">What survives after reading.</p>
+        </header>
+
+        <!-- Core 4 Modules -->
+        <section class="module-section" aria-labelledby="modules-heading">
+          <h2 id="modules-heading" class="sr-only">Main Cabinet Modules</h2>
+          <div class="module-grid" id="module-grid"></div>
+          <article class="module-detail" id="module-detail" aria-live="polite" aria-label="Module details"></article>
+        </section>
+      </section>
+
+      <!-- ===== VIEW 2: Fiction ===== -->
+      <section class="section" id="fiction" data-section="fiction" aria-label="Fiction Workshop">
+        <header class="view-header">
+          <h1 data-i18n="fictionTitle">Fiction</h1>
+          <p data-i18n="fictionSubtitle">Characters, scenes, fragments, and voice experiments</p>
+        </header>
+
+        <div class="fiction-grid">
+          <article class="fiction-card">
+            <p class="kicker" data-i18n="fictionCardOneKicker">Characters</p>
+            <h2 data-i18n="fictionCardOneTitle">Character Notes</h2>
+            <p data-i18n="fictionCardOneBody">Desire, contradiction, voice, backstory, and private history.</p>
+          </article>
+          <article class="fiction-card">
+            <p class="kicker" data-i18n="fictionCardTwoKicker">Scenes</p>
+            <h2 data-i18n="fictionCardTwoTitle">Scene Fragments</h2>
+            <p data-i18n="fictionCardTwoBody">Place, sensory detail, conflict, and the emotional turn.</p>
+          </article>
+          <article class="fiction-card">
+            <p class="kicker" data-i18n="fictionCardThreeKicker">Influence</p>
+            <h2 data-i18n="fictionCardThreeTitle">Influence Trail</h2>
+            <p data-i18n="fictionCardThreeBody">Books, motifs, structures, and sentences that shape a draft.</p>
+          </article>
+        </div>
+
+        <section class="editor-panel" aria-labelledby="writing-form-heading">
+          <div class="section-intro">
+            <p class="kicker" data-i18n="writingKicker">Your writing</p>
+            <h2 id="writing-form-heading" data-i18n="writingHeading">Add a writing piece</h2>
+          </div>
+          <form class="entry-form" id="writing-form">
+            <input id="writing-title" type="text" data-i18n-placeholder="writingTitlePlaceholder" placeholder="Title" required />
+            <input id="writing-category" type="text" data-i18n-placeholder="writingCategoryPlaceholder" placeholder="Category or project" />
+            <textarea id="writing-body" rows="7" data-i18n-placeholder="writingBodyPlaceholder" placeholder="Paste your writing here..."></textarea>
+            <div class="form-row">
+              <label class="file-input-label">
+                <span data-i18n="uploadWriting">Upload .txt / .md</span>
+                <input id="writing-upload" type="file" accept=".txt,.md,text/plain,text/markdown" />
+              </label>
+              <button class="form-submit" type="submit" data-i18n="saveWriting">Save writing</button>
+            </div>
+          </form>
+          <div class="writing-list" id="writing-list"></div>
+        </section>
+      </section>
+
+      <!-- ===== VIEW 3: Reflection ===== -->
+      <section class="section" id="critical" data-section="critical" aria-label="Reflection">
+        <header class="view-header">
+          <h1 data-i18n="criticalPageTitle">Reflection</h1>
+          <p data-i18n="criticalPageSubtitle">Close readings, essay seeds, evidence, and honest criticism</p>
+        </header>
+
+        <section class="editor-panel" aria-labelledby="critical-form-heading">
+          <div class="section-intro">
+            <p class="kicker" data-i18n="criticalFormKicker">Reflection</p>
+            <h2 id="critical-form-heading" data-i18n="criticalFormHeading">Upload or paste a critical note</h2>
+          </div>
+          <form class="entry-form" id="critical-form">
+            <input id="critical-title" type="text" data-i18n-placeholder="criticalTitlePlaceholder" placeholder="Title or claim" required />
+            <input id="critical-category" type="text" data-i18n-placeholder="criticalCategoryPlaceholder" placeholder="Book, theme, or method" />
+            <textarea id="critical-body" rows="7" data-i18n-placeholder="criticalBodyPlaceholder" placeholder="Paste close reading, evidence, essay seed, or criticism here..."></textarea>
+            <div class="form-row">
+              <label class="file-input-label">
+                <span data-i18n="uploadCritical">Upload .txt / .md</span>
+                <input id="critical-upload" type="file" accept=".txt,.md,text/plain,text/markdown" />
+              </label>
+              <button class="form-submit" type="submit" data-i18n="saveCritical">Save critical note</button>
+            </div>
+          </form>
+          <div class="writing-list" id="critical-list"></div>
+        </section>
+      </section>
+
+      <!-- ===== VIEW 4: Extra ===== -->
+      <section class="section" id="extra" data-section="extra" aria-label="Extra Notes">
+        <header class="view-header">
+          <h1 data-i18n="extraPageTitle">Extra</h1>
+          <p data-i18n="extraPageSubtitle">Loose notes, links, side quests, and experiments</p>
+        </header>
+
+        <section class="editor-panel" aria-labelledby="extra-form-heading">
+          <div class="section-intro">
+            <p class="kicker" data-i18n="extraFormKicker">Extra</p>
+            <h2 id="extra-form-heading" data-i18n="extraFormHeading">Post something extra</h2>
+          </div>
+          <form class="entry-form" id="extra-form">
+            <input id="extra-title" type="text" data-i18n-placeholder="extraTitlePlaceholder" placeholder="Post title" required />
+            <textarea id="extra-body" rows="6" data-i18n-placeholder="extraBodyPlaceholder" placeholder="Small thought, link, list, idea, or experiment..."></textarea>
+            <div class="form-row">
+              <button class="form-submit" type="submit" data-i18n="saveExtra">Post</button>
+            </div>
+          </form>
+          <div class="writing-list" id="extra-list"></div>
+        </section>
+      </section>
+
+      <!-- ===== VIEW 5: Library ===== -->
+      <section class="section" id="library" data-section="library" aria-label="Book Library">
+        <header class="view-header">
+          <h1 data-i18n="libraryTitle">Your Library</h1>
+          <p data-i18n="librarySubtitle">All books, searchable and organized</p>
+        </header>
+
+        <div class="library-controls">
+          <input 
+            type="search" 
+            id="book-search" 
+            class="search-input" 
+            placeholder="Search by title, author, or theme..."
+            data-i18n-placeholder="searchPlaceholder"
+            data-i18n-aria-label="searchPlaceholder"
+            aria-label="Search books"
+          />
+          <div class="filter-tabs">
+            <button class="filter-tab is-active" data-filter="all" aria-pressed="true" data-i18n="filterAll">All</button>
+            <button class="filter-tab" data-filter="unread" aria-pressed="false" data-i18n="filterUnread">Unread</button>
+            <button class="filter-tab" data-filter="completed" aria-pressed="false" data-i18n="filterCompleted">Completed</button>
+            <button class="filter-tab" data-filter="reading" aria-pressed="false" data-i18n="filterReading">Reading</button>
+            <button class="filter-tab" data-filter="reread" aria-pressed="false" data-i18n="filterReread">Reread</button>
+          </div>
+        </div>
+
+        <div class="library-grid" id="library-grid">
+          <div class="library-empty">
+            <p data-i18n="libraryEmpty">No books yet. Start by adding your first book to the library.</p>
+          </div>
+        </div>
+
+        <details class="archive-entry-panel">
+          <summary data-i18n="addBookPanel">Add a book to the cabinet</summary>
+          <form class="entry-form" id="book-form">
+            <div class="form-grid">
+              <input id="book-title-input" type="text" data-i18n-placeholder="bookTitlePlaceholder" placeholder="Title" required />
+              <input id="book-author-input" type="text" data-i18n-placeholder="bookAuthorPlaceholder" placeholder="Author" required />
+              <input id="book-year-input" type="number" data-i18n-placeholder="bookYearPlaceholder" placeholder="Year" />
+              <select id="book-status-input">
+                <option value="unread" data-i18n="filterUnread" selected>Unread</option>
+                <option value="completed" data-i18n="filterCompleted">Completed</option>
+                <option value="reading" data-i18n="filterReading">Reading</option>
+                <option value="reread" data-i18n="filterReread">Reread</option>
+              </select>
+            </div>
+            <div class="form-grid">
+              <input id="book-date-input" type="date" />
+              <input id="book-mood-input" type="text" data-i18n-placeholder="bookMoodPlaceholder" placeholder="Mood or short note" />
+              <input id="book-tags-input" type="text" data-i18n-placeholder="bookTagsPlaceholder" placeholder="Tags, comma separated" />
+              <input id="book-related-input" type="text" data-i18n-placeholder="bookRelatedPlaceholder" placeholder="Related books" />
+            </div>
+            <textarea id="book-why-input" rows="3" data-i18n-placeholder="bookWhyPlaceholder" placeholder="Why I read this"></textarea>
+            <textarea id="book-quote-input" rows="3" data-i18n-placeholder="bookQuotePlaceholder" placeholder="Favorite quote"></textarea>
+            <textarea id="book-themes-input" rows="3" data-i18n-placeholder="bookThemesPlaceholder" placeholder="Key themes"></textarea>
+            <textarea id="book-context-input" rows="3" data-i18n-placeholder="bookContextPlaceholder" placeholder="Historical or literary context"></textarea>
+            <textarea id="book-review-input" rows="4" data-i18n-placeholder="bookReviewPlaceholder" placeholder="Personal review"></textarea>
+            <div class="form-row">
+              <button class="form-submit" type="submit" data-i18n="addBook">Add book</button>
+              <button class="delete-button form-cancel is-hidden" id="book-edit-cancel" type="button" data-i18n="cancelEdit">Cancel edit</button>
+            </div>
+          </form>
+        </details>
+      </section>
+
+      <!-- ===== VIEW 6: Timeline ===== -->
+      <section class="section" id="timeline" data-section="timeline" aria-label="Reading Timeline">
+        <header class="view-header">
+          <h1 data-i18n="timelineTitle">Reading Timeline</h1>
+          <p data-i18n="timelineSubtitle">What you read and when</p>
+        </header>
+
+        <div class="timeline-container" id="timeline-container">
+          <div class="timeline-empty">
+            <p data-i18n="timelineEmpty">No reading entries yet. Start recording your reading journey.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- ===== Modal: Book Detail ===== -->
+      <dialog class="book-modal" id="book-modal">
+        <div class="modal-backdrop"></div>
+        <div class="modal-content">
+          <button class="modal-close" aria-label="Close" data-i18n-aria-label="closeModal">&times;</button>
+          <div class="book-detail-tabs">
+            <nav class="book-tabs" aria-label="Book sections">
+              <button class="book-tab is-active" data-tab="overview" data-i18n="tabOverview">Overview</button>
+              <button class="book-tab" data-tab="author" data-i18n="tabAuthor">Author</button>
+              <button class="book-tab" data-tab="context" data-i18n="tabContext">Context</button>
+              <button class="book-tab" data-tab="themes" data-i18n="tabThemes">Themes</button>
+              <button class="book-tab" data-tab="review" data-i18n="tabReview">Review</button>
+            </nav>
+          </div>
+          <div class="book-panels" id="book-panels">
+            <!-- Dynamically populated -->
+          </div>
+        </div>
+      </dialog>
+    </main>
+
+    <script src="app.js?v=review-fixes"></script>
+  </body>
+</html>
