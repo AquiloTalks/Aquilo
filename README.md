@@ -16,12 +16,40 @@ This site is plain HTML, CSS, and JavaScript. It can be deployed directly with G
 
 ## Editing Published Content
 
-The public website is read-only. Edit the files in `data/`, then commit and push to update the deployed site:
+The public website is read-only. For writing pages, edit Markdown files in `content/`, then generate JSON:
+
+```sh
+python3 scripts/build_content.py
+```
+
+Use these folders:
+
+- `content/fiction/`: Fiction page entries.
+- `content/reflections/`: Reflection page entries.
+- `content/extra/`: Extra page entries.
+
+Each Markdown file starts with front matter:
+
+```md
+---
+title: "A Small Fiction Fragment"
+date: "2026-08-30"
+category: "Draft"
+tags: ["memory", "house"]
+---
+
+Write the public text here.
+```
+
+The build command writes:
+
+- `data/fiction.json`
+- `data/reflections.json`
+- `data/extra.json`
+
+For books and site labels, edit JSON directly:
 
 - `data/books.json`: Library books.
-- `data/fiction.json`: Fiction pieces.
-- `data/reflections.json`: Reflection notes.
-- `data/extra.json`: Extra posts.
 - `data/site-content.json`: page labels, module text, and bilingual UI copy.
 
 Preview through a local server after changing JSON, because browsers block `fetch()` for local files opened directly from Finder.

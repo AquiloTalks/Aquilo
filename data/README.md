@@ -3,10 +3,12 @@
 Edit these files when you want the deployed website to change, then commit and push.
 
 - `books.json`: public Library entries.
-- `fiction.json`: public Fiction pieces.
-- `reflections.json`: public Reflection notes.
-- `extra.json`: public Extra posts.
+- `fiction.json`: generated from `content/fiction/*.md`.
+- `reflections.json`: generated from `content/reflections/*.md`.
+- `extra.json`: generated from `content/extra/*.md`.
 - `site-content.json`: navigation text, module copy, bilingual labels, and reusable page text.
+
+Prefer editing Markdown files in `content/` for writing entries. Run `python3 scripts/build_content.py` after changing Markdown.
 
 ## Entry Formats
 
@@ -36,16 +38,18 @@ Edit these files when you want the deployed website to change, then commit and p
 }
 ```
 
-### `fiction.json`, `reflections.json`, `extra.json`
+### Generated Writing JSON
 
 ```json
 {
   "id": "unique-id",
   "title": "Entry title",
   "category": "Optional category",
+  "tags": ["tag one", "tag two"],
   "body": "Your text",
-  "createdAt": "2026-05-23T00:00:00.000Z"
+  "createdAt": "2026-05-23T00:00:00.000Z",
+  "sourceFile": "content/fiction/example.md"
 }
 ```
 
-For `extra.json`, `category` is optional and can be omitted.
+These files are generated, so manual edits may be overwritten the next time you run `python3 scripts/build_content.py`.
