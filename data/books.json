@@ -4,19 +4,31 @@
     "title": "Lessons in Chemistry",
     "author": "Bonnie Garmus",
     "year": "",
-    "status": "unread",
-    "readDates": [],
+    "status": "completed",
+    "readDates": [
+      "05/2024"
+    ],
     "mood": "female-led literary fiction",
     "tags": [
       "fiction",
       "women",
       "science"
     ],
+    "why": "",
+    "favoriteQuote": "",
+    "keyThemes": "",
+    "literaryContext": "",
+    "personalReview": "非常中规中矩的一本书。\n能明显感觉到作者为了突出女主，强行设置了很多冲突。\n整篇小说里作者的存在感非常强，仿佛一直领着读者走，甚至拿着鞭子催促读者去理解和同情主角。  \n读起来倒是很快，因为基本不用思考：作者已经替读者解释了该怎么看人物、该产生什么情绪，信息密度也很低。  \n读完最大的感受是，有点浪费这几个小时。",
+    "relatedBooks": [],
     "authorInfo": {
       "nationality": "American",
       "genre": "Contemporary Fiction",
       "knownFor": "female-led literary fiction"
-    }
+    },
+    "sourceFile": "content/library/001-lessons-in-chemistry.md",
+    "sourceFiles": [
+      "content/library/001-lessons-in-chemistry.md"
+    ]
   },
   {
     "id": 2,
@@ -31,30 +43,55 @@
       "multiverse",
       "thriller"
     ],
+    "why": "",
+    "favoriteQuote": "",
+    "keyThemes": "",
+    "literaryContext": "",
+    "personalReview": "",
+    "relatedBooks": [],
     "authorInfo": {
       "nationality": "American",
       "genre": "Science Fiction Thriller",
       "knownFor": "multiverse and speculative fiction"
-    }
+    },
+    "sourceFile": "content/library/002-dark-matter.md",
+    "sourceFiles": [
+      "content/library/002-dark-matter.md"
+    ]
   },
   {
     "id": 3,
-    "title": "Siddhartha",
-    "author": "Hermann Hesse",
-    "year": "",
-    "status": "unread",
-    "readDates": [],
-    "mood": "spiritual and existential literature",
-    "tags": [
-      "philosophy",
-      "spirituality",
-      "classic"
+    "title": "一间自己的房间",
+    "author": "Virginia Woolf",
+    "year": "1929",
+    "status": "completed",
+    "readDates": [
+      "07/2026"
     ],
+    "mood": "women, money, writing, and intellectual freedom",
+    "tags": [
+      "essay",
+      "feminism",
+      "women",
+      "writing",
+      "literary criticism",
+      "modernism"
+    ],
+    "why": "",
+    "favoriteQuote": "",
+    "keyThemes": "women's writing, economic independence, education, literary inheritance",
+    "literaryContext": "A feminist essay developed from Virginia Woolf's 1928 lectures at women's colleges at Cambridge.",
+    "personalReview": "一篇别具风格的议论文。  \n我印象里的议论文往往枯燥乏味，也总带着几分说教意味。格式无非是提出论点、罗列论据、最后总结论证，一板一眼，由不得马虎。  \n但这篇文章完全不同。伍尔夫领着读者穿过一个个假设、想象与场景，再不断把现实作为边界条件加入其中，让结论自然而然地浮现出来。  \n不像一般的议论文一心想着说服读者，这本书更像是在引导和启迪读者，让读者自己继续思考和延伸。  \n伍尔夫想讨论的，无非也是女性社会地位低下造成职业与创作发展受阻这个经久不衰的话题。但她有理有据，并不简单地指责社会或男性，而是试图解释这种困境是如何形成的。她的语气始终温和，却并不软弱；理智、克制，又非常坚定。也正因为如此，读者反而更容易设身处地地理解女性所面对的限制。",
+    "relatedBooks": [],
     "authorInfo": {
-      "nationality": "German-Swiss",
-      "genre": "Philosophical Fiction",
-      "knownFor": "spiritual and existential literature"
-    }
+      "nationality": "British",
+      "genre": "Modernist Literature / Essay",
+      "knownFor": "modernist fiction, stream of consciousness, and feminist literary essays"
+    },
+    "sourceFile": "content/library/003-一间自己的房间.md",
+    "sourceFiles": [
+      "content/library/003-一间自己的房间.md"
+    ]
   },
   {
     "id": 4,
@@ -68,11 +105,21 @@
       "romance",
       "contemporary"
     ],
+    "why": "",
+    "favoriteQuote": "",
+    "keyThemes": "",
+    "literaryContext": "",
+    "personalReview": "",
+    "relatedBooks": [],
     "authorInfo": {
       "nationality": "American",
       "genre": "Romance",
       "knownFor": "emotional contemporary romance"
-    }
+    },
+    "sourceFile": "content/library/004-yours-truly.md",
+    "sourceFiles": [
+      "content/library/004-yours-truly.md"
+    ]
   },
   {
     "id": 5,
@@ -87,11 +134,21 @@
       "community",
       "history"
     ],
+    "why": "",
+    "favoriteQuote": "",
+    "keyThemes": "",
+    "literaryContext": "",
+    "personalReview": "",
+    "relatedBooks": [],
     "authorInfo": {
       "nationality": "American",
       "genre": "Literary Fiction",
       "knownFor": "community-centered storytelling"
-    }
+    },
+    "sourceFile": "content/library/005-the-heaven-earth-grocery-store.md",
+    "sourceFiles": [
+      "content/library/005-the-heaven-earth-grocery-store.md"
+    ]
   },
   {
     "id": 6,
@@ -106,11 +163,21 @@
       "family",
       "history"
     ],
+    "why": "",
+    "favoriteQuote": "",
+    "keyThemes": "",
+    "literaryContext": "",
+    "personalReview": "",
+    "relatedBooks": [],
     "authorInfo": {
       "nationality": "Colombian",
       "genre": "Magical Realism",
       "knownFor": "Latin American literary fiction"
-    }
+    },
+    "sourceFile": "content/library/006-one-hundred-years-of-solitude.md",
+    "sourceFiles": [
+      "content/library/006-one-hundred-years-of-solitude.md"
+    ]
   },
   {
     "id": 7,
@@ -125,11 +192,21 @@
       "short stories",
       "existential"
     ],
+    "why": "",
+    "favoriteQuote": "",
+    "keyThemes": "",
+    "literaryContext": "",
+    "personalReview": "",
+    "relatedBooks": [],
     "authorInfo": {
       "nationality": "American",
       "genre": "Modernist Fiction",
       "knownFor": "minimalist prose and war writing"
-    }
+    },
+    "sourceFile": "content/library/007-the-snows-of-kilimanjaro.md",
+    "sourceFiles": [
+      "content/library/007-the-snows-of-kilimanjaro.md"
+    ]
   },
   {
     "id": 8,
@@ -144,11 +221,21 @@
       "desire",
       "classic"
     ],
+    "why": "",
+    "favoriteQuote": "",
+    "keyThemes": "",
+    "literaryContext": "",
+    "personalReview": "",
+    "relatedBooks": [],
     "authorInfo": {
       "nationality": "British",
       "genre": "Psychological Fiction",
       "knownFor": "relationships and emotional intimacy"
-    }
+    },
+    "sourceFile": "content/library/008-lady-chatterley-s-lover.md",
+    "sourceFiles": [
+      "content/library/008-lady-chatterley-s-lover.md"
+    ]
   },
   {
     "id": 9,
@@ -163,11 +250,21 @@
       "relationships",
       "modernism"
     ],
+    "why": "",
+    "favoriteQuote": "",
+    "keyThemes": "",
+    "literaryContext": "",
+    "personalReview": "",
+    "relatedBooks": [],
     "authorInfo": {
       "nationality": "British",
       "genre": "Psychological Fiction",
       "knownFor": "modern relationships and industrial society"
-    }
+    },
+    "sourceFile": "content/library/009-women-in-love.md",
+    "sourceFiles": [
+      "content/library/009-women-in-love.md"
+    ]
   },
   {
     "id": 10,
@@ -182,11 +279,21 @@
       "romance",
       "society"
     ],
+    "why": "",
+    "favoriteQuote": "",
+    "keyThemes": "",
+    "literaryContext": "",
+    "personalReview": "",
+    "relatedBooks": [],
     "authorInfo": {
       "nationality": "British",
       "genre": "Classic Romance",
       "knownFor": "social satire and relationships"
-    }
+    },
+    "sourceFile": "content/library/010-sense-and-sensibility.md",
+    "sourceFiles": [
+      "content/library/010-sense-and-sensibility.md"
+    ]
   },
   {
     "id": 11,
@@ -200,11 +307,21 @@
       "classic",
       "romance"
     ],
+    "why": "",
+    "favoriteQuote": "",
+    "keyThemes": "",
+    "literaryContext": "",
+    "personalReview": "",
+    "relatedBooks": [],
     "authorInfo": {
       "nationality": "British",
       "genre": "Classic Romance",
       "knownFor": "subtle emotional realism"
-    }
+    },
+    "sourceFile": "content/library/011-persuasion.md",
+    "sourceFiles": [
+      "content/library/011-persuasion.md"
+    ]
   },
   {
     "id": 12,
@@ -219,11 +336,21 @@
       "love",
       "classic"
     ],
+    "why": "",
+    "favoriteQuote": "",
+    "keyThemes": "",
+    "literaryContext": "",
+    "personalReview": "",
+    "relatedBooks": [],
     "authorInfo": {
       "nationality": "British",
       "genre": "Gothic Fiction",
       "knownFor": "dark emotional intensity"
-    }
+    },
+    "sourceFile": "content/library/012-wuthering-heights.md",
+    "sourceFiles": [
+      "content/library/012-wuthering-heights.md"
+    ]
   },
   {
     "id": 13,
@@ -238,11 +365,21 @@
       "society",
       "communication"
     ],
+    "why": "",
+    "favoriteQuote": "",
+    "keyThemes": "",
+    "literaryContext": "",
+    "personalReview": "",
+    "relatedBooks": [],
     "authorInfo": {
       "nationality": "Canadian",
       "genre": "Nonfiction",
       "knownFor": "popular social psychology writing"
-    }
+    },
+    "sourceFile": "content/library/013-talking-to-strangers.md",
+    "sourceFiles": [
+      "content/library/013-talking-to-strangers.md"
+    ]
   },
   {
     "id": 14,
@@ -257,11 +394,21 @@
       "identity",
       "history"
     ],
+    "why": "",
+    "favoriteQuote": "",
+    "keyThemes": "",
+    "literaryContext": "",
+    "personalReview": "",
+    "relatedBooks": [],
     "authorInfo": {
       "nationality": "French",
       "genre": "Memoir / Autofiction",
       "knownFor": "memory and collective history"
-    }
+    },
+    "sourceFile": "content/library/014-the-years.md",
+    "sourceFiles": [
+      "content/library/014-the-years.md"
+    ]
   },
   {
     "id": 15,
@@ -276,11 +423,21 @@
       "identity",
       "dream"
     ],
+    "why": "",
+    "favoriteQuote": "",
+    "keyThemes": "",
+    "literaryContext": "",
+    "personalReview": "",
+    "relatedBooks": [],
     "authorInfo": {
       "nationality": "Japanese",
       "genre": "Literary Fiction",
       "knownFor": "dreamlike surrealism and loneliness"
-    }
+    },
+    "sourceFile": "content/library/015-kafka-on-the-shore.md",
+    "sourceFiles": [
+      "content/library/015-kafka-on-the-shore.md"
+    ]
   },
   {
     "id": 16,
@@ -295,11 +452,21 @@
       "romance",
       "society"
     ],
+    "why": "",
+    "favoriteQuote": "",
+    "keyThemes": "",
+    "literaryContext": "",
+    "personalReview": "",
+    "relatedBooks": [],
     "authorInfo": {
       "nationality": "British",
       "genre": "Classic Romance",
       "knownFor": "social observation and wit"
-    }
+    },
+    "sourceFile": "content/library/016-pride-and-prejudice.md",
+    "sourceFiles": [
+      "content/library/016-pride-and-prejudice.md"
+    ]
   },
   {
     "id": 17,
@@ -314,11 +481,21 @@
       "obsession",
       "classic"
     ],
+    "why": "",
+    "favoriteQuote": "",
+    "keyThemes": "",
+    "literaryContext": "",
+    "personalReview": "",
+    "relatedBooks": [],
     "authorInfo": {
       "nationality": "American",
       "genre": "Adventure / Philosophical Fiction",
       "knownFor": "obsession and symbolism"
-    }
+    },
+    "sourceFile": "content/library/017-moby-dick.md",
+    "sourceFiles": [
+      "content/library/017-moby-dick.md"
+    ]
   },
   {
     "id": 18,
@@ -333,30 +510,52 @@
       "urban life",
       "identity"
     ],
+    "why": "",
+    "favoriteQuote": "",
+    "keyThemes": "",
+    "literaryContext": "",
+    "personalReview": "",
+    "relatedBooks": [],
     "authorInfo": {
       "nationality": "Japanese",
       "genre": "Contemporary Literary Fiction",
       "knownFor": "loneliness and urban alienation"
-    }
+    },
+    "sourceFile": "content/library/018-all-the-lovers-in-the-night.md",
+    "sourceFiles": [
+      "content/library/018-all-the-lovers-in-the-night.md"
+    ]
   },
   {
     "id": 19,
     "title": "To Kill a Mockingbird",
     "author": "Harper Lee",
     "year": "",
-    "status": "unread",
-    "readDates": [],
+    "status": "completed",
+    "readDates": [
+      "08/2026"
+    ],
     "mood": "justice and morality in America",
     "tags": [
       "justice",
       "childhood",
       "america"
     ],
+    "why": "",
+    "favoriteQuote": "世界上就是有那么一类人，他们只顾担心来世，根本不去学习在今生如何做人。\n\n事情总会有办法解决的，只是你不知道而已。\n\n总不能因为过去这一百年我们一败涂地，就放弃争取胜利吧。\n\n他们当然有权利那样想，他们的看法也有权利得到充分尊重。但是，我在接受他人之前，首先要接受自己。有一种东西不能遵循从众原则，那就是良心。\n\n我想让你见识一下什么是真正的勇气，而不是错误地认为一个人手里拿着把枪就是勇敢。勇敢就是，在你还没开始的时候就知道自己注定会输，但依然义无反顾地去做，并且不管发生什么都坚持到底。一个人很少能赢，但也总会有赢的时候。",
+    "keyThemes": "",
+    "literaryContext": "",
+    "personalReview": "作者以孩子的口吻，讲述了一个严肃且沉重的话题。",
+    "relatedBooks": [],
     "authorInfo": {
       "nationality": "American",
       "genre": "Southern Gothic",
       "knownFor": "justice and morality in America"
-    }
+    },
+    "sourceFile": "content/library/019-to-kill-a-mockingbird.md",
+    "sourceFiles": [
+      "content/library/019-to-kill-a-mockingbird.md"
+    ]
   },
   {
     "id": 20,
@@ -371,11 +570,21 @@
       "good and evil",
       "america"
     ],
+    "why": "",
+    "favoriteQuote": "",
+    "keyThemes": "",
+    "literaryContext": "",
+    "personalReview": "",
+    "relatedBooks": [],
     "authorInfo": {
       "nationality": "American",
       "genre": "American Literary Fiction",
       "knownFor": "family sagas and moral conflict"
-    }
+    },
+    "sourceFile": "content/library/020-east-of-eden.md",
+    "sourceFiles": [
+      "content/library/020-east-of-eden.md"
+    ]
   },
   {
     "id": 21,
@@ -390,11 +599,21 @@
       "migration",
       "america"
     ],
+    "why": "",
+    "favoriteQuote": "",
+    "keyThemes": "",
+    "literaryContext": "",
+    "personalReview": "",
+    "relatedBooks": [],
     "authorInfo": {
       "nationality": "American",
       "genre": "Social Realism",
       "knownFor": "Depression-era American fiction"
-    }
+    },
+    "sourceFile": "content/library/021-the-grapes-of-wrath.md",
+    "sourceFiles": [
+      "content/library/021-the-grapes-of-wrath.md"
+    ]
   },
   {
     "id": 22,
@@ -409,11 +628,21 @@
       "romance",
       "independence"
     ],
+    "why": "",
+    "favoriteQuote": "",
+    "keyThemes": "",
+    "literaryContext": "",
+    "personalReview": "",
+    "relatedBooks": [],
     "authorInfo": {
       "nationality": "British",
       "genre": "Gothic Romance",
       "knownFor": "female independence and emotional realism"
-    }
+    },
+    "sourceFile": "content/library/022-jane-eyre.md",
+    "sourceFiles": [
+      "content/library/022-jane-eyre.md"
+    ]
   },
   {
     "id": 23,
@@ -428,11 +657,21 @@
       "survival",
       "power"
     ],
+    "why": "",
+    "favoriteQuote": "",
+    "keyThemes": "",
+    "literaryContext": "",
+    "personalReview": "",
+    "relatedBooks": [],
     "authorInfo": {
       "nationality": "American",
       "genre": "Dystopian Fiction",
       "knownFor": "political young adult fiction"
-    }
+    },
+    "sourceFile": "content/library/023-the-hunger-games.md",
+    "sourceFiles": [
+      "content/library/023-the-hunger-games.md"
+    ]
   },
   {
     "id": 24,
@@ -448,11 +687,21 @@
       "religion",
       "power"
     ],
+    "why": "",
+    "favoriteQuote": "",
+    "keyThemes": "",
+    "literaryContext": "",
+    "personalReview": "",
+    "relatedBooks": [],
     "authorInfo": {
       "nationality": "American",
       "genre": "Science Fiction",
       "knownFor": "Dune series"
-    }
+    },
+    "sourceFile": "content/library/024-dune.md",
+    "sourceFiles": [
+      "content/library/024-dune.md"
+    ]
   },
   {
     "id": 25,
@@ -467,11 +716,21 @@
       "empire",
       "systems"
     ],
+    "why": "",
+    "favoriteQuote": "",
+    "keyThemes": "",
+    "literaryContext": "",
+    "personalReview": "",
+    "relatedBooks": [],
     "authorInfo": {
       "nationality": "American",
       "genre": "Science Fiction",
       "knownFor": "Foundation and Robot series"
-    }
+    },
+    "sourceFile": "content/library/025-foundation.md",
+    "sourceFiles": [
+      "content/library/025-foundation.md"
+    ]
   },
   {
     "id": 26,
@@ -486,11 +745,21 @@
       "alien intelligence",
       "philosophy"
     ],
+    "why": "",
+    "favoriteQuote": "",
+    "keyThemes": "",
+    "literaryContext": "",
+    "personalReview": "",
+    "relatedBooks": [],
     "authorInfo": {
       "nationality": "Polish",
       "genre": "Philosophical Science Fiction",
       "knownFor": "AI and consciousness themes"
-    }
+    },
+    "sourceFile": "content/library/026-solaris.md",
+    "sourceFiles": [
+      "content/library/026-solaris.md"
+    ]
   },
   {
     "id": 27,
@@ -505,11 +774,21 @@
       "balance",
       "identity"
     ],
+    "why": "",
+    "favoriteQuote": "",
+    "keyThemes": "",
+    "literaryContext": "",
+    "personalReview": "",
+    "relatedBooks": [],
     "authorInfo": {
       "nationality": "American",
       "genre": "Fantasy",
       "knownFor": "Earthsea cycle and Taoist themes"
-    }
+    },
+    "sourceFile": "content/library/027-a-wizard-of-earthsea.md",
+    "sourceFiles": [
+      "content/library/027-a-wizard-of-earthsea.md"
+    ]
   },
   {
     "id": 28,
@@ -524,11 +803,21 @@
       "AI",
       "cosmos"
     ],
+    "why": "",
+    "favoriteQuote": "",
+    "keyThemes": "",
+    "literaryContext": "",
+    "personalReview": "",
+    "relatedBooks": [],
     "authorInfo": {
       "nationality": "British",
       "genre": "Science Fiction",
       "knownFor": "space exploration and futurism"
-    }
+    },
+    "sourceFile": "content/library/028-2001-a-space-odyssey.md",
+    "sourceFiles": [
+      "content/library/028-2001-a-space-odyssey.md"
+    ]
   },
   {
     "id": 29,
@@ -543,11 +832,21 @@
       "culture",
       "philosophy"
     ],
+    "why": "",
+    "favoriteQuote": "",
+    "keyThemes": "",
+    "literaryContext": "",
+    "personalReview": "",
+    "relatedBooks": [],
     "authorInfo": {
       "nationality": "Chinese",
       "genre": "Philosophy / Aesthetics",
       "knownFor": "Chinese aesthetics and philosophy"
-    }
+    },
+    "sourceFile": "content/library/029-美的历程.md",
+    "sourceFiles": [
+      "content/library/029-美的历程.md"
+    ]
   },
   {
     "id": 30,
@@ -562,11 +861,21 @@
       "qing dynasty",
       "daily life"
     ],
+    "why": "",
+    "favoriteQuote": "",
+    "keyThemes": "",
+    "literaryContext": "",
+    "personalReview": "",
+    "relatedBooks": [],
     "authorInfo": {
       "nationality": "Chinese",
       "genre": "Classical Memoir",
       "knownFor": "everyday life and emotional intimacy"
-    }
+    },
+    "sourceFile": "content/library/030-浮生六记.md",
+    "sourceFiles": [
+      "content/library/030-浮生六记.md"
+    ]
   },
   {
     "id": 31,
@@ -581,11 +890,21 @@
       "power",
       "strategy"
     ],
+    "why": "",
+    "favoriteQuote": "",
+    "keyThemes": "",
+    "literaryContext": "",
+    "personalReview": "",
+    "relatedBooks": [],
     "authorInfo": {
       "nationality": "Chinese",
       "genre": "Historical Fantasy",
       "knownFor": "political web fiction"
-    }
+    },
+    "sourceFile": "content/library/031-庆余年.md",
+    "sourceFiles": [
+      "content/library/031-庆余年.md"
+    ]
   },
   {
     "id": 32,
@@ -600,11 +919,21 @@
       "history",
       "russian literature"
     ],
+    "why": "",
+    "favoriteQuote": "",
+    "keyThemes": "",
+    "literaryContext": "",
+    "personalReview": "",
+    "relatedBooks": [],
     "authorInfo": {
       "nationality": "Russian",
       "genre": "Historical Fiction",
       "knownFor": "Cossack life and war"
-    }
+    },
+    "sourceFile": "content/library/032-静静的顿河.md",
+    "sourceFiles": [
+      "content/library/032-静静的顿河.md"
+    ]
   },
   {
     "id": 33,
@@ -619,11 +948,21 @@
       "morality",
       "psychology"
     ],
+    "why": "",
+    "favoriteQuote": "",
+    "keyThemes": "",
+    "literaryContext": "",
+    "personalReview": "",
+    "relatedBooks": [],
     "authorInfo": {
       "nationality": "Russian",
       "genre": "Philosophical Fiction",
       "knownFor": "existential and moral psychology"
-    }
+    },
+    "sourceFile": "content/library/033-卡拉马佐夫兄弟.md",
+    "sourceFiles": [
+      "content/library/033-卡拉马佐夫兄弟.md"
+    ]
   },
   {
     "id": 34,
@@ -638,11 +977,21 @@
       "morality",
       "psychology"
     ],
+    "why": "",
+    "favoriteQuote": "",
+    "keyThemes": "",
+    "literaryContext": "",
+    "personalReview": "",
+    "relatedBooks": [],
     "authorInfo": {
       "nationality": "Russian",
       "genre": "Psychological Fiction",
       "knownFor": "crime, guilt, and redemption"
-    }
+    },
+    "sourceFile": "content/library/034-罪与罚.md",
+    "sourceFiles": [
+      "content/library/034-罪与罚.md"
+    ]
   },
   {
     "id": 35,
@@ -657,30 +1006,52 @@
       "individualism",
       "essay"
     ],
+    "why": "",
+    "favoriteQuote": "",
+    "keyThemes": "",
+    "literaryContext": "",
+    "personalReview": "",
+    "relatedBooks": [],
     "authorInfo": {
       "nationality": "Chinese",
       "genre": "Essay",
       "knownFor": "individual freedom and rational thought"
-    }
+    },
+    "sourceFile": "content/library/035-沉默的大多数.md",
+    "sourceFiles": [
+      "content/library/035-沉默的大多数.md"
+    ]
   },
   {
     "id": 36,
     "title": "1984",
     "author": "George Orwell",
     "year": "",
-    "status": "unread",
-    "readDates": [],
+    "status": "completed",
+    "readDates": [
+      "07/2026"
+    ],
     "mood": "anti-authoritarian political fiction",
     "tags": [
       "surveillance",
       "authoritarianism",
       "dystopia"
     ],
+    "why": "",
+    "favoriteQuote": "",
+    "keyThemes": "",
+    "literaryContext": "",
+    "personalReview": "故事本身并不算曲折丰富，但大量缓慢、压抑的情景描写，与突然加速的剧情推进形成了很强的对比。像一幅大片留白的画，突然出现一个清晰的焦点，让原本已经有些昏沉的读者一下惊醒。\n生活在任何时代的人，都受制于那个时代的局限。贫穷、压迫和战争似乎从未真正消失过。而面对“政府”这样庞大的系统，个人的努力往往显得微不足道。\n这样的事实很容易让人失去斗志。\n但总有人还是会站出来。即使被上级压迫，被同僚嘲笑，被朋友背叛，也依然想要靠近真相。",
+    "relatedBooks": [],
     "authorInfo": {
       "nationality": "British",
       "genre": "Dystopian Fiction",
       "knownFor": "anti-authoritarian political fiction"
-    }
+    },
+    "sourceFile": "content/library/036-1984.md",
+    "sourceFiles": [
+      "content/library/036-1984.md"
+    ]
   },
   {
     "id": 37,
@@ -695,30 +1066,52 @@
       "politics",
       "revolution"
     ],
+    "why": "",
+    "favoriteQuote": "",
+    "keyThemes": "",
+    "literaryContext": "",
+    "personalReview": "",
+    "relatedBooks": [],
     "authorInfo": {
       "nationality": "British",
       "genre": "Political Satire",
       "knownFor": "anti-totalitarian allegory"
-    }
+    },
+    "sourceFile": "content/library/037-animal-farm.md",
+    "sourceFiles": [
+      "content/library/037-animal-farm.md"
+    ]
   },
   {
     "id": 38,
     "title": "秋园",
     "author": "杨本芬",
     "year": "",
-    "status": "unread",
-    "readDates": [],
+    "status": "completed",
+    "readDates": [
+      "05/2025"
+    ],
     "mood": "family memory and women's lives",
     "tags": [
       "family",
       "memory",
       "women"
     ],
+    "why": "",
+    "favoriteQuote": "",
+    "keyThemes": "",
+    "literaryContext": "",
+    "personalReview": "像是读了一本关于一个人、一个村庄的历史。\n人在历史洪流里随波逐流，用尽了力气，才得以生活。\n当然，还有比自己处境更差的人，这些苦难和困顿似乎难以避免，只有一丝希望催促着人继续活下去。  \n语言极尽质朴。作者仿佛有意避免任何夸张，只想实事求是地讲述那一段历史，以及生活在其中、努力活下去的一群人。",
+    "relatedBooks": [],
     "authorInfo": {
       "nationality": "Chinese",
       "genre": "Literary Fiction",
       "knownFor": "family memory and women's lives"
-    }
+    },
+    "sourceFile": "content/library/038-秋园.md",
+    "sourceFiles": [
+      "content/library/038-秋园.md"
+    ]
   },
   {
     "id": 39,
@@ -733,11 +1126,21 @@
       "history",
       "society"
     ],
+    "why": "",
+    "favoriteQuote": "",
+    "keyThemes": "",
+    "literaryContext": "",
+    "personalReview": "",
+    "relatedBooks": [],
     "authorInfo": {
       "nationality": "Russian",
       "genre": "Historical Fiction",
       "knownFor": "epic realism"
-    }
+    },
+    "sourceFile": "content/library/039-战争与和平.md",
+    "sourceFiles": [
+      "content/library/039-战争与和平.md"
+    ]
   },
   {
     "id": 40,
@@ -752,11 +1155,21 @@
       "society",
       "family"
     ],
+    "why": "",
+    "favoriteQuote": "",
+    "keyThemes": "",
+    "literaryContext": "",
+    "personalReview": "",
+    "relatedBooks": [],
     "authorInfo": {
       "nationality": "Russian",
       "genre": "Literary Fiction",
       "knownFor": "realism and emotional complexity"
-    }
+    },
+    "sourceFile": "content/library/040-安娜卡列尼娜.md",
+    "sourceFiles": [
+      "content/library/040-安娜卡列尼娜.md"
+    ]
   },
   {
     "id": 41,
@@ -771,10 +1184,20 @@
       "religion",
       "redemption"
     ],
+    "why": "",
+    "favoriteQuote": "",
+    "keyThemes": "",
+    "literaryContext": "",
+    "personalReview": "",
+    "relatedBooks": [],
     "authorInfo": {
       "nationality": "Russian",
       "genre": "Philosophical Fiction",
       "knownFor": "morality and redemption"
-    }
+    },
+    "sourceFile": "content/library/041-复活.md",
+    "sourceFiles": [
+      "content/library/041-复活.md"
+    ]
   }
 ]

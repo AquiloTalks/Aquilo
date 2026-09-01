@@ -1,8 +1,6 @@
 // ===== Data Models =====
 
 let modules = {};
-let tools = {};
-let features = {};
 let sampleBooks = [];
 let translations = { en: {}, zh: {} };
 let siteContent = null;
@@ -43,14 +41,10 @@ function cloneContent(value) {
 function setLanguageContent(language) {
   const content = siteContent?.[language] || siteContent?.en || {};
   modules = cloneContent(content.modules);
-  tools = cloneContent(content.tools);
-  features = cloneContent(content.features);
 }
 
 let currentLanguage = "en";
 let selectedModuleId = "reading";
-let selectedToolId = "motifs";
-let selectedFeatureId = "bookDeepDive";
 let activeLibraryFilter = "all";
 let activeBook = null;
 let lastFocusedElement = null;
@@ -65,8 +59,33 @@ function normalizePublicEntries(items, prefix) {
   }));
 }
 
+function localizeEntry(entry) {
+  const localized = entry.translations?.[currentLanguage] || {};
+  return {
+    ...entry,
+    title: localized.title || entry.title,
+    category: localized.category || entry.category,
+    body: localized.body || entry.body,
+  };
+}
+
+function localizeBook(book) {
+  const localized = book.translations?.[currentLanguage] || {};
+  return {
+    ...book,
+    title: localized.title || book.title,
+    author: localized.author || book.author,
+    mood: localized.mood || book.mood,
+    why: localized.why || book.why,
+    favoriteQuote: localized.favoriteQuote || book.favoriteQuote,
+    keyThemes: localized.keyThemes || book.keyThemes,
+    literaryContext: localized.literaryContext || book.literaryContext,
+    personalReview: localized.personalReview || book.personalReview,
+  };
+}
+
 function getVisibleBooks() {
-  return sampleBooks;
+  return sampleBooks.map(localizeBook);
 }
 
 function refreshBookViews() {
@@ -103,27 +122,97 @@ function createDetailList(items) {
   return list;
 }
 
-function createChipList(items) {
-  const row = document.createElement("div");
-  row.className = "chip-row";
+function setSamplePanel(panel, title, rows) {
+  const heading = document.createElement("h3");
+  heading.textContent = title;
+  panel.replaceChildren(heading, createDetailList(rows));
+}
 
-  items.forEach((item) => {
-    const chip = document.createElement("span");
-    chip.className = "chip";
-    chip.textContent = item;
-    row.append(chip);
+function getLibrarySampleRows(filter = "all") {
+  const books = filter === "all"
+    ? getVisibleBooks()
+    : getVisibleBooks().filter((book) => book.status === filter);
+
+  if (!books.length) {
+    return [[t("libraryShelfSample"), t("noBooksFilter")]];
+  }
+
+  return books.slice(0, 2).map((book) => [
+    book.title,
+    `${book.author}${book.tags?.length ? ` · ${book.tags.slice(0, 2).join(", ")}` : ""}`,
+  ]);
+}
+
+function getLibrarySampleTitle(filter = "all") {
+  if (filter === "unread") return t("libraryUnreadShelfSample");
+  if (filter === "completed") return t("libraryCompletedCount");
+  return t("libraryAllShelfSample");
+}
+
+function setLibraryFilter(filter) {
+  document.querySelectorAll(".filter-tab").forEach((button) => {
+    const isActive = button.dataset.filter === filter;
+    button.classList.toggle("is-active", isActive);
+    button.setAttribute("aria-pressed", String(isActive));
+  });
+  renderLibrary(filter);
+}
+
+function openLibraryFilter(filter) {
+  const searchInput = document.querySelector("#book-search");
+  if (searchInput) searchInput.value = "";
+  switchSection("library");
+  setLibraryFilter(filter);
+}
+
+function createReadingDetailList(items, samplePanel) {
+  const list = createDetailList(items.slice(0, 3));
+  const actions = ["all", "unread", "completed"];
+
+  Array.from(list.children).forEach((item, index) => {
+    const filter = actions[index];
+    if (!filter) return;
+    item.classList.add("is-link");
+    item.tabIndex = 0;
+    item.setAttribute("role", "link");
+    item.addEventListener("click", () => openLibraryFilter(filter));
+    item.addEventListener("mouseenter", () => {
+      setSamplePanel(samplePanel, getLibrarySampleTitle(filter), getLibrarySampleRows(filter));
+    });
+    item.addEventListener("focus", () => {
+      setSamplePanel(samplePanel, getLibrarySampleTitle(filter), getLibrarySampleRows(filter));
+    });
+    item.addEventListener("keydown", (event) => {
+      if (event.key === "Enter" || event.key === " ") {
+        event.preventDefault();
+        openLibraryFilter(filter);
+      }
+    });
   });
 
-  return row;
+  list.addEventListener("mouseleave", () => {
+    setSamplePanel(samplePanel, getLibrarySampleTitle("all"), getLibrarySampleRows("all"));
+  });
+
+  return list;
 }
 
 function formatDate(value) {
-  return new Date(value || Date.now()).toLocaleDateString();
+  if (!value) return new Date().toLocaleDateString();
+  if (typeof value === "string" && /^\d{4}-\d{2}-\d{2}$/.test(value)) {
+    const [year, month, day] = value.split("-").map(Number);
+    return new Date(year, month - 1, day).toLocaleDateString();
+  }
+  return new Date(value).toLocaleDateString();
 }
 
 function makePreview(value, fallback = "") {
   const clean = String(value || fallback || "").trim().replace(/\s+/g, " ");
   return clean.length > 135 ? `${clean.slice(0, 132)}...` : clean;
+}
+
+function getBookReview(book) {
+  return String(book.personalReview || "").trim();
 }
 
 function getTopTags(books, limit = 4) {
@@ -167,61 +256,64 @@ function getModuleView(moduleId) {
   }
 
   if (moduleId === "criticism") {
-    const latest = writingPieces[0];
-    module.summary = writingPieces.length
-      ? t("fictionModuleSummary").replace("{count}", writingPieces.length).replace("{title}", latest.title)
+    const pieces = writingPieces.map(localizeEntry);
+    const latest = pieces[0];
+    module.summary = pieces.length
+      ? t("fictionModuleSummary").replace("{count}", pieces.length).replace("{title}", latest.title)
       : base.summary;
-    module.description = writingPieces.length
-      ? t("fictionModuleDescription").replace("{count}", writingPieces.length)
+    module.description = pieces.length
+      ? t("fictionModuleDescription").replace("{count}", pieces.length)
       : base.description;
-    module.includes = writingPieces.length
-      ? writingPieces.slice(0, 3).map((piece) => [
+    module.includes = pieces.length
+      ? pieces.slice(0, 3).map((piece) => [
           piece.title,
           `${piece.category || t("draftLabel")} · ${formatDate(piece.createdAt)}`,
         ])
       : base.includes;
-    module.sampleTitle = writingPieces.length ? t("latestFiction") : base.sampleTitle;
-    module.sample = writingPieces.length
+    module.sampleTitle = pieces.length ? t("latestFiction") : base.sampleTitle;
+    module.sample = pieces.length
       ? [[latest.title, makePreview(latest.body, latest.category || t("draftLabel"))]]
       : base.sample;
   }
 
   if (moduleId === "context") {
-    const latest = criticalNotes[0];
-    module.summary = criticalNotes.length
-      ? t("criticalModuleSummary").replace("{count}", criticalNotes.length).replace("{title}", latest.title)
+    const notes = criticalNotes.map(localizeEntry);
+    const latest = notes[0];
+    module.summary = notes.length
+      ? t("criticalModuleSummary").replace("{count}", notes.length).replace("{title}", latest.title)
       : base.summary;
-    module.description = criticalNotes.length
-      ? t("criticalModuleDescription").replace("{count}", criticalNotes.length)
+    module.description = notes.length
+      ? t("criticalModuleDescription").replace("{count}", notes.length)
       : base.description;
-    module.includes = criticalNotes.length
-      ? criticalNotes.slice(0, 3).map((note) => [
+    module.includes = notes.length
+      ? notes.slice(0, 3).map((note) => [
           note.title,
           `${note.category || t("criticalDefaultCategory")} · ${formatDate(note.createdAt)}`,
         ])
       : base.includes;
-    module.sampleTitle = criticalNotes.length ? t("latestCritical") : base.sampleTitle;
-    module.sample = criticalNotes.length
+    module.sampleTitle = notes.length ? t("latestCritical") : base.sampleTitle;
+    module.sample = notes.length
       ? [[latest.title, makePreview(latest.body, latest.category || t("criticalDefaultCategory"))]]
       : base.sample;
   }
 
   if (moduleId === "fiction") {
-    const latest = extraPosts[0];
-    module.summary = extraPosts.length
-      ? t("extraModuleSummary").replace("{count}", extraPosts.length).replace("{title}", latest.title)
+    const posts = extraPosts.map(localizeEntry);
+    const latest = posts[0];
+    module.summary = posts.length
+      ? t("extraModuleSummary").replace("{count}", posts.length).replace("{title}", latest.title)
       : base.summary;
-    module.description = extraPosts.length
-      ? t("extraModuleDescription").replace("{count}", extraPosts.length)
+    module.description = posts.length
+      ? t("extraModuleDescription").replace("{count}", posts.length)
       : base.description;
-    module.includes = extraPosts.length
-      ? extraPosts.slice(0, 3).map((post) => [
+    module.includes = posts.length
+      ? posts.slice(0, 3).map((post) => [
           post.title,
           formatDate(post.createdAt),
         ])
       : base.includes;
-    module.sampleTitle = extraPosts.length ? t("latestExtra") : base.sampleTitle;
-    module.sample = extraPosts.length
+    module.sampleTitle = posts.length ? t("latestExtra") : base.sampleTitle;
+    module.sample = posts.length
       ? [[latest.title, makePreview(latest.body, t("extraDefaultBody"))]]
       : base.sample;
   }
@@ -259,17 +351,13 @@ function applyLanguage(language) {
   setLanguageContent(language);
 
   applyStaticTranslations();
-  updateDynamicCards();
-  renderModule(selectedModuleId);
-  if (document.querySelector("#tool-detail")) renderTool(selectedToolId);
-  if (document.querySelector("#feature-detail")) renderFeature(selectedFeatureId);
   refreshBookViews();
   renderWritingPieces();
   renderCriticalNotes();
   renderExtraPosts();
 
   if (document.querySelector("#book-modal").open && activeBook) {
-    const translatedBook = sampleBooks.find((book) => book.id === activeBook.id) || activeBook;
+    const translatedBook = getVisibleBooks().find((book) => book.id === activeBook.id) || activeBook;
     openBookDetail(translatedBook);
   }
 }
@@ -283,22 +371,6 @@ function updateDynamicCards() {
     card.querySelector("strong").textContent = module.label;
     card.querySelector("span:last-child").textContent = module.summary;
   });
-
-  Object.entries(tools).forEach(([id, tool]) => {
-    const card = document.querySelector(`.tool-card[data-tool="${id}"]`);
-    if (!card) return;
-    card.querySelector("span:first-child").textContent = tool.group;
-    card.querySelector("strong").textContent = tool.label;
-    card.querySelector("span:last-child").textContent = tool.body;
-  });
-
-  Object.entries(features).forEach(([id, feature]) => {
-    const card = document.querySelector(`.feature-card[data-feature="${id}"]`);
-    if (!card) return;
-    card.querySelector("span:first-child").textContent = feature.group;
-    card.querySelector("strong").textContent = feature.label;
-    card.querySelector("span:last-child").textContent = feature.body;
-  });
 }
 
 // ===== Render Modules =====
@@ -311,7 +383,6 @@ function renderModule(moduleId) {
   const heading = document.createElement("h2");
   const description = document.createElement("p");
   const sample = document.createElement("div");
-  const sampleTitle = document.createElement("h3");
 
   kicker.className = "kicker";
   kicker.textContent = module.label;
@@ -320,11 +391,17 @@ function renderModule(moduleId) {
   intro.append(kicker, heading, description);
 
   sample.className = "sample-panel";
-  sampleTitle.textContent = module.sampleTitle;
-  sample.append(sampleTitle, createDetailList(module.sample.slice(0, 2)));
+  if (moduleId === "reading") {
+    setSamplePanel(sample, getLibrarySampleTitle("all"), getLibrarySampleRows("all"));
+  } else {
+    setSamplePanel(sample, module.sampleTitle, module.sample.slice(0, 2));
+  }
 
   const moduleDetail = document.querySelector("#module-detail");
-  moduleDetail.replaceChildren(intro, createDetailList(module.includes.slice(0, 2)), sample);
+  const detailList = moduleId === "reading"
+    ? createReadingDetailList(module.includes, sample)
+    : createDetailList(module.includes.slice(0, 2));
+  moduleDetail.replaceChildren(intro, detailList, sample);
 
   document.querySelectorAll(".module-card").forEach((card) => {
     card.classList.toggle("is-selected", card.dataset.module === moduleId);
@@ -340,7 +417,7 @@ function createContentList(items, emptyText, type) {
     return list;
   }
 
-  items.forEach((item) => {
+  items.map(localizeEntry).forEach((item) => {
     const card = document.createElement("article");
     card.className = "content-mini-card";
     card.id = `${type}-${item.id}`;
@@ -353,66 +430,6 @@ function createContentList(items, emptyText, type) {
   });
 
   return list;
-}
-
-// ===== Render Tools =====
-
-function renderTool(toolId) {
-  selectedToolId = toolId;
-  const tool = tools[toolId] || tools.motifs;
-  const intro = document.createElement("div");
-  const kicker = document.createElement("p");
-  const heading = document.createElement("h2");
-  const description = document.createElement("p");
-  const examples = document.createElement("div");
-  const examplesTitle = document.createElement("h3");
-
-  kicker.className = "kicker";
-  kicker.textContent = tool.group;
-  heading.textContent = tool.title;
-  description.textContent = tool.description;
-  intro.append(kicker, heading, description);
-
-  examples.className = "sample-panel";
-  examplesTitle.textContent = t("examples");
-  examples.append(examplesTitle, createChipList(tool.examples.slice(0, 2)));
-
-  const toolDetail = document.querySelector("#tool-detail");
-  toolDetail.replaceChildren(intro, createDetailList(tool.fields.slice(0, 2)), examples);
-
-  document.querySelectorAll(".tool-card").forEach((card) => {
-    card.classList.toggle("is-selected", card.dataset.tool === toolId);
-  });
-}
-
-// ===== Render Features =====
-
-function renderFeature(featureId) {
-  selectedFeatureId = featureId;
-  const feature = features[featureId] || features.bookDeepDive;
-  const intro = document.createElement("div");
-  const kicker = document.createElement("p");
-  const heading = document.createElement("h2");
-  const description = document.createElement("p");
-  const examples = document.createElement("div");
-  const examplesTitle = document.createElement("h3");
-
-  kicker.className = "kicker";
-  kicker.textContent = feature.group;
-  heading.textContent = feature.title;
-  description.textContent = feature.description;
-  intro.append(kicker, heading, description);
-
-  examples.className = "sample-panel";
-  examplesTitle.textContent = t("examples");
-  examples.append(examplesTitle, createChipList(feature.examples.slice(0, 2)));
-
-  const featureDetail = document.querySelector("#feature-detail");
-  featureDetail.replaceChildren(intro, createDetailList(feature.fields.slice(0, 3)), examples);
-
-  document.querySelectorAll(".feature-card").forEach((card) => {
-    card.classList.toggle("is-selected", card.dataset.feature === featureId);
-  });
 }
 
 // ===== Render Library =====
@@ -438,6 +455,7 @@ function renderLibrary(filter = "all") {
 
   libraryGrid.innerHTML = "";
   filtered.forEach((book) => {
+    const review = getBookReview(book);
     const card = document.createElement("div");
     card.className = "book-card";
     card.tabIndex = 0;
@@ -448,9 +466,20 @@ function renderLibrary(filter = "all") {
         <div class="book-author">${escapeHTML(book.author)}</div>
         <div class="book-meta">${escapeHTML(book.year)}</div>
         <p class="book-note">${escapeHTML(makePreview(book.mood || book.why || (book.tags || []).join(", "), ""))}</p>
+        ${review ? `
+          <div class="book-review-preview">
+            <span>${t("reviewPreviewLabel")}</span>
+            <p>${escapeHTML(makePreview(review))}</p>
+            <button type="button" class="book-review-link">${t("readFullReview")}</button>
+          </div>
+        ` : ""}
       </div>
     `;
     card.addEventListener("click", () => openBookDetail(book));
+    card.querySelector(".book-review-link")?.addEventListener("click", (event) => {
+      event.stopPropagation();
+      openBookDetail(book, "review");
+    });
     card.addEventListener("keydown", (event) => {
       if (event.key === "Enter" || event.key === " ") {
         event.preventDefault();
@@ -478,93 +507,132 @@ function getBookSearchText(book) {
 
 // ===== Render Timeline =====
 
+function getTimelineMonthKey(value) {
+  if (!value) return "";
+  const raw = String(value).trim();
+  if (raw === "1970-01-01" || raw.startsWith("1970-01-01T00:00:00.000Z")) return "";
+  const yearFirst = raw.match(/^(\d{4})[-/](\d{1,2})/);
+  if (yearFirst) {
+    return `${yearFirst[1]}-${yearFirst[2].padStart(2, "0")}`;
+  }
+  const monthFirst = raw.match(/^(\d{1,2})[-/](\d{4})$/);
+  if (monthFirst) {
+    return `${monthFirst[2]}-${monthFirst[1].padStart(2, "0")}`;
+  }
+  return "";
+}
+
+function formatTimelineMonth(monthKey) {
+  const [year, month] = monthKey.split("-");
+  if (!year || !month) return monthKey;
+  if (currentLanguage === "zh") {
+    return `${year}年${Number(month)}月`;
+  }
+  const date = new Date(Number(year), Number(month) - 1, 1);
+  return date.toLocaleDateString(undefined, { year: "numeric", month: "short" });
+}
+
 function renderTimeline() {
   const timelineContainer = document.querySelector("#timeline-container");
 
-  const bookEntries = getVisibleBooks()
-    .filter((book) => book.status !== "unread")
-    .map((book) => ({
+  const bookEntries = getVisibleBooks().flatMap((book) => {
+    const readDates = Array.isArray(book.readDates) ? book.readDates : [];
+    return readDates.filter(getTimelineMonthKey).map((date) => ({
       type: "book",
-      date: book.readDates?.[0] || new Date().toISOString().slice(0, 10),
+      date,
       title: book.title,
-      body: book.mood || book.author,
       source: book,
     }));
-  const writingEntries = writingPieces.map((piece) => ({
-    type: "writing",
-    date: piece.createdAt || new Date().toISOString(),
-    title: piece.title,
-    body: piece.category || piece.body?.slice(0, 120) || "",
-    source: piece,
-  }));
-  const criticalEntries = criticalNotes.map((note) => ({
-    type: "critical",
-    date: note.createdAt || new Date().toISOString(),
-    title: note.title,
-    body: note.category || note.body?.slice(0, 120) || "",
-    source: note,
-  }));
-  const extraEntries = extraPosts.map((post) => ({
-    type: "extra",
-    date: post.createdAt || new Date().toISOString(),
-    title: post.title,
-    body: post.body?.slice(0, 120) || t("extraDefaultBody"),
-    source: post,
-  }));
-  const entries = [...bookEntries, ...writingEntries, ...criticalEntries, ...extraEntries].sort((a, b) => new Date(b.date) - new Date(a.date));
+  });
+  const writingEntries = writingPieces.flatMap((piece) => {
+    const item = localizeEntry(piece);
+    if (!getTimelineMonthKey(item.createdAt)) return [];
+    return {
+      type: "writing",
+      date: item.createdAt,
+      title: item.title,
+      source: item,
+    };
+  });
+  const criticalEntries = criticalNotes.flatMap((note) => {
+    const item = localizeEntry(note);
+    if (!getTimelineMonthKey(item.createdAt)) return [];
+    return {
+      type: "critical",
+      date: item.createdAt,
+      title: item.title,
+      source: item,
+    };
+  });
+  const extraEntries = extraPosts.flatMap((post) => {
+    const item = localizeEntry(post);
+    if (!getTimelineMonthKey(item.createdAt)) return [];
+    return {
+      type: "extra",
+      date: item.createdAt,
+      title: item.title,
+      source: item,
+    };
+  });
+  const entries = [...bookEntries, ...writingEntries, ...criticalEntries, ...extraEntries];
 
   if (entries.length === 0) {
     timelineContainer.innerHTML = `<div class="timeline-empty"><p>${t("timelineEmpty")}</p></div>`;
     return;
   }
 
-  const grouped = {};
-  entries.forEach((entry) => {
-    const year = new Date(entry.date).getFullYear();
-    if (!grouped[year]) grouped[year] = [];
-    grouped[year].push(entry);
-  });
+  const groupedEntries = entries.reduce((groups, item) => {
+    const monthKey = getTimelineMonthKey(item.date);
+    if (!monthKey) return groups;
+    if (!groups.has(monthKey)) groups.set(monthKey, []);
+    groups.get(monthKey).push(item);
+    return groups;
+  }, new Map());
+  const monthGroups = Array.from(groupedEntries.entries()).sort(([a], [b]) => b.localeCompare(a));
 
   timelineContainer.innerHTML = "";
-  Object.keys(grouped)
-    .sort()
-    .reverse()
-    .forEach((year) => {
-      const yearDiv = document.createElement("div");
-      yearDiv.className = "timeline-year";
-      yearDiv.textContent = year;
-      timelineContainer.append(yearDiv);
-
-      grouped[year].forEach((item) => {
-        const entry = document.createElement("div");
-        entry.className = `timeline-entry timeline-entry-${item.type}`;
-        const typeLabel = {
-          book: t("timelineBookType"),
-          writing: t("timelineWritingType"),
-          critical: t("timelineCriticalType"),
-          extra: t("timelineExtraType"),
-        }[item.type];
-        entry.innerHTML = `
-          <time>${new Date(item.date).toLocaleDateString()} · ${typeLabel}</time>
-          <h4>${escapeHTML(item.title)}</h4>
-          <p class="mood">${escapeHTML(item.body)}</p>
-        `;
-        if (item.type === "book") {
-          entry.addEventListener("click", () => openBookDetail(item.source));
-        } else if (item.type === "writing") {
-          entry.addEventListener("click", () => {
-            switchSection("fiction");
-            document.querySelector(`#writing-${item.source.id}`)?.scrollIntoView({ behavior: "smooth", block: "center" });
-          });
-        } else {
-          entry.addEventListener("click", () => {
-            switchSection(item.type === "critical" ? "critical" : "extra");
-            document.querySelector(`#${item.type}-${item.source.id}`)?.scrollIntoView({ behavior: "smooth", block: "center" });
-          });
-        }
-        timelineContainer.append(entry);
-      });
+  monthGroups.forEach(([monthKey, items], index) => {
+    const monthEntry = document.createElement("div");
+    monthEntry.className = `timeline-month ${index % 2 === 0 ? "is-right" : "is-left"}`;
+    monthEntry.innerHTML = `
+      <div class="timeline-marker">
+        <span class="timeline-node" aria-hidden="true"></span>
+        <time>${formatTimelineMonth(monthKey)}</time>
+      </div>
+      <div class="timeline-month-content"></div>
+    `;
+    const content = monthEntry.querySelector(".timeline-month-content");
+    items.forEach((item) => {
+      const entry = document.createElement("button");
+      entry.className = `timeline-item timeline-item-${item.type}`;
+      entry.type = "button";
+      const typeLabel = {
+        book: t("timelineBookType"),
+        writing: t("timelineWritingType"),
+        critical: t("timelineCriticalType"),
+        extra: t("timelineExtraType"),
+      }[item.type];
+      entry.innerHTML = `
+        <span class="timeline-label">${typeLabel}</span>
+        <strong>${escapeHTML(item.title)}</strong>
+      `;
+      if (item.type === "book") {
+        entry.addEventListener("click", () => openBookDetail(item.source));
+      } else if (item.type === "writing") {
+        entry.addEventListener("click", () => {
+          switchSection("fiction");
+          document.querySelector(`#writing-${item.source.id}`)?.scrollIntoView({ behavior: "smooth", block: "center" });
+        });
+      } else {
+        entry.addEventListener("click", () => {
+          switchSection(item.type === "critical" ? "critical" : "extra");
+          document.querySelector(`#${item.type}-${item.source.id}`)?.scrollIntoView({ behavior: "smooth", block: "center" });
+        });
+      }
+      content.append(entry);
     });
+    timelineContainer.append(monthEntry);
+  });
 }
 
 function renderWritingPieces() {
@@ -577,7 +645,7 @@ function renderWritingPieces() {
   }
 
   writingList.innerHTML = "";
-  writingPieces.forEach((piece) => {
+  writingPieces.map(localizeEntry).forEach((piece) => {
     const card = document.createElement("article");
     card.className = "writing-card";
     card.id = `writing-${piece.id}`;
@@ -604,11 +672,12 @@ function renderExtraPosts() {
 
 // ===== Book Detail Modal =====
 
-function openBookDetail(book) {
+function openBookDetail(book, initialTab = "overview") {
   lastFocusedElement = document.activeElement;
   activeBook = book;
   const modal = document.querySelector("#book-modal");
   const panels = document.querySelector("#book-panels");
+  const activeTab = ["overview", "author", "context", "themes", "review"].includes(initialTab) ? initialTab : "overview";
   const tags = book.tags || [];
   const relatedBooks = book.relatedBooks || [];
   const authorInfo = book.authorInfo || book.author_info || {};
@@ -619,7 +688,7 @@ function openBookDetail(book) {
   ].filter(Boolean).join(" · ");
   
   panels.innerHTML = `
-    <div class="book-panel is-active" data-tab="overview">
+    <div class="book-panel ${activeTab === "overview" ? "is-active" : ""}" data-tab="overview">
       <h3>${escapeHTML(book.title)}</h3>
       <div class="book-section">
         <h4>${t("whyIReadThis")}</h4>
@@ -634,10 +703,6 @@ function openBookDetail(book) {
         <p>${escapeHTML(book.year || "")}</p>
       </div>
       <div class="book-section">
-        <h4>${t("favoriteQuote")}</h4>
-        <p>${escapeHTML(book.favoriteQuote || t("closeReadingsBody"))}</p>
-      </div>
-      <div class="book-section">
         <h4>${t("modalStatus")}</h4>
         <p style="text-transform: capitalize;">${escapeHTML(book.status || "")}</p>
       </div>
@@ -649,7 +714,7 @@ function openBookDetail(book) {
       </div>
     </div>
 
-    <div class="book-panel" data-tab="author">
+    <div class="book-panel ${activeTab === "author" ? "is-active" : ""}" data-tab="author">
       <h3>${t("aboutAuthor")}</h3>
       <div class="book-section">
         <h4>${escapeHTML(book.author)}</h4>
@@ -657,7 +722,7 @@ function openBookDetail(book) {
       </div>
     </div>
 
-    <div class="book-panel" data-tab="context">
+    <div class="book-panel ${activeTab === "context" ? "is-active" : ""}" data-tab="context">
       <h3>${t("historicalContext")}</h3>
       <div class="book-section">
         <h4>${t("historicalEvents")}</h4>
@@ -665,7 +730,7 @@ function openBookDetail(book) {
       </div>
     </div>
 
-    <div class="book-panel" data-tab="themes">
+    <div class="book-panel ${activeTab === "themes" ? "is-active" : ""}" data-tab="themes">
       <h3>${t("themesMotifs")}</h3>
       <div class="book-section">
         <h4>${t("mainThemes")}</h4>
@@ -677,15 +742,15 @@ function openBookDetail(book) {
       </div>
     </div>
 
-    <div class="book-panel" data-tab="review">
+    <div class="book-panel ${activeTab === "review" ? "is-active" : ""}" data-tab="review">
       <h3>${t("yourReview")}</h3>
       <div class="book-section">
         <h4>${t("firstImpressions")}</h4>
         <p>${escapeHTML(book.mood || t("firstImpressionsBody"))}</p>
       </div>
       <div class="book-section">
-        <h4>${t("closeReadings")}</h4>
-        <p>${escapeHTML(book.favoriteQuote || t("closeReadingsBody"))}</p>
+        <h4>${t("favoriteQuote")}</h4>
+        <p class="quote-text">${escapeHTML(book.favoriteQuote || t("favoriteQuoteBody"))}</p>
       </div>
       <div class="book-section">
         <h4>${t("yourReview")}</h4>
@@ -696,7 +761,7 @@ function openBookDetail(book) {
 
   // Tab switching
   document.querySelectorAll(".book-tab").forEach((tab) => {
-    tab.classList.toggle("is-active", tab.dataset.tab === "overview");
+    tab.classList.toggle("is-active", tab.dataset.tab === activeTab);
     tab.addEventListener("click", () => {
       document.querySelectorAll(".book-tab").forEach(t => t.classList.remove("is-active"));
       document.querySelectorAll(".book-panel").forEach(p => p.classList.remove("is-active"));
@@ -755,46 +820,6 @@ function renderContentCards() {
     card.append(number, title, summary);
     card.addEventListener("click", () => renderModule(id));
     document.querySelector("#module-grid").append(card);
-  });
-  
-  // Tool cards
-  Object.entries(tools).forEach(([id, tool]) => {
-    const toolGrid = document.querySelector("#tool-grid");
-    if (!toolGrid) return;
-    const card = document.createElement("button");
-    const group = document.createElement("span");
-    const title = document.createElement("strong");
-    const body = document.createElement("span");
-  
-    card.className = "tool-card";
-    card.type = "button";
-    card.dataset.tool = id;
-    group.textContent = tool.group;
-    title.textContent = tool.label;
-    body.textContent = tool.body;
-    card.append(group, title, body);
-    card.addEventListener("click", () => renderTool(id));
-    toolGrid.append(card);
-  });
-  
-  // Feature cards
-  Object.entries(features).forEach(([id, feature]) => {
-    const featureGrid = document.querySelector("#feature-grid");
-    if (!featureGrid) return;
-    const card = document.createElement("button");
-    const group = document.createElement("span");
-    const title = document.createElement("strong");
-    const body = document.createElement("span");
-  
-    card.className = "feature-card";
-    card.type = "button";
-    card.dataset.feature = id;
-    group.textContent = feature.group;
-    title.textContent = feature.label;
-    body.textContent = feature.body;
-    card.append(group, title, body);
-    card.addEventListener("click", () => renderFeature(id));
-    featureGrid.append(card);
   });
 }
 
@@ -868,7 +893,6 @@ async function initializeApp() {
 
   renderContentCards();
   attachEventListeners();
-  renderModule("reading");
   applyStaticTranslations();
   refreshBookViews();
   renderWritingPieces();

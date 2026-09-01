@@ -2,17 +2,19 @@
 
 Edit these files when you want the deployed website to change, then commit and push.
 
-- `books.json`: public Library entries.
+- `books.json`: generated from `content/library/*.md`.
 - `fiction.json`: generated from `content/fiction/*.md`.
 - `reflections.json`: generated from `content/reflections/*.md`.
 - `extra.json`: generated from `content/extra/*.md`.
 - `site-content.json`: navigation text, module copy, bilingual labels, and reusable page text.
 
-Prefer editing Markdown files in `content/` for writing entries. Run `python3 scripts/build_content.py` after changing Markdown.
+Prefer editing Markdown files in `content/`. Run `python3 scripts/build_content.py` after changing Markdown, or `python3 scripts/build_content.py library` when you only changed books.
+
+The generated JSON may include a `translations` object when you create paired files such as `my-note.en.md` and `my-note.zh.md`. The website chooses the right translation automatically when the language toggle changes.
 
 ## Entry Formats
 
-### `books.json`
+### Generated Book JSON
 
 ```json
 {
@@ -37,6 +39,8 @@ Prefer editing Markdown files in `content/` for writing entries. Run `python3 sc
   }
 }
 ```
+
+These book entries are generated from one-file-per-book Markdown files in `content/library/`. Put the reading response below the front matter in the book file; it becomes `personalReview`.
 
 ### Generated Writing JSON
 

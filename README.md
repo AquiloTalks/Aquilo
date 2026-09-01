@@ -1,59 +1,53 @@
-# Aquilo
+# Aquilo Workflow
 
-A static personal literature cabinet for books, reading traces, fiction fragments, reflection notes, and loose extras.
+## 1. Edit Content
 
-## Local Preview
+Edit Markdown files in `content/`.
 
-```sh
-python3 -m http.server 8000
-```
+- `content/library/`: books, one file per book
+- `content/fiction/`: fiction pieces
+- `content/reflections/`: reflection notes
+- `content/extra/`: extra notes
 
-Then open `http://localhost:8000`.
+Each folder has a `_template.md`. Copy it, rename the copy, then edit the new file.
 
-## Deployment
+For bilingual content, use matching filenames:
 
-This site is plain HTML, CSS, and JavaScript. It can be deployed directly with GitHub Pages from the repository root.
+- `my-piece.en.md`
+- `my-piece.zh.md`
 
-## Editing Published Content
+If only one language exists, the site uses that version.
 
-The public website is read-only. For writing pages, edit Markdown files in `content/`, then generate JSON:
+## 2. Generate Website Data
+
+After editing content, run:
 
 ```sh
 python3 scripts/build_content.py
 ```
 
-Use these folders:
+If you only changed Library books, you can run:
 
-- `content/fiction/`: Fiction page entries.
-- `content/reflections/`: Reflection page entries.
-- `content/extra/`: Extra page entries.
-
-Each Markdown file starts with front matter:
-
-```md
----
-title: "A Small Fiction Fragment"
-date: "2026-08-30"
-category: "Draft"
-tags: ["memory", "house"]
----
-
-Write the public text here.
+```sh
+python3 scripts/build_content.py library
 ```
 
-The build command writes:
+The website reads generated JSON files from `data/`.
 
-- `data/fiction.json`
-- `data/reflections.json`
-- `data/extra.json`
+The Timeline uses each book's `readDates` and each writing file's `date`. Books without `readDates` do not appear on the Timeline.
 
-For books and site labels, edit JSON directly:
+## 3. Preview Locally
 
-- `data/books.json`: Library books.
-- `data/site-content.json`: page labels, module text, and bilingual UI copy.
+Run:
 
-Preview through a local server after changing JSON, because browsers block `fetch()` for local files opened directly from Finder.
+```sh
+python3 scripts/preview.py
+```
 
-## Assets
+Open the URL it prints, such as `http://127.0.0.1:8000`.
 
-The painted page background is saved locally at `assets/monet-la-seine-argenteuil.jpg` so the site does not depend on a remote image URL at runtime.
+## 4. Publish
+
+Commit and push the changes to GitHub.
+
+GitHub Pages updates the live website after the push.
