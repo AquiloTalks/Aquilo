@@ -4,7 +4,12 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Aquilo - Literature Cabinet</title>
-    <link rel="stylesheet" href="styles.css?v=clean-structure" />
+    <meta name="description" content="Aquilo — a private literature cabinet of books, reading notes, fiction and reflection." />
+    <meta name="theme-color" content="#f5faf9" />
+    <meta property="og:title" content="Aquilo" />
+    <meta property="og:description" content="Books, fragments, reflection, and memory." />
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23eef6f5'/%3E%3Ctext x='32' y='46' font-family='Georgia,serif' font-size='40' text-anchor='middle' fill='%23465652'%3EA%3C/text%3E%3C/svg%3E" />
+    <link rel="stylesheet" href="styles.css?v=2026-10" />
   </head>
   <body>
     <main class="page-shell">
@@ -37,6 +42,18 @@
           <h2 id="modules-heading" class="sr-only">Main Cabinet Modules</h2>
           <div class="module-grid" id="module-grid"></div>
           <article class="module-detail" id="module-detail" aria-live="polite" aria-label="Module details"></article>
+        </section>
+
+        <!-- Recently read -->
+        <section class="recent-section" aria-labelledby="recent-heading" hidden>
+          <div class="recent-head">
+            <div>
+              <p class="kicker" data-i18n="recentKicker">Recently read</p>
+              <h2 id="recent-heading" data-i18n="recentHeading">Latest traces</h2>
+            </div>
+            <a href="#library" class="recent-all" id="recent-all" data-i18n="viewAllRead">All read books →</a>
+          </div>
+          <div class="recent-grid" id="recent-grid"></div>
         </section>
       </section>
 
@@ -154,10 +171,11 @@
       </section>
 
       <!-- ===== Modal: Book Detail ===== -->
-      <dialog class="book-modal" id="book-modal">
+      <dialog class="book-modal" id="book-modal" aria-labelledby="book-modal-title">
         <div class="modal-backdrop"></div>
         <div class="modal-content">
           <button class="modal-close" aria-label="Close" data-i18n-aria-label="closeModal">&times;</button>
+          <header class="modal-head" id="book-modal-head"></header>
           <div class="book-detail-tabs">
             <nav class="book-tabs" aria-label="Book sections">
               <button class="book-tab is-active" data-tab="overview" data-i18n="tabOverview">Overview</button>
@@ -174,6 +192,6 @@
       </dialog>
     </main>
 
-    <script src="app.js?v=clean-structure"></script>
+    <script src="app.js?v=2026-10"></script>
   </body>
 </html>

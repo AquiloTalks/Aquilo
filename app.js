@@ -90,6 +90,7 @@ function getVisibleBooks() {
 
 function refreshBookViews() {
   renderLibrary(activeLibraryFilter);
+  renderRecentReads();
   renderTimeline();
   updateDynamicCards();
   renderModule(selectedModuleId);
@@ -129,9 +130,10 @@ function setSamplePanel(panel, title, rows) {
 }
 
 function getLibrarySampleRows(filter = "all") {
+  const sorted = sortBooks(getVisibleBooks());
   const books = filter === "all"
-    ? getVisibleBooks()
-    : getVisibleBooks().filter((book) => book.status === filter);
+    ? sorted
+    : sorted.filter((book) => book.status === filter);
 
   if (!books.length) {
     return [[t("libraryShelfSample"), t("noBooksFilter")]];
@@ -198,7 +200,7 @@ function createReadingDetailList(items, samplePanel) {
 }
 
 function formatDate(value) {
-  if (!value) return new Date().toLocaleDateString();
+  if (!value || String(value).startsWith("1970-01-01")) return "";
   if (typeof value === "string" && /^\d{4}-\d{2}-\d{2}$/.test(value)) {
     const [year, month, day] = value.split("-").map(Number);
     return new Date(year, month - 1, day).toLocaleDateString();
@@ -206,9 +208,10 @@ function formatDate(value) {
   return new Date(value).toLocaleDateString();
 }
 
-function makePreview(value, fallback = "") {
+function makePreview(value, fallback = "", limit = 135) {
   const clean = String(value || fallback || "").trim().replace(/\s+/g, " ");
-  return clean.length > 135 ? `${clean.slice(0, 132)}...` : clean;
+  const chars = [...clean];
+  return chars.length > limit ? `${chars.slice(0, limit - 1).join("")}…` : clean;
 }
 
 function getBookReview(book) {
@@ -422,7 +425,7 @@ function createContentList(items, emptyText, type) {
     card.className = "content-mini-card";
     card.id = `${type}-${item.id}`;
     card.innerHTML = `
-      <p class="writing-meta">${escapeHTML(item.category || type)} · ${formatDate(item.createdAt)}</p>
+      <p class="writing-meta">${[escapeHTML(item.category || type), formatDate(item.createdAt)].filter(Boolean).join(" · ")}</p>
       <h3>${escapeHTML(item.title)}</h3>
       <p>${escapeHTML(makePreview(item.body, item.category))}</p>
     `;
@@ -434,13 +437,58 @@ function createContentList(items, emptyText, type) {
 
 // ===== Render Library =====
 
+const STATUS_ORDER = { reading: 0, completed: 1, unread: 2 };
+const STATUS_KEYS = { unread: "filterUnread", completed: "filterCompleted", reading: "filterReading" };
+
+function statusLabel(status) {
+  return STATUS_KEYS[status] ? t(STATUS_KEYS[status]) : String(status || "");
+}
+
+function getLatestReadKey(book) {
+  const keys = (Array.isArray(book.readDates) ? book.readDates : [])
+    .map(getTimelineMonthKey)
+    .filter(Boolean)
+    .sort();
+  return keys[keys.length - 1] || "";
+}
+
+function sortBooks(books) {
+  return [...books].sort((a, b) =>
+    (STATUS_ORDER[a.status] ?? 3) - (STATUS_ORDER[b.status] ?? 3)
+    || getLatestReadKey(b).localeCompare(getLatestReadKey(a))
+    || (Number(a.id) || 0) - (Number(b.id) || 0)
+  );
+}
+
+function coverGlyph(title) {
+  const clean = String(title || "").replace(/^[\s"'“‘《「（(]+/, "");
+  return [...clean][0] || "·";
+}
+
+function coverTone(book) {
+  const tones = ["#7c94a5", "#8fa069", "#b0907a", "#8a9cb8", "#9a8fa8", "#6f9c98"];
+  const seed = [...String(book.title || "")].reduce((sum, char) => sum + char.codePointAt(0), 0);
+  return tones[seed % tones.length];
+}
+
+function updateFilterCounts() {
+  const books = getVisibleBooks();
+  document.querySelectorAll(".filter-tab").forEach((button) => {
+    const filter = button.dataset.filter;
+    const count = filter === "all" ? books.length : books.filter((book) => book.status === filter).length;
+    const key = button.dataset.i18n;
+    button.innerHTML = `${escapeHTML(t(key))} <span class="filter-count">${count}</span>`;
+  });
+}
+
 function renderLibrary(filter = "all") {
   activeLibraryFilter = filter;
+  updateFilterCounts();
   const libraryGrid = document.querySelector("#library-grid");
   const searchInput = document.querySelector("#book-search");
   const query = searchInput?.value.trim().toLowerCase() || "";
-  
-  const filtered = getVisibleBooks().filter((book) => {
+
+  const filtered = sortBooks(getVisibleBooks()).filter((book) => {
     if (filter === "all") return true;
     return book.status === filter;
   }).filter((book) => {
@@ -456,24 +504,30 @@ function renderLibrary(filter = "all") {
   libraryGrid.innerHTML = "";
   filtered.forEach((book) => {
     const review = getBookReview(book);
+    const readKey = getLatestReadKey(book);
     const card = document.createElement("div");
-    card.className = "book-card";
+    card.className = `book-card is-${escapeHTML(book.status || "unread")}`;
     card.tabIndex = 0;
+    card.setAttribute("role", "button");
+    card.setAttribute("aria-label", `${book.title} — ${book.author}`);
     card.innerHTML = `
-      <div class="book-cover">${escapeHTML(book.title.charAt(0))}</div>
+      <div class="book-cover" style="--cover-tone: ${coverTone(book)}" aria-hidden="true">${escapeHTML(coverGlyph(book.title))}</div>
       <div class="book-info">
+        <div class="book-status-row">
+          <span class="status-badge is-${escapeHTML(book.status || "unread")}">${escapeHTML(statusLabel(book.status))}</span>
+          ${readKey ? `<span class="book-read-date">${formatTimelineMonth(readKey)}</span>` : ""}
+        </div>
         <div class="book-title">${escapeHTML(book.title)}</div>
-        <div class="book-author">${escapeHTML(book.author)}</div>
-        <div class="book-meta">${escapeHTML(book.year)}</div>
-        <p class="book-note">${escapeHTML(makePreview(book.mood || book.why || (book.tags || []).join(", "), ""))}</p>
-        ${review ? `
-          <div class="book-review-preview">
-            <span>${t("reviewPreviewLabel")}</span>
-            <p>${escapeHTML(makePreview(review))}</p>
-            <button type="button" class="book-review-link">${t("readFullReview")}</button>
-          </div>
-        ` : ""}
+        <div class="book-author">${escapeHTML(book.author)}${book.year ? ` · ${escapeHTML(book.year)}` : ""}</div>
+        ${book.mood || book.why ? `<p class="book-note">${escapeHTML(makePreview(book.mood || book.why))}</p>` : ""}
       </div>
+      ${review ? `
+        <div class="book-review-preview">
+          <span>${t("reviewPreviewLabel")}</span>
+          <p>${escapeHTML(makePreview(review, "", 160))}</p>
+          <button type="button" class="book-review-link">${t("readFullReview")} →</button>
+        </div>
+      ` : ""}
     `;
     card.addEventListener("click", () => openBookDetail(book));
     card.querySelector(".book-review-link")?.addEventListener("click", (event) => {
@@ -481,6 +535,7 @@ function renderLibrary(filter = "all") {
       openBookDetail(book, "review");
     });
     card.addEventListener("keydown", (event) => {
+      if (event.target !== card) return;
       if (event.key === "Enter" || event.key === " ") {
         event.preventDefault();
         openBookDetail(book);
@@ -488,6 +543,35 @@ function renderLibrary(filter = "all") {
     });
     libraryGrid.append(card);
   });
+}
+
+// ===== Home: Recently Read =====
+
+function renderRecentReads() {
+  const grid = document.querySelector("#recent-grid");
+  if (!grid) return;
+  const recent = getVisibleBooks()
+    .filter((book) => book.status === "completed" && getLatestReadKey(book))
+    .sort((a, b) => getLatestReadKey(b).localeCompare(getLatestReadKey(a)))
+    .slice(0, 3);
+
+  const section = grid.closest(".recent-section");
+  if (section) section.hidden = recent.length === 0;
+
+  grid.replaceChildren(...recent.map((book) => {
+    const review = getBookReview(book);
+    const card = document.createElement("button");
+    card.type = "button";
+    card.className = "recent-card";
+    card.innerHTML = `
+      <span class="recent-date">${formatTimelineMonth(getLatestReadKey(book))}</span>
+      <strong class="recent-title">${escapeHTML(book.title)}</strong>
+      <span class="recent-author">${escapeHTML(book.author)}</span>
+      ${review ? `<span class="recent-excerpt">${escapeHTML(makePreview(review, "", 140))}</span>` : ""}
+    `;
+    card.addEventListener("click", () => openBookDetail(book, review ? "review" : "overview"));
+    return card;
+  }));
 }
 
 function getBookSearchText(book) {
@@ -612,9 +696,13 @@ function renderTimeline() {
         critical: t("timelineCriticalType"),
         extra: t("timelineExtraType"),
       }[item.type];
+      const subtitle = item.type === "book" ? item.source.author : "";
       entry.innerHTML = `
         <span class="timeline-label">${typeLabel}</span>
-        <strong>${escapeHTML(item.title)}</strong>
+        <span class="timeline-text">
+          <strong>${escapeHTML(item.title)}</strong>
+          ${subtitle ? `<span class="timeline-sub">${escapeHTML(subtitle)}</span>` : ""}
+        </span>
       `;
       if (item.type === "book") {
         entry.addEventListener("click", () => openBookDetail(item.source));
@@ -650,7 +738,7 @@ function renderWritingPieces() {
     card.className = "writing-card";
     card.id = `writing-${piece.id}`;
     card.innerHTML = `
-      <p class="writing-meta">${escapeHTML(piece.category || "Draft")} · ${new Date(piece.createdAt).toLocaleDateString()}</p>
+      <p class="writing-meta">${[escapeHTML(piece.category || t("draftLabel")), formatDate(piece.createdAt)].filter(Boolean).join(" · ")}</p>
       <h3>${escapeHTML(piece.title)}</h3>
       <div class="writing-body">${escapeHTML(piece.body || "")}</div>
     `;
@@ -672,12 +760,42 @@ function renderExtraPosts() {
 
 // ===== Book Detail Modal =====
 
+function reviewParagraphs(text) {
+  return String(text || "")
+    .split(/\n+/)
+    .map((line) => line.trim())
+    .filter(Boolean)
+    .map((line) => `<p>${escapeHTML(line)}</p>`)
+    .join("");
+}
+
+function quoteBlocks(text) {
+  return String(text || "")
+    .split(/\n\s*\n/)
+    .map((block) => block.trim())
+    .filter(Boolean)
+    .map((block) => `<blockquote class="quote-text">${escapeHTML(block)}</blockquote>`)
+    .join("");
+}
+
+function setActiveBookTab(tabName) {
+  document.querySelectorAll(".book-tab").forEach((tab) => {
+    const isActive = tab.dataset.tab === tabName;
+    tab.classList.toggle("is-active", isActive);
+    tab.setAttribute("aria-selected", String(isActive));
+  });
+  document.querySelectorAll(".book-panel").forEach((panel) => {
+    panel.classList.toggle("is-active", panel.dataset.tab === tabName);
+  });
+}
+
 function openBookDetail(book, initialTab = "overview") {
-  lastFocusedElement = document.activeElement;
+  if (!document.querySelector("#book-modal").open) {
+    lastFocusedElement = document.activeElement;
+  }
   activeBook = book;
   const modal = document.querySelector("#book-modal");
   const panels = document.querySelector("#book-panels");
-  const activeTab = ["overview", "author", "context", "themes", "review"].includes(initialTab) ? initialTab : "overview";
   const tags = book.tags || [];
   const relatedBooks = book.relatedBooks || [];
   const authorInfo = book.authorInfo || book.author_info || {};
@@ -686,93 +804,77 @@ function openBookDetail(book, initialTab = "overview") {
     authorInfo.genre,
     authorInfo.knownFor || authorInfo.known_for,
   ].filter(Boolean).join(" · ");
-  
+  const review = getBookReview(book);
+  const readKeys = (book.readDates || []).map(getTimelineMonthKey).filter(Boolean).sort();
+
+  const available = {
+    overview: true,
+    author: Boolean(authorBody),
+    context: Boolean(book.literaryContext),
+    themes: Boolean(book.keyThemes || relatedBooks.length),
+    review: Boolean(review || book.favoriteQuote),
+  };
+  const activeTab = available[initialTab] ? initialTab : (available.review && initialTab === "review" ? "review" : "overview");
+
+  document.querySelector("#book-modal-head").innerHTML = `
+    <p class="modal-kicker">
+      <span class="status-badge is-${escapeHTML(book.status || "unread")}">${escapeHTML(statusLabel(book.status))}</span>
+      ${readKeys.length ? `<span>${t("readOn")} ${readKeys.map(formatTimelineMonth).join(" · ")}</span>` : ""}
+    </p>
+    <h2 id="book-modal-title">${escapeHTML(book.title)}</h2>
+    <p class="modal-byline">${escapeHTML(book.author)}${book.year ? ` · ${escapeHTML(book.year)}` : ""}</p>
+  `;
+
+  const section = (heading, body) => `
+    <div class="book-section">
+      <h4>${heading}</h4>
+      ${body}
+    </div>`;
+
   panels.innerHTML = `
-    <div class="book-panel ${activeTab === "overview" ? "is-active" : ""}" data-tab="overview">
-      <h3>${escapeHTML(book.title)}</h3>
-      <div class="book-section">
-        <h4>${t("whyIReadThis")}</h4>
-        <p>${escapeHTML(book.why || book.mood || t("firstImpressionsBody"))}</p>
-      </div>
-      <div class="book-section">
-        <h4>${t("modalAuthor")}</h4>
-        <p>${escapeHTML(book.author)}</p>
-      </div>
-      <div class="book-section">
-        <h4>${t("modalPublication")}</h4>
-        <p>${escapeHTML(book.year || "")}</p>
-      </div>
-      <div class="book-section">
-        <h4>${t("modalStatus")}</h4>
-        <p style="text-transform: capitalize;">${escapeHTML(book.status || "")}</p>
-      </div>
-      <div class="book-section">
-        <h4>${t("modalTags")}</h4>
-        <div class="tag-list">
-          ${tags.map(tag => `<span class="tag">${escapeHTML(tag)}</span>`).join("")}
-        </div>
-      </div>
+    <div class="book-panel" data-tab="overview">
+      ${book.why ? section(t("whyIReadThis"), `<p>${escapeHTML(book.why)}</p>`) : ""}
+      ${book.mood ? section(t("readingMood"), `<p>${escapeHTML(book.mood)}</p>`) : ""}
+      ${tags.length ? section(t("modalTags"), `<div class="tag-list">${tags.map((tag) => `<span class="tag">${escapeHTML(tag)}</span>`).join("")}</div>`) : ""}
+      ${review ? `
+        <div class="book-section overview-review">
+          <h4>${t("reviewPreviewLabel")}</h4>
+          <p>${escapeHTML(makePreview(review, "", 200))}</p>
+          <button type="button" class="book-review-link" data-goto-tab="review">${t("readFullReview")} →</button>
+        </div>` : ""}
+      ${!book.why && !book.mood && !tags.length && !review ? `<p class="panel-empty">${t("noNotesYet")}</p>` : ""}
     </div>
 
-    <div class="book-panel ${activeTab === "author" ? "is-active" : ""}" data-tab="author">
-      <h3>${t("aboutAuthor")}</h3>
-      <div class="book-section">
-        <h4>${escapeHTML(book.author)}</h4>
-        <p>${escapeHTML(authorBody || t("authorPlaceholder"))}</p>
-      </div>
+    <div class="book-panel" data-tab="author">
+      ${section(escapeHTML(book.author), `<p>${escapeHTML(authorBody)}</p>`)}
     </div>
 
-    <div class="book-panel ${activeTab === "context" ? "is-active" : ""}" data-tab="context">
-      <h3>${t("historicalContext")}</h3>
-      <div class="book-section">
-        <h4>${t("historicalEvents")}</h4>
-        <p>${escapeHTML(book.literaryContext || t("historicalEventsBody"))}</p>
-      </div>
+    <div class="book-panel" data-tab="context">
+      ${section(t("historicalContext"), `<p>${escapeHTML(book.literaryContext)}</p>`)}
     </div>
 
-    <div class="book-panel ${activeTab === "themes" ? "is-active" : ""}" data-tab="themes">
-      <h3>${t("themesMotifs")}</h3>
-      <div class="book-section">
-        <h4>${t("mainThemes")}</h4>
-        <p>${escapeHTML(book.keyThemes || tags.join(", ") || t("mainThemesBody"))}</p>
-      </div>
-      <div class="book-section">
-        <h4>${t("relatedBooks")}</h4>
-        <p>${escapeHTML(relatedBooks.join(", ") || t("recurringImagesBody"))}</p>
-      </div>
+    <div class="book-panel" data-tab="themes">
+      ${book.keyThemes ? section(t("mainThemes"), `<p>${escapeHTML(book.keyThemes)}</p>`) : ""}
+      ${relatedBooks.length ? section(t("relatedBooks"), `<p>${escapeHTML(relatedBooks.join(", "))}</p>`) : ""}
     </div>
 
-    <div class="book-panel ${activeTab === "review" ? "is-active" : ""}" data-tab="review">
-      <h3>${t("yourReview")}</h3>
-      <div class="book-section">
-        <h4>${t("firstImpressions")}</h4>
-        <p>${escapeHTML(book.mood || t("firstImpressionsBody"))}</p>
-      </div>
-      <div class="book-section">
-        <h4>${t("favoriteQuote")}</h4>
-        <p class="quote-text">${escapeHTML(book.favoriteQuote || t("favoriteQuoteBody"))}</p>
-      </div>
-      <div class="book-section">
-        <h4>${t("yourReview")}</h4>
-        <p>${escapeHTML(book.personalReview || t("essayIdeasBody"))}</p>
-      </div>
+    <div class="book-panel" data-tab="review">
+      ${book.favoriteQuote ? section(t("favoriteQuote"), quoteBlocks(book.favoriteQuote)) : ""}
+      ${review ? section(t("yourReview"), `<div class="review-body">${reviewParagraphs(review)}</div>`) : ""}
     </div>
   `;
 
-  // Tab switching
   document.querySelectorAll(".book-tab").forEach((tab) => {
-    tab.classList.toggle("is-active", tab.dataset.tab === activeTab);
-    tab.addEventListener("click", () => {
-      document.querySelectorAll(".book-tab").forEach(t => t.classList.remove("is-active"));
-      document.querySelectorAll(".book-panel").forEach(p => p.classList.remove("is-active"));
-      tab.classList.add("is-active");
-      panels.querySelector(`.book-panel[data-tab="${tab.dataset.tab}"]`)?.classList.add("is-active");
-    });
+    tab.hidden = !available[tab.dataset.tab];
   });
+  document.querySelector(".book-detail-tabs").hidden =
+    Object.values(available).filter(Boolean).length < 2;
+  setActiveBookTab(activeTab);
 
   if (!modal.open) {
     modal.showModal();
   }
+  document.querySelector(".modal-content").scrollTop = 0;
   document.querySelector(".modal-close").focus();
 }
 
@@ -793,6 +895,7 @@ function switchSection(sectionId, updateHash = true) {
 
   if (updateHash && window.location.hash !== `#${sectionId}`) {
     history.pushState(null, "", `#${sectionId}`);
+    window.scrollTo({ top: 0 });
   }
 }
 
@@ -839,15 +942,7 @@ function attachEventListeners() {
   
   // Library filters
   document.querySelectorAll(".filter-tab").forEach((btn) => {
-    btn.addEventListener("click", () => {
-      document.querySelectorAll(".filter-tab").forEach((b) => {
-        b.classList.remove("is-active");
-        b.setAttribute("aria-pressed", "false");
-      });
-      btn.classList.add("is-active");
-      btn.setAttribute("aria-pressed", "true");
-      renderLibrary(btn.dataset.filter);
-    });
+    btn.addEventListener("click", () => setLibraryFilter(btn.dataset.filter));
   });
   
   // Book search
@@ -856,13 +951,23 @@ function attachEventListeners() {
   });
   
   function closeBookModal() {
-    activeBook = null;
     document.querySelector("#book-modal").close();
-    if (lastFocusedElement && typeof lastFocusedElement.focus === "function") {
-      lastFocusedElement.focus();
-    }
   }
   
+  // Book detail tabs (attached once)
+  document.querySelectorAll(".book-tab").forEach((tab) => {
+    tab.addEventListener("click", () => setActiveBookTab(tab.dataset.tab));
+  });
+  document.querySelector("#book-panels").addEventListener("click", (event) => {
+    const target = event.target.closest("[data-goto-tab]");
+    if (target) setActiveBookTab(target.dataset.gotoTab);
+  });
+
+  document.querySelector("#recent-all")?.addEventListener("click", (event) => {
+    event.preventDefault();
+    openLibraryFilter("completed");
+  });
+
   // Modal close button
   document.querySelector(".modal-close").addEventListener("click", closeBookModal);
   
