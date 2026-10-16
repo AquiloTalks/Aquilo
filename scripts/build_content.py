@@ -392,8 +392,9 @@ def resolve_echoes(nodes, source):
                 None,
             )
             if not quote:
-                print(f"warning: {source}: no earlier part titled \"{block['ref']}\" with a quote", file=sys.stderr)
-                continue
+                raise ValueError(
+                    f'{source}: ">> {block["ref"]}" must match an earlier section that has a quotation'
+                )
             block["index"] = earlier[0]
             block["paragraphs"] = quote["paragraphs"]
         node["blocks"] = [
@@ -418,6 +419,30 @@ def parse_story_body(body):
     return nodes
 
 
+def library_ids():
+    grouped = group_markdown_files(LIBRARY_SECTION["source_dir"])
+    ids = set()
+    for index, (_, versions) in enumerate(sorted(grouped.items()), start=1):
+        file_path = choose_default_version(versions)
+        metadata, _ = parse_front_matter(file_path.read_text(encoding="utf-8"))
+        ids.add(normalize_book_id(metadata.get("id"), index))
+    return ids
+
+
+def validate_experiment(source, metadata, nodes):
+    missing = []
+    if not metadata.get("title"):
+        missing.append("title")
+    if not metadata.get("summary"):
+        missing.append("summary")
+    if not split_paragraphs(metadata.get("closing", "").splitlines()):
+        missing.append("closing")
+    if not nodes:
+        missing.append("at least one ## section")
+    if missing:
+        raise ValueError(f"{source}: missing {', '.join(missing)}")
+
+
 def build_experiments(section):
     source_dir = ROOT / section["source_dir"]
     if not source_dir.exists():
@@ -427,6 +452,8 @@ def build_experiments(section):
     detail_dir.mkdir(parents=True, exist_ok=True)
 
     index = []
+    seen_ids = {}
+    known_book_ids = library_ids()
     for base, versions in sorted(group_markdown_files(section["source_dir"]).items()):
         parsed = {
             language: parse_front_matter(path.read_text(encoding="utf-8"))
@@ -434,9 +461,33 @@ def build_experiments(section):
         }
         metadata = parsed.get("default", parsed.get("en", parsed.get("zh")))[0]
         experiment_id = slugify(metadata.get("id") or base) or base
+        if experiment_id in seen_ids:
+            raise ValueError(
+                f"{source_file(choose_default_version(versions))}: id \"{experiment_id}\" is already used by {seen_ids[experiment_id]}"
+            )
+        seen_ids[experiment_id] = source_file(choose_default_version(versions))
+
+        common_book = normalize_book_id(metadata.get("book"), "")
+        if common_book != "" and common_book not in known_book_ids:
+            raise ValueError(
+                f"{source_file(choose_default_version(versions))}: book id \"{common_book}\" does not exist in content/library"
+            )
 
         languages = {}
         for language, (version_metadata, version_body) in parsed.items():
+            version_source = source_file(versions[language])
+            version_id = slugify(version_metadata.get("id") or base) or base
+            if version_id != experiment_id:
+                raise ValueError(
+                    f'{version_source}: id "{version_id}" does not match "{experiment_id}" in the other language file'
+                )
+            version_book = normalize_book_id(version_metadata.get("book"), common_book)
+            if version_book != common_book:
+                raise ValueError(
+                    f'{version_source}: book id "{version_book}" does not match "{common_book}" in the other language file'
+                )
+            nodes = resolve_echoes(parse_story_body(version_body), version_source)
+            validate_experiment(version_source, version_metadata, nodes)
             key = language if language in LANGUAGES else "default"
             languages[key] = {
                 "title": version_metadata.get("title") or metadata.get("title") or base,
@@ -444,13 +495,22 @@ def build_experiments(section):
                 "summary": version_metadata.get("summary", ""),
                 "notice": version_metadata.get("notice", ""),
                 "closing": split_paragraphs(version_metadata.get("closing", "").splitlines()),
-                "nodes": resolve_echoes(parse_story_body(version_body), source_file(versions[language])),
+                "nodes": nodes,
             }
+
+        explicit_languages = [key for key in languages if key in LANGUAGES]
+        if len(explicit_languages) > 1:
+            node_counts = {key: len(languages[key]["nodes"]) for key in explicit_languages}
+            if len(set(node_counts.values())) > 1:
+                counts = ", ".join(f"{key}: {count}" for key, count in sorted(node_counts.items()))
+                raise ValueError(
+                    f'{source_file(choose_default_version(versions))}: translated versions need the same number of sections ({counts})'
+                )
 
         common = {
             "id": experiment_id,
             "type": metadata.get("type") or "story",
-            "book": normalize_book_id(metadata.get("book"), ""),
+            "book": common_book,
             "createdAt": to_iso_date(metadata.get("date")),
             "sourceFiles": [source_file(path) for _, path in sorted(versions.items())],
         }
@@ -493,4 +553,8 @@ def main():
 
 
 if __name__ == "__main__":
-    main()
+    try:
+        main()
+    except ValueError as error:
+        print(f"error: {error}", file=sys.stderr)
+        raise SystemExit(1)

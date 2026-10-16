@@ -578,6 +578,15 @@ a.story-compare-title:focus-visible {
     padding-left: 16px;
     padding-right: 16px;
   }
+
+  .story-dots {
+    gap: 0;
+  }
+
+  .story-dot {
+    width: 40px;
+    height: 40px;
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {

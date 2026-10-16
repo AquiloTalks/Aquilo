@@ -30,7 +30,31 @@ const UI = {
 };
 
 const params = new URLSearchParams(window.location.search);
-let language = params.get("lang") === "zh" ? "zh" : "en";
+const LANGUAGE_STORAGE_KEY = "aquilo-language";
+
+function savedLanguage() {
+  const urlLanguage = params.get("lang");
+  if (["en", "zh"].includes(urlLanguage)) return urlLanguage;
+  try {
+    const storedLanguage = window.localStorage.getItem(LANGUAGE_STORAGE_KEY);
+    return ["en", "zh"].includes(storedLanguage) ? storedLanguage : "en";
+  } catch {
+    return "en";
+  }
+}
+
+function rememberLanguage(nextLanguage) {
+  try {
+    window.localStorage.setItem(LANGUAGE_STORAGE_KEY, nextLanguage);
+  } catch {
+    // The URL still keeps the preference when browser storage is unavailable.
+  }
+  const url = new URL(window.location.href);
+  url.searchParams.set("lang", nextLanguage);
+  history.replaceState(null, "", url);
+}
+
+let language = savedLanguage();
 let experiment = null;
 let revealObserver = null;
 let scrollFrame = 0;
@@ -56,6 +80,10 @@ function prefersReducedMotion() {
 function content() {
   const versions = experiment.languages;
   return versions[language] || versions.default || versions.en || versions.zh;
+}
+
+function mainSiteHref(section) {
+  return `index.html?lang=${language}#${section}`;
 }
 
 // A quote is the original line, optionally followed by a translation. When the
@@ -133,7 +161,11 @@ function render() {
   const toggle = document.querySelector("#language-toggle");
   toggle.textContent = ui("toggle");
   toggle.setAttribute("aria-pressed", String(language === "zh"));
-  document.querySelector("#experiment-back").textContent = ui("back");
+  const availableLanguages = ["en", "zh"].filter((key) => experiment.languages[key]);
+  toggle.hidden = availableLanguages.length < 2;
+  const back = document.querySelector("#experiment-back");
+  back.textContent = ui("back");
+  back.href = mainSiteHref("extra");
 
   document.querySelector("#experiment-root").innerHTML = `
     <header class="story-hero">
@@ -155,8 +187,8 @@ function render() {
       ${data.closing.map((line) => `<p>${escapeHTML(line)}</p>`).join("")}
       <div class="story-closing-links">
         <a class="story-button is-quiet" href="#top" id="story-restart">${ui("restart")} ↑</a>
-        ${experiment.book !== "" ? `<a class="story-button is-quiet" href="index.html#library">${ui("toLibrary")}</a>` : ""}
-        <a class="story-button" href="index.html#extra">${ui("toExtra")}</a>
+        ${experiment.book !== "" ? `<a class="story-button is-quiet" href="${mainSiteHref("library")}">${ui("toLibrary")}</a>` : ""}
+        <a class="story-button" href="${mainSiteHref("extra")}">${ui("toExtra")}</a>
       </div>
     </section>
   `;
@@ -251,9 +283,7 @@ function scrollToStep(step) {
 
 function setLanguage(nextLanguage) {
   language = nextLanguage;
-  const url = new URL(window.location.href);
-  url.searchParams.set("lang", language);
-  history.replaceState(null, "", url);
+  rememberLanguage(language);
   if (experiment) render();
 }
 
@@ -274,6 +304,7 @@ function attachControls() {
 }
 
 async function initialize() {
+  rememberLanguage(language);
   attachControls();
   const id = params.get("id") || "";
   if (!/^[a-z0-9-]+$/.test(id)) {

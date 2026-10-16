@@ -6,7 +6,6 @@ title: Persuasion
 author: Jane Austen
 date: 2026-10-16
 summary: Persuaded at nineteen to give up the man she loved, Anne Elliot meets him again eight years later and learns to trust her own judgement.
-notice: "Sample content: the views and the closing summary were drafted by Claude as placeholders; replace them with your own. Quotations follow the Project Gutenberg text."
 closing: |
   Persuasion is about a second chance, but its real subject is judgement. The same woman listens to someone else at nineteen and to herself at twenty-seven.
 

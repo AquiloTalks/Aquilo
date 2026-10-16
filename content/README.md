@@ -110,5 +110,6 @@ Each file in `experiments/` becomes one interactive review, listed on the Extra 
 - The paragraphs under the heading are your view of that part of the book.
 - `>> Title of an earlier part` on its own line, before a quotation, shows that part's first quotation beside this one, to compare then and now.
 - Lines starting with `>` are quotations from the book; they are shown after your view, under "From the book". A line with only `>` starts a second paragraph inside the same quotation, such as a translation; in Chinese the translation is shown first and the original opens on a tap.
+- The build stops with a clear error when an experiment is missing its title, summary, closing, or story sections; it also checks duplicate IDs, Library book IDs, bilingual section counts, and `>>` references.
 
 After editing, run `python3 scripts/build_content.py` (or `python3 scripts/build_content.py experiments`).

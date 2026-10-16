@@ -46,7 +46,31 @@ function setLanguageContent(language) {
   modules = cloneContent(content.modules);
 }
 
-let currentLanguage = "en";
+const LANGUAGE_STORAGE_KEY = "aquilo-language";
+
+function savedLanguage() {
+  const urlLanguage = new URLSearchParams(window.location.search).get("lang");
+  if (["en", "zh"].includes(urlLanguage)) return urlLanguage;
+  try {
+    const storedLanguage = window.localStorage.getItem(LANGUAGE_STORAGE_KEY);
+    return ["en", "zh"].includes(storedLanguage) ? storedLanguage : "en";
+  } catch {
+    return "en";
+  }
+}
+
+function rememberLanguage(language) {
+  try {
+    window.localStorage.setItem(LANGUAGE_STORAGE_KEY, language);
+  } catch {
+    // The URL still keeps the preference when browser storage is unavailable.
+  }
+  const url = new URL(window.location.href);
+  url.searchParams.set("lang", language);
+  history.replaceState(null, "", url);
+}
+
+let currentLanguage = savedLanguage();
 let selectedModuleId = "reading";
 let activeLibraryFilter = "all";
 let activeBook = null;
@@ -391,6 +415,7 @@ function applyStaticTranslations() {
 
 function applyLanguage(language) {
   currentLanguage = language;
+  rememberLanguage(language);
   setLanguageContent(language);
 
   applyStaticTranslations();
@@ -1065,6 +1090,7 @@ function attachEventListeners() {
 // ===== Initialize =====
 
 async function initializeApp() {
+  rememberLanguage(currentLanguage);
   try {
     await loadContentData();
   } catch (error) {
