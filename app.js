@@ -873,7 +873,10 @@ function quoteBlocks(text) {
     .split(/\n\s*\n/)
     .map((block) => block.trim())
     .filter(Boolean)
-    .map((block) => `<blockquote class="quote-text">${escapeHTML(block)}</blockquote>`)
+    .map((block) => {
+      const chinese = /[\u3400-\u9fff]/.test(block) ? " is-chinese" : "";
+      return `<blockquote class="quote-text${chinese}">${escapeHTML(block)}</blockquote>`;
+    })
     .join("");
 }
 
