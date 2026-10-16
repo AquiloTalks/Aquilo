@@ -17,7 +17,6 @@ closing: |
 
 ## Kellynch Hall | Chapters 1–3
 
-![Kellynch Hall: a mirror and a great house](assets/experiments/persuasion/01-kellynch.svg)
 
 Sir Walter Elliot lives at Kellynch Hall in Somerset. He cares about two things above all: his looks and his rank. The house is full of mirrors, and his favourite book is the Baronetage, the register of titled families.
 
@@ -27,7 +26,6 @@ After years of extravagance the family is deep in debt. Persuaded by his lawyer 
 
 ## The persuasion, eight years ago | Chapter 4
 
-![Two people with a third opinion between them](assets/experiments/persuasion/02-persuasion.svg)
 
 Eight summers ago, Anne, then nineteen, met a young naval officer named Frederick Wentworth. He was clever, confident and full of spirit, but he had no fortune and no family connections. They fell in love quickly and became engaged.
 
@@ -37,7 +35,6 @@ In the end Anne was persuaded and broke the engagement, believing it was for his
 
 ## The return | Chapters 7–8
 
-![Two people in one room, eight years later](assets/experiments/persuasion/03-return.svg)
 
 Wentworth is now a captain. He has distinguished himself in the war and made a fortune in prize money. He comes back to the country to stay with his sister, ready to marry.
 
@@ -47,7 +44,6 @@ From then on they are often in the same company, yet behave like strangers. He i
 
 ## A nut | Chapters 9–10
 
-![An autumn hedgerow and one sound nut](assets/experiments/persuasion/04-nut.svg)
 
 On an autumn afternoon the party goes for a long walk. Anne, tired, sits down to rest behind a hedgerow and overhears Wentworth talking with Louisa.
 
@@ -57,7 +53,6 @@ Every word seems aimed at Anne. To him firmness is the highest virtue, and her o
 
 ## The Cobb at Lyme | Chapters 11–12
 
-![The Cobb by the sea, with its high steps](assets/experiments/persuasion/05-lyme.svg)
 
 The party travels to the seaside town of Lyme to visit Wentworth's friend Captain Harville, and meets Captain Benwick, who is grieving for his fiancée.
 
@@ -67,7 +62,6 @@ Everyone panics, and Wentworth himself cries out for someone to help him. The fi
 
 ## Bath | Chapters 13–21
 
-![The Royal Crescent at Bath and a polished gentleman](assets/experiments/persuasion/06-bath.svg)
 
 Anne joins her father and sister in Bath. There she meets her cousin, Mr William Elliot, who will one day inherit Sir Walter's title and Kellynch Hall. He is charming and attentive, and especially attentive to Anne.
 
@@ -77,7 +71,6 @@ Meanwhile news arrives that Louisa, while recovering, has fallen in love with Ca
 
 ## The letter at the White Hart | Chapters 22–23
 
-![A letter written at a table](assets/experiments/persuasion/07-letter.svg)
 
 At the White Hart inn, Anne and Captain Harville talk about whether men or women love longer. Anne says the only privilege she claims for her own sex is that of loving longest, when existence or when hope is gone.
 
@@ -87,7 +80,6 @@ In it he tells her that she pierces his soul, that he is half agony, half hope. 
 
 ## The ending | Chapters 23–24
 
-![A ship at sea](assets/experiments/persuasion/08-sea.svg)
 
 That evening they walk together through the streets of Bath and say at last what went unsaid for eight years. Wentworth admits that pride kept him from proposing again once his fortunes had changed.
 
