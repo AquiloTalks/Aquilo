@@ -102,11 +102,12 @@ That command updates the matching JSON files in `data/`.
 
 ## Interactive Reviews (Extra → Experiment)
 
-Each file in `experiments/` becomes one interactive review, listed on the Extra page and opened on its own page (`experiment.html`), so it never slows down the rest of the site. Copy `experiments/_template.md` to start. Use `my-book.en.md` and `my-book.zh.md` for two languages.
+Each file in `experiments/` becomes one interactive review, listed on the Extra page and opened on its own page (`experiment.html`), so it never slows down the rest of the site. The story unfolds as the reader scrolls down. Copy `experiments/_template.md` to start. Use `my-book.en.md` and `my-book.zh.md` for two languages.
 
-- Front matter: `summary` is the one-sentence summary shown first; `closing` is how the story ends; `book` is the matching Library `id`; `notice` is an optional note shown under the summary.
-- Each `## Title | Label` heading is one point on the storyline, revealed one at a time. The label is optional, for example a chapter.
-- Lines starting with `>` are a quotation. A line with only `>` starts a second paragraph inside the same quotation, such as a translation.
-- Other paragraphs under the heading are your comment on that part of the story.
+- Front matter: `summary` is the one-sentence summary shown first; `closing` is your own summary, shown after the story ends; `book` is the matching Library `id`; `notice` is an optional note shown under the summary.
+- Each `## Title | Label` heading is one part of the story. The label is optional, for example the chapters it covers.
+- `![description](path)` on its own line is the picture for that part. Put pictures in `assets/experiments/<book-id>/`; SVG, PNG and JPG all work. The description is shown under the picture.
+- The paragraphs under the heading tell what happens in that part of the book.
+- Lines starting with `>` still work as a quotation if you ever want one.
 
 After editing, run `python3 scripts/build_content.py` (or `python3 scripts/build_content.py experiments`).

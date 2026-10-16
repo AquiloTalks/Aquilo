@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 400" role="img" aria-label="A ship sailing at sea under the morning sun">
+  <defs>
+    <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#f3e3d3"/><stop offset="1" stop-color="#dce9eb"/></linearGradient>
+    <linearGradient id="sea" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#9cccce"/><stop offset="1" stop-color="#6f8ea0"/></linearGradient>
+  </defs>
+  <rect width="640" height="400" fill="url(#sky)"/>
+  <circle cx="470" cy="150" r="54" fill="#f6d9b8"/>
+  <circle cx="470" cy="150" r="80" fill="#f6d9b8" opacity="0.35"/>
+  <rect x="0" y="240" width="640" height="160" fill="url(#sea)"/>
+  <rect x="420" y="246" width="100" height="5" fill="#f6d9b8" opacity="0.7"/>
+  <rect x="440" y="262" width="60" height="4" fill="#f6d9b8" opacity="0.5"/>
+  <g transform="translate(250 250)">
+    <path d="M-110 0 L110 0 L84 40 L-90 40 Z" fill="#6e4a33"/>
+    <rect x="-112" y="-6" width="226" height="8" fill="#b0907a"/>
+    <rect x="-4" y="-190" width="6" height="186" fill="#6e4a33"/>
+    <rect x="-64" y="-150" width="5" height="146" fill="#6e4a33"/>
+    <rect x="58" y="-140" width="5" height="136" fill="#6e4a33"/>
+    <path d="M-1 -180 Q40 -150 0 -110 Z M-1 -104 Q50 -70 0 -24 Z" fill="#fbf8f3"/>
+    <path d="M-61 -140 Q-24 -114 -61 -80 Z M-61 -74 Q-20 -46 -61 -14 Z" fill="#fbf8f3"/>
+    <path d="M61 -130 Q96 -104 61 -74 Z M61 -68 Q100 -42 61 -12 Z" fill="#fbf8f3"/>
+    <path d="M2 -190 L30 -184 L2 -178 Z" fill="#b0907a"/>
+  </g>
+  <g stroke="#ffffff" stroke-width="2.5" fill="none" opacity="0.6" stroke-linecap="round">
+    <path d="M60 320 q15 -8 30 0 t30 0"/><path d="M380 340 q15 -8 30 0 t30 0"/><path d="M520 300 q15 -8 30 0 t30 0"/>
+  </g>
+  <g stroke="#465652" stroke-width="2" fill="none" opacity="0.5" stroke-linecap="round">
+    <path d="M90 110 q8 -8 16 0 q8 -8 16 0"/><path d="M140 80 q6 -6 12 0 q6 -6 12 0"/>
+  </g>
+</svg>

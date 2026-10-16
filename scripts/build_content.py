@@ -335,9 +335,13 @@ def split_paragraphs(lines):
     return paragraphs
 
 
+IMAGE_LINE = re.compile(r"^!\[([^\]]*)\]\(([^)\s]+)\)\s*$")
+
+
 def parse_story_blocks(lines):
-    # A run of "> " lines is one quote; a bare ">" separates its paragraphs.
-    # Everything else is the author's comment, split into paragraphs.
+    # "![alt](path)" on its own line is a picture; a run of "> " lines is one
+    # quote, with a bare ">" separating its paragraphs. Everything else is
+    # text, split into paragraphs.
     blocks, quote_lines, text_lines = [], None, []
 
     def flush_text():
@@ -346,6 +350,11 @@ def parse_story_blocks(lines):
         text_lines.clear()
 
     for line in lines + [""]:
+        image = IMAGE_LINE.match(line.strip())
+        if image and quote_lines is None:
+            flush_text()
+            blocks.append({"type": "image", "alt": image.group(1).strip(), "src": image.group(2)})
+            continue
         if line.startswith(">"):
             if quote_lines is None:
                 flush_text()

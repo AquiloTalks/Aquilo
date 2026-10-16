@@ -8,19 +8,21 @@ date: 2026-10-16
 summary: One sentence that sums up the whole book.
 notice: ""
 closing: |
-  How the story ends for you: one or two short paragraphs.
+  Your own summary of the book, shown after the story ends.
+
+  A second paragraph if you need one.
 ---
 
-## First event | Chapter 1
+## First part of the story | Chapters 1–3
 
-> A sentence quoted from the book.
->
-> Optional second paragraph, such as a translation.
+![What the picture shows](assets/experiments/book-id/01-first-part.svg)
 
-Your comment on this part of the story.
+What happens in this part of the book, told in your own words.
 
-## Next event | Chapter 3
+A second paragraph if you need one.
 
-> Another quotation.
+## Next part of the story | Chapter 4
 
-Your comment.
+![What the picture shows](assets/experiments/book-id/02-next-part.svg)
+
+What happens next.

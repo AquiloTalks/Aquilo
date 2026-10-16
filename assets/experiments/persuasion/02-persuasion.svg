@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 400" role="img" aria-label="Anne and Wentworth separated by Lady Russell's advice">
+  <defs>
+    <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#f3e7dd"/><stop offset="1" stop-color="#f5faf9"/></linearGradient>
+  </defs>
+  <rect width="640" height="400" fill="url(#sky)"/>
+  <circle cx="320" cy="150" r="120" fill="#dabfae" opacity="0.35"/>
+  <rect x="0" y="320" width="640" height="80" fill="#a7b77a" opacity="0.4"/>
+  <path d="M175 200 C 240 150, 400 150, 465 200" fill="none" stroke="#b0907a" stroke-width="3" stroke-dasharray="2 10" stroke-linecap="round"/>
+  <path d="M296 165 L312 182 M344 165 L328 182" stroke="#b0907a" stroke-width="3" stroke-linecap="round"/>
+  <g transform="translate(160 320)">
+    <circle cx="0" cy="-118" r="18" fill="#efe4da" stroke="#465652" stroke-width="2"/>
+    <path d="M-38 0 Q0 -150 38 0 Z" fill="#dabfae"/>
+  </g>
+  <g transform="translate(480 320)">
+    <circle cx="0" cy="-128" r="18" fill="#efe4da" stroke="#465652" stroke-width="2"/>
+    <rect x="-26" y="-108" width="52" height="70" rx="10" fill="#465652" opacity="0.85"/>
+    <rect x="-20" y="-40" width="16" height="40" fill="#465652" opacity="0.85"/>
+    <rect x="4" y="-40" width="16" height="40" fill="#465652" opacity="0.85"/>
+    <circle cx="-8" cy="-92" r="3" fill="#dabfae"/><circle cx="-8" cy="-78" r="3" fill="#dabfae"/>
+  </g>
+  <g transform="translate(320 330)">
+    <circle cx="0" cy="-150" r="20" fill="#efe4da" stroke="#465652" stroke-width="2"/>
+    <path d="M-48 0 Q0 -190 48 0 Z" fill="#7c94a5"/>
+    <path d="M-24 -170 Q0 -196 24 -170" fill="#7c94a5"/>
+  </g>
+  <g fill="none" stroke="#7c94a5" stroke-width="2.5" stroke-linecap="round" opacity="0.8">
+    <path d="M260 175 q-14 -10 0 -20"/><path d="M246 182 q-22 -18 0 -36"/>
+    <path d="M380 175 q14 -10 0 -20"/><path d="M394 182 q22 -18 0 -36"/>
+  </g>
+</svg>
