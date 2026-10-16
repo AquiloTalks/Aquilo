@@ -9,6 +9,7 @@ const UI = {
     back: "← Extra",
     kicker: "Experiment · Story",
     scrollHint: "Scroll down to begin",
+    fromBook: "From the book",
     count: "{current} / {total}",
     endKicker: "The end",
     endHeading: "My summary",
@@ -24,6 +25,7 @@ const UI = {
     back: "← 其他",
     kicker: "实验 · 讲故事",
     scrollHint: "向下滚动，开始讲故事",
+    fromBook: "书中原文",
     count: "{current} / {total}",
     endKicker: "终章",
     endHeading: "我的总结",
@@ -78,7 +80,8 @@ function renderBlock(block) {
 
 function renderNode(node, index) {
   const image = node.blocks.find((block) => block.type === "image");
-  const body = node.blocks.filter((block) => block.type !== "image");
+  const text = node.blocks.filter((block) => block.type === "text");
+  const quotes = node.blocks.filter((block) => block.type === "quote");
   const side = index % 2 === 0 ? "is-left" : "is-right";
   return `
     <li class="story-node ${side}${image ? "" : " has-no-figure"}" data-index="${index}" id="story-node-${index + 1}">
@@ -89,7 +92,12 @@ function renderNode(node, index) {
       <article class="story-body">
         <h2 class="story-title">${escapeHTML(node.title)}</h2>
         ${node.label ? `<p class="story-label-inline">${escapeHTML(node.label)}</p>` : ""}
-        ${body.map(renderBlock).join("")}
+        ${text.map(renderBlock).join("")}
+        ${quotes.length ? `
+          <div class="story-evidence">
+            <p class="story-evidence-label">${ui("fromBook")}</p>
+            ${quotes.map(renderBlock).join("")}
+          </div>` : ""}
       </article>
       ${image ? `
         <figure class="story-figure">

@@ -12,7 +12,7 @@
       "title": "Persuasion",
       "author": "Jane Austen",
       "summary": "Persuaded at nineteen to give up the man she loved, Anne Elliot meets him again eight years later and learns to trust her own judgement.",
-      "notice": "Sample content: the retelling and the closing summary were drafted by Claude as placeholders, and the pictures are sketches. Replace them with your own.",
+      "notice": "Sample content: the views in each part and the closing summary were drafted by Claude as placeholders; replace them with your own. Quotations follow the Project Gutenberg text.",
       "closing": [
         "Persuasion is a story about a second chance, but its real subject is judgement. The same woman listens to someone else at nineteen and to herself at twenty-seven.",
         "Austen never turns Lady Russell into a villain, and never makes Anne regret obeying her. She simply lets time show that judgement is something a person grows into.",
@@ -25,15 +25,23 @@
           "blocks": [
             {
               "type": "text",
-              "text": "Sir Walter Elliot lives at Kellynch Hall in Somerset. He cares about two things above all: his looks and his rank. The house is full of mirrors, and his favourite book is the Baronetage, the register of titled families."
+              "text": "The book opens on the father's mirror, then on the daughter's silence. Sir Walter loves his looks and his rank, and even when the family is in debt his only thought is how not to lose face. In a few pages Austen sets out everything this household values."
             },
             {
               "type": "text",
-              "text": "He has three daughters. Elizabeth, the eldest, is as proud as he is. Mary, the youngest, has married their neighbour Charles Musgrove. Anne, the middle daughter, is clever, gentle and thoughtful, but at home her word has no weight and her convenience always gives way. She is only Anne."
+              "text": "Anne is the only clear-sighted person in the family, and the one with the least voice. \"Only Anne\" puts the heroine where she can barely be heard. The whole novel is that voice slowly growing louder."
             },
             {
-              "type": "text",
-              "text": "After years of extravagance the family is deep in debt. Persuaded by his lawyer and by Lady Russell, Sir Walter agrees to move to Bath and let Kellynch Hall. The tenants are Admiral and Mrs Croft, and Mrs Croft's brother is the man Anne loved eight years before."
+              "type": "quote",
+              "paragraphs": [
+                "Vanity was the beginning and the end of Sir Walter Elliot's character; vanity of person and of situation."
+              ]
+            },
+            {
+              "type": "quote",
+              "paragraphs": [
+                "...her word had no weight, her convenience was always to give way—she was only Anne."
+              ]
             }
           ]
         },
@@ -43,15 +51,23 @@
           "blocks": [
             {
               "type": "text",
-              "text": "Eight summers ago, Anne, then nineteen, met a young naval officer named Frederick Wentworth. He was clever, confident and full of spirit, but he had no fortune and no family connections. They fell in love quickly and became engaged."
+              "text": "The title lives here. Lady Russell is no villain; she truly wants the best for Anne, which is exactly why her advice is so hard to resist. Austen refuses to make her the enemy, and that makes it hurt more: the deepest damage often comes from the people who love us most."
             },
             {
               "type": "text",
-              "text": "Anne's father thought the match beneath them. More important was Lady Russell, her late mother's closest friend, who loved Anne almost as a mother would. She thought the engagement rash and risky, not worth holding on to, and she advised Anne against it again and again."
+              "text": "Austen is not asking who was wrong. She is showing what happens when someone who has no judgement of her own yet borrows another's. Anne's later pain comes less from obeying than from not yet knowing what to trust."
             },
             {
-              "type": "text",
-              "text": "In the end Anne was persuaded and broke the engagement, believing it was for his good. Wentworth thought her weak and too easily led, and left in anger for the sea. In the eight years since, Anne has loved no one else, and her bloom has faded."
+              "type": "quote",
+              "paragraphs": [
+                "She was persuaded to believe the engagement a wrong thing: indiscreet, improper, hardly capable of success, and not deserving it."
+              ]
+            },
+            {
+              "type": "quote",
+              "paragraphs": [
+                "She had been forced into prudence in her youth, she learned romance as she grew older: the natural sequel of an unnatural beginning."
+              ]
             }
           ]
         },
@@ -61,15 +77,23 @@
           "blocks": [
             {
               "type": "text",
-              "text": "Wentworth is now a captain. He has distinguished himself in the war and made a fortune in prize money. He comes back to the country to stay with his sister, ready to marry."
+              "text": "Wentworth comes back rich, admired and still angry. The hardest part to read is that Anne has to hide even her grief: she tells herself eight years have passed, and her heart races at every meeting."
             },
             {
               "type": "text",
-              "text": "Anne is staying with her sister Mary, and the two finally meet again in the drawing room. It lasts a few minutes: a bow, a few polite words, and he is gone. Afterwards Mary tells her carelessly that Wentworth said she was so altered he should not have known her again."
+              "text": "Mary passes on his remark carelessly, yet it is the most painful line in the book. Anne does not argue, because she thinks the same. Austen puts the heaviest words in the lightest mouth, which is cruel and very true to life."
             },
             {
-              "type": "text",
-              "text": "From then on they are often in the same company, yet behave like strangers. He is warm and attentive to the two Musgrove girls, Henrietta and Louisa, and coolly polite to Anne."
+              "type": "quote",
+              "paragraphs": [
+                "Eight years, almost eight years had passed, since all had been given up."
+              ]
+            },
+            {
+              "type": "quote",
+              "paragraphs": [
+                "You were so altered he should not have known you again."
+              ]
             }
           ]
         },
@@ -79,15 +103,23 @@
           "blocks": [
             {
               "type": "text",
-              "text": "On an autumn afternoon the party goes for a long walk. Anne, tired, sits down to rest behind a hedgerow and overhears Wentworth talking with Louisa."
+              "text": "Wentworth is talking to Louisa, but every word lands on Anne, hidden behind the hedgerow. He holds firmness up as the highest virtue and reads Anne's old obedience as weakness. At this point he has neither forgiven nor understood her."
             },
             {
               "type": "text",
-              "text": "He praises Louisa for knowing her own mind. He picks a nut from a branch and says that it was born strong and has outlived all the storms of autumn without a single weak spot. Those who want to be happy, he says, should be firm like this nut."
+              "text": "The nut is the cleverest prop in the book. It seems to praise Louisa, but it is really Wentworth justifying eight years of resentment. Two chapters later, Austen makes that firmness pay."
             },
             {
-              "type": "text",
-              "text": "Every word seems aimed at Anne. To him firmness is the highest virtue, and her old obedience was weakness. Yet on the way home he notices she is tired and, without a word, arranges for her to ride in the Crofts' carriage."
+              "type": "quote",
+              "paragraphs": [
+                "Let those who would be happy be firm."
+              ]
+            },
+            {
+              "type": "quote",
+              "paragraphs": [
+                "...a beautiful glossy nut, which, blessed with original strength, has outlived all the storms of autumn."
+              ]
             }
           ]
         },
@@ -97,15 +129,23 @@
           "blocks": [
             {
               "type": "text",
-              "text": "The party travels to the seaside town of Lyme to visit Wentworth's friend Captain Harville, and meets Captain Benwick, who is grieving for his fiancée."
+              "text": "Louisa's firmness turns out to be wilfulness. She will not be told, jumps from the steps, and is knocked senseless. In the panic, the first person to think clearly is Anne, the one supposedly too easily persuaded."
             },
             {
               "type": "text",
-              "text": "On the Cobb, the stone sea wall, Louisa is in high spirits and insists that Wentworth jump her down from the high steps. He tells her not to; she insists. She jumps half a second too soon, falls hard on the pavement, and lies unconscious."
+              "text": "This is the turning point. Wentworth sees for the first time that firmness and stubbornness are not the same, and that listening to advice is not weakness. Austen does not lecture; she lets an accident teach her characters."
             },
             {
-              "type": "text",
-              "text": "Everyone panics, and Wentworth himself cries out for someone to help him. The first to think clearly is Anne. She sends for a surgeon, arranges for Louisa to be carried indoors and looks after the frightened Henrietta. For the first time Wentworth sees that headstrong firmness and real strength are not the same thing."
+              "type": "quote",
+              "paragraphs": [
+                "...she was too precipitate by half a second, she fell on the pavement on the Lower Cobb, and was taken up lifeless!"
+              ]
+            },
+            {
+              "type": "quote",
+              "paragraphs": [
+                "\"Is there no one to help me?\""
+              ]
             }
           ]
         },
@@ -115,15 +155,23 @@
           "blocks": [
             {
               "type": "text",
-              "text": "Anne joins her father and sister in Bath. There she meets her cousin, Mr William Elliot, who will one day inherit Sir Walter's title and Kellynch Hall. He is charming and attentive, and especially attentive to Anne."
+              "text": "This is the second persuasion. Lady Russell admires the polished Mr Elliot and hopes Anne will marry him. Unlike eight years before, Anne is not pushed along: she watches, listens, and goes to her old friend Mrs Smith for the truth."
             },
             {
               "type": "text",
-              "text": "Lady Russell admires him and hopes Anne will marry him. Anne would become the future mistress of Kellynch, in her mother's place. This is the second persuasion."
+              "text": "This is where Anne really grows. She no longer needs someone else to decide for her, and she does not trust a man just because his manners are good. She is persuaded again, and the result is the opposite of last time; the only difference is that she now has judgement of her own."
             },
             {
-              "type": "text",
-              "text": "Meanwhile news arrives that Louisa, while recovering, has fallen in love with Captain Benwick, and they are engaged. Wentworth is free, and comes to Bath. Anne, visiting her poor and ailing old schoolfriend Mrs Smith, learns the truth about Mr Elliot: he led Mr Smith into extravagance, refused to help his widow after his death, and is courting the family now only to stop Sir Walter remarrying and protect his inheritance."
+              "type": "quote",
+              "paragraphs": [
+                "Mr Elliot is a man without heart or conscience; a designing, wary, cold-blooded being, who thinks only of himself..."
+              ]
+            },
+            {
+              "type": "quote",
+              "paragraphs": [
+                "Oh! he is black at heart, hollow and black!"
+              ]
             }
           ]
         },
@@ -133,15 +181,23 @@
           "blocks": [
             {
               "type": "text",
-              "text": "At the White Hart inn, Anne and Captain Harville talk about whether men or women love longer. Anne says the only privilege she claims for her own sex is that of loving longest, when existence or when hope is gone."
+              "text": "Anne talks to Captain Harville, but speaks for Wentworth to hear; Wentworth writes at the next table, for Anne to read. Each finally says, in their own way, what went unsaid for eight years."
             },
             {
               "type": "text",
-              "text": "Wentworth is sitting at the next table writing a letter, and hears every word. Before he leaves, he quietly leaves a letter for Anne."
+              "text": "It is the quietest scene in the book and the most intense. No embrace, no declaration face to face, only a conversation and a letter, and it moves more than most romantic climaxes. All the restraint before it is repaid here."
             },
             {
-              "type": "text",
-              "text": "In it he tells her that she pierces his soul, that he is half agony, half hope. He says he has loved none but her. He may have been unjust, weak and resentful, but never inconstant. He came to Bath for her alone."
+              "type": "quote",
+              "paragraphs": [
+                "All the privilege I claim for my own sex... is that of loving longest, when existence or when hope is gone."
+              ]
+            },
+            {
+              "type": "quote",
+              "paragraphs": [
+                "You pierce my soul. I am half agony, half hope."
+              ]
             }
           ]
         },
@@ -151,15 +207,23 @@
           "blocks": [
             {
               "type": "text",
-              "text": "That evening they walk together through the streets of Bath and say at last what went unsaid for eight years. Wentworth admits that pride kept him from proposing again once his fortunes had changed."
+              "text": "Anne does not say she was wrong. She says that submitting to Lady Russell was right at the time, though she would never give such advice herself. It is a mature answer: she neither denies the past nor stays bound by it."
             },
             {
               "type": "text",
-              "text": "Anne says she does not think she was wrong to listen to Lady Russell. It was the best choice she could make then, though she would never give such advice herself."
+              "text": "The ending is not a fairy-tale \"happily ever after\" either, but happiness with worry inside it. Being a sailor's wife means living in fear for her husband's safety. Austen gives Anne love and reality together, which makes the ending easier to believe."
             },
             {
-              "type": "text",
-              "text": "They marry. Lady Russell comes to accept Wentworth. Mr Elliot leaves Bath, and Mrs Clay, who had hoped to marry Sir Walter, soon follows him to London. Anne becomes a sailor's wife. She is proud of it, and pays the tax of quick alarm that comes with his profession."
+              "type": "quote",
+              "paragraphs": [
+                "...I was right in submitting to her, and that if I had done otherwise, I should have suffered more in continuing the engagement than I did even in giving it up..."
+              ]
+            },
+            {
+              "type": "quote",
+              "paragraphs": [
+                "She gloried in being a sailor's wife, but she must pay the tax of quick alarm for belonging to that profession..."
+              ]
             }
           ]
         }
@@ -169,7 +233,7 @@
       "title": "劝导",
       "author": "简·奥斯汀",
       "summary": "十九岁时被劝说放弃了爱情的安妮，在八年后与旧爱重逢，终于学会相信自己的判断。",
-      "notice": "示例内容：故事复述和最后的总结由 Claude 临时撰写，插图为示意图，请换成你自己的内容。",
+      "notice": "示例内容：每一节的看法和最后的总结由 Claude 临时撰写，请换成你自己的看法。原文引自 Project Gutenberg 版，中文为自译。",
       "closing": [
         "《劝导》讲的是第二次机会，但它真正的主题是判断。同一个人，十九岁时听从别人，二十七岁时听从自己。",
         "奥斯汀没有把劝她的拉塞尔夫人写成坏人，也没有让安妮后悔当年的服从。她只是让时间证明，一个人的判断是可以慢慢长出来的。",
@@ -182,15 +246,25 @@
           "blocks": [
             {
               "type": "text",
-              "text": "沃尔特·艾略特爵士住在萨默塞特郡的凯林奇府。他最看重两样东西：自己的相貌和自己的爵位。家里挂满了镜子，他最爱读的书是记录贵族家谱的《从男爵名录》。"
+              "text": "开篇先写父亲的镜子，再写女儿的沉默。沃尔特爵士爱的是自己的相貌和爵位，家里欠了债，他想的也只是怎样不丢面子。奥斯汀用短短几页，就把这个家的价值观摆在了读者面前。"
             },
             {
               "type": "text",
-              "text": "他有三个女儿。大女儿伊丽莎白像他一样骄傲，小女儿玛丽嫁给了邻近的查尔斯·马斯格罗夫。二女儿安妮聪明、温柔、有见识，但在家里，她说的话没有分量，她的方便总要让路。她只是安妮。"
+              "text": "安妮是这个家里唯一清醒的人，却也是最没有声音的人。“她只是安妮”这句话，把主角放在了一个几乎听不见的位置。我觉得整本书，就是这个声音一点点变大的过程。"
             },
             {
-              "type": "text",
-              "text": "挥霍多年之后，家里欠下了还不起的债。在律师和拉塞尔夫人的劝说下，沃尔特爵士决定搬去巴斯，把凯林奇府租出去。租客是克罗夫特海军上将夫妇，而克罗夫特夫人的弟弟，正是八年前安妮爱过的那个人。"
+              "type": "quote",
+              "paragraphs": [
+                "Vanity was the beginning and the end of Sir Walter Elliot's character; vanity of person and of situation.",
+                "虚荣，是沃尔特·艾略特爵士性格的开头和结尾：对相貌的虚荣，也对地位的虚荣。"
+              ]
+            },
+            {
+              "type": "quote",
+              "paragraphs": [
+                "...her word had no weight, her convenience was always to give way—she was only Anne.",
+                "……她的话没有分量，她的方便总要让路——她只是安妮。"
+              ]
             }
           ]
         },
@@ -200,15 +274,25 @@
           "blocks": [
             {
               "type": "text",
-              "text": "八年前的夏天，十九岁的安妮遇见了年轻的海军军官弗雷德里克·温特沃斯。他聪明、自信、充满热情，但没有钱，也没有家世。两人很快相爱，并且订了婚。"
+              "text": "书名就藏在这里。劝安妮的拉塞尔夫人并不是坏人，她真心为安妮着想，所以这份劝说才更难反抗。我很喜欢奥斯汀没有把她写成反派：伤害最深的，往往来自最爱你的人。"
             },
             {
               "type": "text",
-              "text": "安妮的父亲觉得这门亲事有失身份。更重要的是拉塞尔夫人，她是安妮去世母亲的挚友，几乎像母亲一样疼爱安妮。她认为这桩婚约轻率、冒险，不值得坚持，于是一次又一次地劝安妮。"
+              "text": "奥斯汀关心的不是谁错了，而是一个人还没有自己的判断力时，会把别人的判断当成自己的。安妮后来的痛苦，不只是因为服从，更是因为她当时还不知道该相信什么。"
             },
             {
-              "type": "text",
-              "text": "安妮最终被说服了，解除了婚约。她以为这是为他好。温特沃斯却认为她软弱、太容易被人左右，愤怒地离开，回到了海上。此后八年，安妮没有再爱上任何人，她的青春也随之凋谢。"
+              "type": "quote",
+              "paragraphs": [
+                "She was persuaded to believe the engagement a wrong thing: indiscreet, improper, hardly capable of success, and not deserving it.",
+                "她被劝说相信，这门婚约是错的：轻率、不合适、几乎不可能成功，也不值得坚持。"
+              ]
+            },
+            {
+              "type": "quote",
+              "paragraphs": [
+                "She had been forced into prudence in her youth, she learned romance as she grew older: the natural sequel of an unnatural beginning.",
+                "年轻时她被迫学会了谨慎，年纪渐长才学会了浪漫：一个不自然的开头，自然会有这样的续篇。"
+              ]
             }
           ]
         },
@@ -218,15 +302,25 @@
           "blocks": [
             {
               "type": "text",
-              "text": "如今的温特沃斯已经是上校。他在战争中立了功，赚到了一大笔奖金，回到乡下，住在姐姐家里，打算娶妻成家。"
+              "text": "温特沃斯回来了，有钱、有名，而且还在生气。这一段最让人难受的，是安妮连伤心都只能藏起来：她一边告诉自己八年已经过去，一边在每一次见面时心跳加速。"
             },
             {
               "type": "text",
-              "text": "安妮住在妹妹玛丽家，两人终于在客厅里再次见面。只有短短几分钟，他向她微微鞠了一躬，说了几句客气话，就离开了。事后玛丽随口告诉安妮，温特沃斯说她变化太大，他差点认不出来了。"
+              "text": "“变得认不出了”这句话是妹妹玛丽随口转述的，却是全书最疼的一句。安妮没有反驳，因为她自己也这么想。奥斯汀让最重的话从最轻的人嘴里说出来，这种写法很残忍，也很真实。"
             },
             {
-              "type": "text",
-              "text": "从那以后，他们常常出现在同一个场合，却像陌生人一样。他对马斯格罗夫家的两个年轻姑娘亨丽埃塔和路易莎热情又殷勤，对安妮只有冷淡的礼貌。"
+              "type": "quote",
+              "paragraphs": [
+                "Eight years, almost eight years had passed, since all had been given up.",
+                "八年，将近八年过去了，自从一切被放弃以后。"
+              ]
+            },
+            {
+              "type": "quote",
+              "paragraphs": [
+                "You were so altered he should not have known you again.",
+                "你变得太多了，他都认不出你了。"
+              ]
             }
           ]
         },
@@ -236,15 +330,25 @@
           "blocks": [
             {
               "type": "text",
-              "text": "一个秋天的下午，一行人去乡间散步。安妮走累了，坐在树篱后面休息，无意中听见了温特沃斯和路易莎的谈话。"
+              "text": "温特沃斯是在对路易莎说话，可每一句都落在躲在树篱后面的安妮身上。他把坚定当成最高的美德，把安妮当年的顺从当成软弱。这时候的他，还没有原谅她，也还没有真正理解她。"
             },
             {
               "type": "text",
-              "text": "温特沃斯称赞路易莎有主见。他从树枝上摘下一颗坚果，说它天生结实，熬过了整个秋天的风暴，身上没有一点伤痕。想要幸福的人，就应该像这颗坚果一样坚定。"
+              "text": "这颗坚果是全书最巧妙的道具。它看起来是在夸路易莎，其实是温特沃斯在为自己八年的怨气找理由。两章之后，奥斯汀就让这种“坚定”付出了代价。"
             },
             {
-              "type": "text",
-              "text": "每一句话都像是在说给安妮听。在他眼里，坚定是最高的美德，而安妮当年的顺从就是软弱。可就在回家的路上，他注意到安妮累了，一声不响地安排她搭上了克罗夫特夫妇的马车。"
+              "type": "quote",
+              "paragraphs": [
+                "Let those who would be happy be firm.",
+                "想要幸福的人，就要坚定。"
+              ]
+            },
+            {
+              "type": "quote",
+              "paragraphs": [
+                "...a beautiful glossy nut, which, blessed with original strength, has outlived all the storms of autumn.",
+                "……一颗漂亮光亮的坚果，凭着天生的结实，熬过了整个秋天的风暴。"
+              ]
             }
           ]
         },
@@ -254,15 +358,25 @@
           "blocks": [
             {
               "type": "text",
-              "text": "一行人去海边小镇莱姆看望温特沃斯的朋友哈维尔上校，也认识了刚失去未婚妻、沉浸在悲痛中的本威克上校。"
+              "text": "路易莎的“坚定”其实是任性。她不听劝，非要从台阶上跳下来，结果摔得不省人事。所有人都慌了，第一个冷静下来、知道该做什么的，偏偏是那个被认为“太容易被说服”的安妮。"
             },
             {
               "type": "text",
-              "text": "在海边的科布石堤上，路易莎玩得兴起，一定要温特沃斯从高高的台阶上把她接下来。他劝她别跳，她却坚持要跳。她早跳了半秒，重重摔在石板上，昏迷不醒。"
+              "text": "这是全书的转折点。温特沃斯在这一刻第一次看清，坚定和固执不是一回事，听得进劝也不等于软弱。奥斯汀没有说教，而是用一场意外让人物自己明白过来。"
             },
             {
-              "type": "text",
-              "text": "所有人都慌了，温特沃斯也乱了方寸，只喊着有没有人能帮帮他。第一个冷静下来的是安妮。她让人去请外科医生，安排把路易莎抬进屋里，照顾受惊的亨丽埃塔。温特沃斯第一次意识到，任性的坚定和真正的坚强并不是一回事。"
+              "type": "quote",
+              "paragraphs": [
+                "...she was too precipitate by half a second, she fell on the pavement on the Lower Cobb, and was taken up lifeless!",
+                "……她早跳了半秒，摔在下科布的石板上，被扶起来时已经没有知觉！"
+              ]
+            },
+            {
+              "type": "quote",
+              "paragraphs": [
+                "\"Is there no one to help me?\"",
+                "“就没有人能帮我吗？”"
+              ]
             }
           ]
         },
@@ -272,15 +386,25 @@
           "blocks": [
             {
               "type": "text",
-              "text": "安妮来到巴斯，与父亲和姐姐团聚。在这里，她遇见了堂兄威廉·艾略特先生，他将来会继承沃尔特爵士的爵位和凯林奇府。艾略特先生风度翩翩，处处体贴，对安妮格外殷勤。"
+              "text": "这是第二次劝说。拉塞尔夫人很看好风度翩翩的艾略特先生，希望安妮嫁给他。和八年前不同的是，这一次安妮没有被推着走。她自己去看、去听，去找老朋友史密斯太太问清真相。"
             },
             {
               "type": "text",
-              "text": "拉塞尔夫人非常欣赏他，希望安妮嫁给他。这样安妮就能成为凯林奇府未来的女主人，住进她母亲曾经住过的地方。这是第二次劝说。"
+              "text": "这一段才是安妮真正的成长。她不再需要别人替她做决定，也不会因为一个人举止得体就相信他。同样是被劝，结果和八年前完全不同，区别只在于她有了自己的判断。"
             },
             {
-              "type": "text",
-              "text": "与此同时，消息传来：路易莎在养伤时爱上了本威克上校，两人已经订婚。温特沃斯重获自由，也来到了巴斯。另一边，安妮去看望贫病交加的老同学史密斯太太，从她那里得知了艾略特先生的真面目：他自私、冷酷，当年带着史密斯先生挥霍，在史密斯先生死后又对他的遗孀见死不救。如今他接近艾略特家，只是为了防止沃尔特爵士再婚，保住自己的继承权。"
+              "type": "quote",
+              "paragraphs": [
+                "Mr Elliot is a man without heart or conscience; a designing, wary, cold-blooded being, who thinks only of himself...",
+                "艾略特先生是一个没有心肝、没有良知的人；工于心计、处处提防、冷血，只想着他自己……"
+              ]
+            },
+            {
+              "type": "quote",
+              "paragraphs": [
+                "Oh! he is black at heart, hollow and black!",
+                "噢！他的心是黑的，空的，黑的！"
+              ]
             }
           ]
         },
@@ -290,15 +414,25 @@
           "blocks": [
             {
               "type": "text",
-              "text": "在白鹿旅馆，安妮和哈维尔上校聊起男人和女人谁更长情。安妮说，女人唯一能为自己要求的特权，就是在生命或希望都已不在的时候，依然爱得最久。"
+              "text": "安妮在和哈维尔上校聊天，话是说给温特沃斯听的；温特沃斯在一旁写信，信是写给安妮看的。两个人终于用各自的方式，把八年没说的话说了出来。"
             },
             {
               "type": "text",
-              "text": "温特沃斯就坐在旁边的桌子上写信。他听见了每一个字。离开前，他悄悄把一封信留给了安妮。"
+              "text": "这是全书最安静，也最激烈的一场戏。没有拥抱，没有当面告白，只有一段对话和一封信，却比很多浪漫小说的高潮都动人。前面所有的克制，到这里都有了回报。"
             },
             {
-              "type": "text",
-              "text": "信里，他告诉安妮，她刺穿了他的灵魂，他一半是痛苦，一半是希望。他说自己从来没有爱过别人，他曾经不公、软弱、充满怨恨，但从未变心。他来巴斯，只是为了她。"
+              "type": "quote",
+              "paragraphs": [
+                "All the privilege I claim for my own sex... is that of loving longest, when existence or when hope is gone.",
+                "我为我们女性所要求的唯一特权……就是在生命或希望都已不在的时候，爱得最久。"
+              ]
+            },
+            {
+              "type": "quote",
+              "paragraphs": [
+                "You pierce my soul. I am half agony, half hope.",
+                "你刺穿了我的灵魂。我一半是痛苦，一半是希望。"
+              ]
             }
           ]
         },
@@ -308,15 +442,25 @@
           "blocks": [
             {
               "type": "text",
-              "text": "那天傍晚，两人在巴斯的街道上并肩散步，终于把八年来没有说出的话都说了出来。温特沃斯承认，自己当年因为骄傲，没有在情况好转之后再来求婚。"
+              "text": "安妮没有说自己当年错了。她说在当时，服从拉塞尔夫人是对的，只是她自己绝不会给别人这样的建议。这个回答很成熟，她不否认过去，也不被过去绑住。"
             },
             {
               "type": "text",
-              "text": "安妮说，她并不认为当年听从拉塞尔夫人是错的。那是她在当时能做的最好的选择，但她自己绝不会给别人这样的建议。"
+              "text": "结尾也不是童话式的“从此幸福”，而是幸福里带着担心。成为海军军官的妻子，意味着要随时为丈夫的安危提心吊胆。奥斯汀给了安妮爱情，也给了她现实，这让结局更可信。"
             },
             {
-              "type": "text",
-              "text": "他们结婚了。拉塞尔夫人最终接受了温特沃斯。艾略特先生离开了巴斯，一心想当沃尔特爵士续弦的克莱夫人也随后跟他去了伦敦。安妮成了一名海军军官的妻子，她以此为荣，也要为丈夫的职业付出随时担惊受怕的代价。"
+              "type": "quote",
+              "paragraphs": [
+                "...I was right in submitting to her, and that if I had done otherwise, I should have suffered more in continuing the engagement than I did even in giving it up...",
+                "……我服从她是对的；如果当时我不那样做，坚持婚约给我带来的痛苦，会比放弃它还要多……"
+              ]
+            },
+            {
+              "type": "quote",
+              "paragraphs": [
+                "She gloried in being a sailor's wife, but she must pay the tax of quick alarm for belonging to that profession...",
+                "她以做一名海军军官的妻子为荣，但也必须为属于这个职业，付出随时担惊受怕的代价……"
+              ]
             }
           ]
         }

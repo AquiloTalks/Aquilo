@@ -107,7 +107,7 @@ Each file in `experiments/` becomes one interactive review, listed on the Extra 
 - Front matter: `summary` is the one-sentence summary shown first; `closing` is your own summary, shown after the story ends; `book` is the matching Library `id`; `notice` is an optional note shown under the summary.
 - Each `## Title | Label` heading is one part of the story. The label is optional, for example the chapters it covers.
 - `![description](path)` on its own line is the picture for that part. Put pictures in `assets/experiments/<book-id>/`; SVG, PNG and JPG all work. The description is shown under the picture.
-- The paragraphs under the heading tell what happens in that part of the book.
-- Lines starting with `>` still work as a quotation if you ever want one.
+- The paragraphs under the heading are your view of that part of the book.
+- Lines starting with `>` are quotations from the book; they are shown after your view, under "From the book". A line with only `>` starts a second paragraph inside the same quotation, such as a translation.
 
 After editing, run `python3 scripts/build_content.py` (or `python3 scripts/build_content.py experiments`).

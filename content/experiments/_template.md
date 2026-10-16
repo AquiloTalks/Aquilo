@@ -17,12 +17,18 @@ closing: |
 
 ![What the picture shows](assets/experiments/book-id/01-first-part.svg)
 
-What happens in this part of the book, told in your own words.
+Your view of this part of the book.
 
 A second paragraph if you need one.
+
+> A sentence quoted from the book that supports your view.
+>
+> Optional second paragraph, such as a translation.
 
 ## Next part of the story | Chapter 4
 
 ![What the picture shows](assets/experiments/book-id/02-next-part.svg)
 
-What happens next.
+Your view of the next part.
+
+> Another quotation.

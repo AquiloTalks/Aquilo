@@ -6,7 +6,7 @@ title: Persuasion
 author: Jane Austen
 date: 2026-10-16
 summary: Persuaded at nineteen to give up the man she loved, Anne Elliot meets him again eight years later and learns to trust her own judgement.
-notice: "Sample content: the retelling and the closing summary were drafted by Claude as placeholders, and the pictures are sketches. Replace them with your own."
+notice: "Sample content: the views in each part and the closing summary were drafted by Claude as placeholders; replace them with your own. Quotations follow the Project Gutenberg text."
 closing: |
   Persuasion is a story about a second chance, but its real subject is judgement. The same woman listens to someone else at nineteen and to herself at twenty-seven.
 
@@ -17,72 +17,80 @@ closing: |
 
 ## Kellynch Hall | Chapters 1–3
 
+The book opens on the father's mirror, then on the daughter's silence. Sir Walter loves his looks and his rank, and even when the family is in debt his only thought is how not to lose face. In a few pages Austen sets out everything this household values.
 
-Sir Walter Elliot lives at Kellynch Hall in Somerset. He cares about two things above all: his looks and his rank. The house is full of mirrors, and his favourite book is the Baronetage, the register of titled families.
+Anne is the only clear-sighted person in the family, and the one with the least voice. "Only Anne" puts the heroine where she can barely be heard. The whole novel is that voice slowly growing louder.
 
-He has three daughters. Elizabeth, the eldest, is as proud as he is. Mary, the youngest, has married their neighbour Charles Musgrove. Anne, the middle daughter, is clever, gentle and thoughtful, but at home her word has no weight and her convenience always gives way. She is only Anne.
+> Vanity was the beginning and the end of Sir Walter Elliot's character; vanity of person and of situation.
 
-After years of extravagance the family is deep in debt. Persuaded by his lawyer and by Lady Russell, Sir Walter agrees to move to Bath and let Kellynch Hall. The tenants are Admiral and Mrs Croft, and Mrs Croft's brother is the man Anne loved eight years before.
+> ...her word had no weight, her convenience was always to give way—she was only Anne.
 
 ## The persuasion, eight years ago | Chapter 4
 
+The title lives here. Lady Russell is no villain; she truly wants the best for Anne, which is exactly why her advice is so hard to resist. Austen refuses to make her the enemy, and that makes it hurt more: the deepest damage often comes from the people who love us most.
 
-Eight summers ago, Anne, then nineteen, met a young naval officer named Frederick Wentworth. He was clever, confident and full of spirit, but he had no fortune and no family connections. They fell in love quickly and became engaged.
+Austen is not asking who was wrong. She is showing what happens when someone who has no judgement of her own yet borrows another's. Anne's later pain comes less from obeying than from not yet knowing what to trust.
 
-Anne's father thought the match beneath them. More important was Lady Russell, her late mother's closest friend, who loved Anne almost as a mother would. She thought the engagement rash and risky, not worth holding on to, and she advised Anne against it again and again.
+> She was persuaded to believe the engagement a wrong thing: indiscreet, improper, hardly capable of success, and not deserving it.
 
-In the end Anne was persuaded and broke the engagement, believing it was for his good. Wentworth thought her weak and too easily led, and left in anger for the sea. In the eight years since, Anne has loved no one else, and her bloom has faded.
+> She had been forced into prudence in her youth, she learned romance as she grew older: the natural sequel of an unnatural beginning.
 
 ## The return | Chapters 7–8
 
+Wentworth comes back rich, admired and still angry. The hardest part to read is that Anne has to hide even her grief: she tells herself eight years have passed, and her heart races at every meeting.
 
-Wentworth is now a captain. He has distinguished himself in the war and made a fortune in prize money. He comes back to the country to stay with his sister, ready to marry.
+Mary passes on his remark carelessly, yet it is the most painful line in the book. Anne does not argue, because she thinks the same. Austen puts the heaviest words in the lightest mouth, which is cruel and very true to life.
 
-Anne is staying with her sister Mary, and the two finally meet again in the drawing room. It lasts a few minutes: a bow, a few polite words, and he is gone. Afterwards Mary tells her carelessly that Wentworth said she was so altered he should not have known her again.
+> Eight years, almost eight years had passed, since all had been given up.
 
-From then on they are often in the same company, yet behave like strangers. He is warm and attentive to the two Musgrove girls, Henrietta and Louisa, and coolly polite to Anne.
+> You were so altered he should not have known you again.
 
 ## A nut | Chapters 9–10
 
+Wentworth is talking to Louisa, but every word lands on Anne, hidden behind the hedgerow. He holds firmness up as the highest virtue and reads Anne's old obedience as weakness. At this point he has neither forgiven nor understood her.
 
-On an autumn afternoon the party goes for a long walk. Anne, tired, sits down to rest behind a hedgerow and overhears Wentworth talking with Louisa.
+The nut is the cleverest prop in the book. It seems to praise Louisa, but it is really Wentworth justifying eight years of resentment. Two chapters later, Austen makes that firmness pay.
 
-He praises Louisa for knowing her own mind. He picks a nut from a branch and says that it was born strong and has outlived all the storms of autumn without a single weak spot. Those who want to be happy, he says, should be firm like this nut.
+> Let those who would be happy be firm.
 
-Every word seems aimed at Anne. To him firmness is the highest virtue, and her old obedience was weakness. Yet on the way home he notices she is tired and, without a word, arranges for her to ride in the Crofts' carriage.
+> ...a beautiful glossy nut, which, blessed with original strength, has outlived all the storms of autumn.
 
 ## The Cobb at Lyme | Chapters 11–12
 
+Louisa's firmness turns out to be wilfulness. She will not be told, jumps from the steps, and is knocked senseless. In the panic, the first person to think clearly is Anne, the one supposedly too easily persuaded.
 
-The party travels to the seaside town of Lyme to visit Wentworth's friend Captain Harville, and meets Captain Benwick, who is grieving for his fiancée.
+This is the turning point. Wentworth sees for the first time that firmness and stubbornness are not the same, and that listening to advice is not weakness. Austen does not lecture; she lets an accident teach her characters.
 
-On the Cobb, the stone sea wall, Louisa is in high spirits and insists that Wentworth jump her down from the high steps. He tells her not to; she insists. She jumps half a second too soon, falls hard on the pavement, and lies unconscious.
+> ...she was too precipitate by half a second, she fell on the pavement on the Lower Cobb, and was taken up lifeless!
 
-Everyone panics, and Wentworth himself cries out for someone to help him. The first to think clearly is Anne. She sends for a surgeon, arranges for Louisa to be carried indoors and looks after the frightened Henrietta. For the first time Wentworth sees that headstrong firmness and real strength are not the same thing.
+> "Is there no one to help me?"
 
 ## Bath | Chapters 13–21
 
+This is the second persuasion. Lady Russell admires the polished Mr Elliot and hopes Anne will marry him. Unlike eight years before, Anne is not pushed along: she watches, listens, and goes to her old friend Mrs Smith for the truth.
 
-Anne joins her father and sister in Bath. There she meets her cousin, Mr William Elliot, who will one day inherit Sir Walter's title and Kellynch Hall. He is charming and attentive, and especially attentive to Anne.
+This is where Anne really grows. She no longer needs someone else to decide for her, and she does not trust a man just because his manners are good. She is persuaded again, and the result is the opposite of last time; the only difference is that she now has judgement of her own.
 
-Lady Russell admires him and hopes Anne will marry him. Anne would become the future mistress of Kellynch, in her mother's place. This is the second persuasion.
+> Mr Elliot is a man without heart or conscience; a designing, wary, cold-blooded being, who thinks only of himself...
 
-Meanwhile news arrives that Louisa, while recovering, has fallen in love with Captain Benwick, and they are engaged. Wentworth is free, and comes to Bath. Anne, visiting her poor and ailing old schoolfriend Mrs Smith, learns the truth about Mr Elliot: he led Mr Smith into extravagance, refused to help his widow after his death, and is courting the family now only to stop Sir Walter remarrying and protect his inheritance.
+> Oh! he is black at heart, hollow and black!
 
 ## The letter at the White Hart | Chapters 22–23
 
+Anne talks to Captain Harville, but speaks for Wentworth to hear; Wentworth writes at the next table, for Anne to read. Each finally says, in their own way, what went unsaid for eight years.
 
-At the White Hart inn, Anne and Captain Harville talk about whether men or women love longer. Anne says the only privilege she claims for her own sex is that of loving longest, when existence or when hope is gone.
+It is the quietest scene in the book and the most intense. No embrace, no declaration face to face, only a conversation and a letter, and it moves more than most romantic climaxes. All the restraint before it is repaid here.
 
-Wentworth is sitting at the next table writing a letter, and hears every word. Before he leaves, he quietly leaves a letter for Anne.
+> All the privilege I claim for my own sex... is that of loving longest, when existence or when hope is gone.
 
-In it he tells her that she pierces his soul, that he is half agony, half hope. He says he has loved none but her. He may have been unjust, weak and resentful, but never inconstant. He came to Bath for her alone.
+> You pierce my soul. I am half agony, half hope.
 
 ## The ending | Chapters 23–24
 
+Anne does not say she was wrong. She says that submitting to Lady Russell was right at the time, though she would never give such advice herself. It is a mature answer: she neither denies the past nor stays bound by it.
 
-That evening they walk together through the streets of Bath and say at last what went unsaid for eight years. Wentworth admits that pride kept him from proposing again once his fortunes had changed.
+The ending is not a fairy-tale "happily ever after" either, but happiness with worry inside it. Being a sailor's wife means living in fear for her husband's safety. Austen gives Anne love and reality together, which makes the ending easier to believe.
 
-Anne says she does not think she was wrong to listen to Lady Russell. It was the best choice she could make then, though she would never give such advice herself.
+> ...I was right in submitting to her, and that if I had done otherwise, I should have suffered more in continuing the engagement than I did even in giving it up...
 
-They marry. Lady Russell comes to accept Wentworth. Mr Elliot leaves Bath, and Mrs Clay, who had hoped to marry Sir Walter, soon follows him to London. Anne becomes a sailor's wife. She is proud of it, and pays the tax of quick alarm that comes with his profession.
+> She gloried in being a sailor's wife, but she must pay the tax of quick alarm for belonging to that profession...

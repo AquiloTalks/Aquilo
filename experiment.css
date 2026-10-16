@@ -250,6 +250,22 @@
   line-height: 1.85;
 }
 
+.story-evidence {
+  display: grid;
+  gap: 10px;
+  margin-top: 4px;
+  padding-top: 14px;
+  border-top: 1px dashed var(--story-accent-line);
+}
+
+.story-evidence-label {
+  color: var(--story-accent-text);
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
 .story-quote {
   margin: 0;
   padding: 12px 16px;
