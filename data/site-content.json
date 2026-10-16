@@ -389,16 +389,14 @@
       "recentHeading": "Latest traces",
       "viewAllRead": "All read books →",
       "metaDescription": "Aquilo — a private literature cabinet of books, reading notes, fiction and reflection.",
-      "experimentsKicker": "Experiment",
-      "experimentsHeading": "Interactive reviews",
-      "experimentsDescription": "Book reviews told step by step instead of all at once.",
-      "noExperiments": "No interactive reviews yet.",
+      "experimentsKicker": "Extra",
+      "experimentsHeading": "Experiment",
+      "experimentsDescription": "Book reviews told step by step.",
+      "noExperiments": "Nothing here yet.",
       "experimentTypeStory": "Story",
       "experimentSteps": "{count} steps",
       "experimentOpen": "Open",
-      "experimentRead": "Read it as a story",
-      "experimentsModuleBody": "{count} so far. Latest: {title}.",
-      "latestExperiment": "Latest interactive review"
+      "experimentRead": "Read it as a story"
     },
     "zh": {
       "htmlLang": "zh-CN",
@@ -509,16 +507,14 @@
       "recentHeading": "最新的阅读痕迹",
       "viewAllRead": "全部已读 →",
       "metaDescription": "Aquilo——私人文学档案柜：书、读后感、小说与思考。",
-      "experimentsKicker": "实验",
-      "experimentsHeading": "互动书评",
-      "experimentsDescription": "不是一次读完的书评，而是一步一步展开。",
-      "noExperiments": "还没有互动书评。",
+      "experimentsKicker": "其他",
+      "experimentsHeading": "实验",
+      "experimentsDescription": "一步一步展开的书评。",
+      "noExperiments": "这里还没有内容。",
       "experimentTypeStory": "讲故事",
       "experimentSteps": "{count} 步",
       "experimentOpen": "打开",
-      "experimentRead": "以讲故事的方式读这篇书评",
-      "experimentsModuleBody": "目前 {count} 篇，最新：{title}。",
-      "latestExperiment": "最新互动书评"
+      "experimentRead": "以讲故事的方式读这篇书评"
     }
   }
 }

@@ -256,7 +256,7 @@ function openExtraSection(targetId) {
   }
 }
 
-// On Home, the Extra rows open the Extra page; the reviews row jumps to its list.
+// On Home, the Extra rows open the Extra page; the Experiments row jumps to its list.
 function createExtraDetailList(items) {
   const list = createDetailList(items.slice(0, 2));
   const [postsRow, experimentsRow] = list.children;
@@ -265,15 +265,6 @@ function createExtraDetailList(items) {
     makeRowLink(experimentsRow, () => openExtraSection("experiments-heading"));
   }
   return list;
-}
-
-function addExperimentLink(samplePanel) {
-  if (!experiments.length) return;
-  const link = document.createElement("a");
-  link.className = "sample-panel-link";
-  link.href = experimentHref(experiments[0]);
-  link.textContent = `${t("experimentOpen")} →`;
-  samplePanel.append(link);
 }
 
 function localizeExperiment(item) {
@@ -368,22 +359,6 @@ function getModuleView(moduleId) {
       ? [[latest.title, makePreview(latest.body, t("extraDefaultBody"))]]
       : base.sample;
 
-    if (experiments.length) {
-      const latestExperiment = localizeExperiment(experiments[0]);
-      module.includes = [
-        posts.length
-          ? [t("extraFormHeading"), t("extraModuleDescription").replace("{count}", posts.length)]
-          : base.includes[0],
-        [
-          t("experimentsHeading"),
-          t("experimentsModuleBody")
-            .replace("{count}", experiments.length)
-            .replace("{title}", latestExperiment.title),
-        ],
-      ];
-      module.sampleTitle = t("latestExperiment");
-      module.sample = [[latestExperiment.title, latestExperiment.summary]];
-    }
   }
 
   return module;
@@ -471,7 +446,6 @@ function renderModule(moduleId) {
     detailList = createReadingDetailList(module.includes, sample);
   } else if (moduleId === "fiction") {
     detailList = createExtraDetailList(module.includes);
-    addExperimentLink(sample);
   } else {
     detailList = createDetailList(module.includes.slice(0, 2));
   }

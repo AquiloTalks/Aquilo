@@ -1597,7 +1597,7 @@ button {
   }
 }
 
-/* Interactive reviews (Extra page) */
+/* Experiment panel (Extra page) */
 .experiments-panel {
   --section-accent: #b0907a;
   --section-accent-line: rgba(176, 144, 122, 0.3);
@@ -1672,18 +1672,4 @@ button {
   color: #8a6a55;
   font-size: 14px;
   font-weight: 600;
-}
-
-.sample-panel-link {
-  display: inline-block;
-  margin-top: 10px;
-  color: #8a6a55;
-  font-size: 14px;
-  font-weight: 600;
-  text-decoration: none;
-}
-
-.sample-panel-link:hover,
-.sample-panel-link:focus-visible {
-  text-decoration: underline;
 }
