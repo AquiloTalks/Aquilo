@@ -395,7 +395,8 @@
       "noExperiments": "No interactive reviews yet.",
       "experimentTypeStory": "Story",
       "experimentSteps": "{count} steps",
-      "experimentOpen": "Open"
+      "experimentOpen": "Open",
+      "experimentRead": "Read it as a story"
     },
     "zh": {
       "htmlLang": "zh-CN",
@@ -512,7 +513,8 @@
       "noExperiments": "还没有互动书评。",
       "experimentTypeStory": "讲故事",
       "experimentSteps": "{count} 步",
-      "experimentOpen": "打开"
+      "experimentOpen": "打开",
+      "experimentRead": "以讲故事的方式读这篇书评"
     }
   }
 }

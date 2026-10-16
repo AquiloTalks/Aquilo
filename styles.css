@@ -1649,3 +1649,27 @@ button {
   font-size: 13px;
   font-weight: 600;
 }
+
+.overview-experiment {
+  display: grid;
+  gap: 4px;
+  padding: 12px 14px;
+  border: 1px solid rgba(176, 144, 122, 0.3);
+  border-radius: var(--radius);
+  background: rgba(176, 144, 122, 0.08);
+  color: var(--ink);
+  text-decoration: none;
+  transition: border-color var(--transition-base), background var(--transition-base);
+}
+
+.overview-experiment:hover,
+.overview-experiment:focus-visible {
+  border-color: #b0907a;
+  background: rgba(176, 144, 122, 0.14);
+}
+
+.overview-experiment span {
+  color: #8a6a55;
+  font-size: 14px;
+  font-weight: 600;
+}

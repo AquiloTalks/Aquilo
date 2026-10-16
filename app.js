@@ -762,6 +762,10 @@ function renderExtraPosts() {
   renderExperiments();
 }
 
+function experimentHref(item) {
+  return `experiment.html?id=${encodeURIComponent(item.id)}&lang=${currentLanguage}`;
+}
+
 function renderExperiments() {
   const list = document.querySelector("#experiment-list");
   if (!list) return;
@@ -774,7 +778,7 @@ function renderExperiments() {
   list.innerHTML = experiments.map((item) => {
     const versions = item.languages || {};
     const localized = versions[currentLanguage] || versions.default || versions.en || versions.zh || {};
-    const href = `experiment.html?id=${encodeURIComponent(item.id)}&lang=${currentLanguage}`;
+    const href = experimentHref(item);
     const meta = [t("experimentTypeStory"), t("experimentSteps").replace("{count}", item.steps)].join(" · ");
     return `
       <a class="experiment-card" href="${href}">
@@ -835,6 +839,7 @@ function openBookDetail(book, initialTab = "overview") {
   ].filter(Boolean).join(" · ");
   const review = getBookReview(book);
   const readKeys = (book.readDates || []).map(getTimelineMonthKey).filter(Boolean).sort();
+  const experiment = experiments.find((item) => String(item.book) === String(book.id));
 
   const available = {
     overview: true,
@@ -871,7 +876,12 @@ function openBookDetail(book, initialTab = "overview") {
           <p>${escapeHTML(makePreview(review, "", 200))}</p>
           <button type="button" class="book-review-link" data-goto-tab="review">${t("readFullReview")} →</button>
         </div>` : ""}
-      ${!book.why && !book.mood && !tags.length && !review ? `<p class="panel-empty">${t("noNotesYet")}</p>` : ""}
+      ${experiment ? `
+        <a class="book-section overview-experiment" href="${experimentHref(experiment)}">
+          <h4>${t("experimentsHeading")}</h4>
+          <span>${t("experimentRead")} →</span>
+        </a>` : ""}
+      ${!book.why && !book.mood && !tags.length && !review && !experiment ? `<p class="panel-empty">${t("noNotesYet")}</p>` : ""}
     </div>
 
     <div class="book-panel" data-tab="author">

@@ -8,6 +8,7 @@ const UI = {
     toggle: "中文",
     back: "← Extra",
     scrollHint: "Scroll down",
+    original: "Original",
     restart: "Back to the top",
     toLibrary: "See the book in the library",
     toExtra: "Back to Extra",
@@ -19,6 +20,7 @@ const UI = {
     toggle: "EN",
     back: "← 其他",
     scrollHint: "向下滚动",
+    original: "英文原文",
     restart: "回到开头",
     toLibrary: "在书库中查看这本书",
     toExtra: "回到「其他」",
@@ -56,31 +58,64 @@ function content() {
   return versions[language] || versions.default || versions.en || versions.zh;
 }
 
-function renderBlock(block) {
-  if (block.type === "quote") {
-    const [original, ...rest] = block.paragraphs;
+// A quote is the original line, optionally followed by a translation. When the
+// page is in Chinese and a translation exists, the translation leads and the
+// original opens on request.
+function renderQuote(paragraphs) {
+  const [original, ...translation] = paragraphs;
+  if (language === "zh" && translation.length) {
     return `
       <blockquote class="story-quote">
-        <p class="story-quote-original">${escapeHTML(original)}</p>
-        ${rest.map((line) => `<p class="story-quote-translation">${escapeHTML(line)}</p>`).join("")}
+        ${translation.map((line) => `<p class="story-quote-main">${escapeHTML(line)}</p>`).join("")}
+        <details class="story-original">
+          <summary>${ui("original")}</summary>
+          <p lang="en">${escapeHTML(original)}</p>
+        </details>
       </blockquote>`;
   }
-  return `<p class="story-text">${escapeHTML(block.text)}</p>`;
+  return `
+    <blockquote class="story-quote">
+      <p class="story-quote-main">${escapeHTML(original)}</p>
+      ${translation.map((line) => `<p class="story-quote-translation">${escapeHTML(line)}</p>`).join("")}
+    </blockquote>`;
 }
 
-function renderNode(node, index) {
+// The earlier quote and this part's quote, side by side, so the change shows.
+function renderEcho(echo, quote, nodes) {
+  const earlier = nodes[echo.index];
+  return `
+    <div class="story-compare">
+      <div class="story-compare-side is-then">
+        <a class="story-compare-title" href="#story-node-${echo.index + 1}" data-step="${echo.index + 1}">↑ ${escapeHTML(earlier.title)}</a>
+        ${renderQuote(echo.paragraphs)}
+      </div>
+      <span class="story-compare-arrow" aria-hidden="true">→</span>
+      <div class="story-compare-side is-now">
+        ${quote ? renderQuote(quote.paragraphs) : ""}
+      </div>
+    </div>`;
+}
+
+function renderNode(node, index, nodes) {
   const image = node.blocks.find((block) => block.type === "image");
   const text = node.blocks.filter((block) => block.type === "text");
-  const quotes = node.blocks.filter((block) => block.type === "quote");
+  const echo = node.blocks.find((block) => block.type === "echo");
+  let quotes = node.blocks.filter((block) => block.type === "quote");
+  let compare = "";
+  if (echo) {
+    compare = renderEcho(echo, quotes[0], nodes);
+    quotes = quotes.slice(1);
+  }
   return `
     <li class="story-node${image ? "" : " has-no-figure"}" data-index="${index}" id="story-node-${index + 1}">
       <span class="story-marker" aria-hidden="true"></span>
       <article class="story-body">
         <h2 class="story-title">${escapeHTML(node.title)}</h2>
-        ${text.map(renderBlock).join("")}
-        ${quotes.length ? `
+        ${text.map((block) => `<p class="story-text">${escapeHTML(block.text)}</p>`).join("")}
+        ${compare || quotes.length ? `
           <div class="story-evidence">
-            ${quotes.map(renderBlock).join("")}
+            ${compare}
+            ${quotes.map((block) => renderQuote(block.paragraphs)).join("")}
           </div>` : ""}
       </article>
       ${image ? `
@@ -112,7 +147,7 @@ function render() {
     <div class="storyline" id="storyline">
       <span class="storyline-fill" id="storyline-fill" aria-hidden="true"></span>
       <ol class="story-list">
-        ${data.nodes.map(renderNode).join("")}
+        ${data.nodes.map((node, index) => renderNode(node, index, data.nodes)).join("")}
       </ol>
     </div>
 
@@ -133,6 +168,12 @@ function render() {
   document.querySelector(".story-scroll-hint").addEventListener("click", (event) => {
     event.preventDefault();
     scrollToStep(1);
+  });
+  document.querySelectorAll(".story-compare-title[data-step]").forEach((link) => {
+    link.addEventListener("click", (event) => {
+      event.preventDefault();
+      scrollToStep(link.dataset.step);
+    });
   });
   document.querySelector("#story-restart").addEventListener("click", (event) => {
     event.preventDefault();
@@ -163,14 +204,14 @@ function observeReveals() {
   targets.forEach((target) => revealObserver.observe(target));
 }
 
-// The line fills down to the middle of the screen; the node above that point is current.
+// The line fills down to just above the middle of the screen; the part above that point is current.
 function updateScrollState() {
   scrollFrame = 0;
   if (!experiment) return;
   const storyline = document.querySelector("#storyline");
   const nodes = [...document.querySelectorAll(".story-node")];
   const total = nodes.length;
-  const focusY = window.innerHeight * 0.5;
+  const focusY = window.innerHeight * 0.4;
 
   const lineBox = storyline.getBoundingClientRect();
   const filled = Math.max(0, Math.min(lineBox.height, focusY - lineBox.top));

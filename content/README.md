@@ -108,6 +108,7 @@ Each file in `experiments/` becomes one interactive review, listed on the Extra 
 - Each `## Title` heading is one part of the story.
 - `![description](path)` on its own line is the picture for that part. Put pictures in `assets/experiments/<book-id>/`; SVG, PNG and JPG all work. The description is shown under the picture.
 - The paragraphs under the heading are your view of that part of the book.
-- Lines starting with `>` are quotations from the book; they are shown after your view, under "From the book". A line with only `>` starts a second paragraph inside the same quotation, such as a translation.
+- `>> Title of an earlier part` on its own line, before a quotation, shows that part's first quotation beside this one, to compare then and now.
+- Lines starting with `>` are quotations from the book; they are shown after your view, under "From the book". A line with only `>` starts a second paragraph inside the same quotation, such as a translation; in Chinese the translation is shown first and the original opens on a tap.
 
 After editing, run `python3 scripts/build_content.py` (or `python3 scripts/build_content.py experiments`).

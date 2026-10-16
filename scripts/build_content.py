@@ -339,9 +339,10 @@ IMAGE_LINE = re.compile(r"^!\[([^\]]*)\]\(([^)\s]+)\)\s*$")
 
 
 def parse_story_blocks(lines):
-    # "![alt](path)" on its own line is a picture; a run of "> " lines is one
-    # quote, with a bare ">" separating its paragraphs. Everything else is
-    # text, split into paragraphs.
+    # "![alt](path)" on its own line is a picture; ">> Title" sets this part's
+    # quote beside the first quote of the earlier part with that title; a run
+    # of "> " lines is one quote, with a bare ">" separating its paragraphs.
+    # Everything else is text, split into paragraphs.
     blocks, quote_lines, text_lines = [], None, []
 
     def flush_text():
@@ -355,6 +356,10 @@ def parse_story_blocks(lines):
             flush_text()
             blocks.append({"type": "image", "alt": image.group(1).strip(), "src": image.group(2)})
             continue
+        if line.startswith(">>") and quote_lines is None:
+            flush_text()
+            blocks.append({"type": "echo", "ref": line[2:].strip()})
+            continue
         if line.startswith(">"):
             if quote_lines is None:
                 flush_text()
@@ -367,6 +372,34 @@ def parse_story_blocks(lines):
         text_lines.append(line)
     flush_text()
     return blocks
+
+
+def resolve_echoes(nodes, source):
+    for index, node in enumerate(nodes):
+        for block in node["blocks"]:
+            if block["type"] != "echo":
+                continue
+            earlier = next(
+                (
+                    (position, other)
+                    for position, other in enumerate(nodes[:index])
+                    if other["title"] == block["ref"]
+                ),
+                None,
+            )
+            quote = next(
+                (item for item in (earlier[1]["blocks"] if earlier else []) if item["type"] == "quote"),
+                None,
+            )
+            if not quote:
+                print(f"warning: {source}: no earlier part titled \"{block['ref']}\" with a quote", file=sys.stderr)
+                continue
+            block["index"] = earlier[0]
+            block["paragraphs"] = quote["paragraphs"]
+        node["blocks"] = [
+            block for block in node["blocks"] if block["type"] != "echo" or "paragraphs" in block
+        ]
+    return nodes
 
 
 def parse_story_body(body):
@@ -411,7 +444,7 @@ def build_experiments(section):
                 "summary": version_metadata.get("summary", ""),
                 "notice": version_metadata.get("notice", ""),
                 "closing": split_paragraphs(version_metadata.get("closing", "").splitlines()),
-                "nodes": parse_story_body(version_body),
+                "nodes": resolve_echoes(parse_story_body(version_body), source_file(versions[language])),
             }
 
         common = {

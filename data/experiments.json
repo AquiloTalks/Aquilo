@@ -8,7 +8,7 @@
       "content/experiments/persuasion.en.md",
       "content/experiments/persuasion.zh.md"
     ],
-    "steps": 8,
+    "steps": 6,
     "languages": {
       "en": {
         "title": "Persuasion",
