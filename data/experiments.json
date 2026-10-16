@@ -1,0 +1,25 @@
+[
+  {
+    "id": "persuasion",
+    "type": "story",
+    "book": 11,
+    "createdAt": "2026-10-16T00:00:00.000Z",
+    "sourceFiles": [
+      "content/experiments/persuasion.en.md",
+      "content/experiments/persuasion.zh.md"
+    ],
+    "steps": 8,
+    "languages": {
+      "en": {
+        "title": "Persuasion",
+        "author": "Jane Austen",
+        "summary": "Persuaded at nineteen to give up the man she loved, Anne Elliot meets him again eight years later and learns to trust her own judgement."
+      },
+      "zh": {
+        "title": "劝导",
+        "author": "简·奥斯汀",
+        "summary": "十九岁时被劝说放弃了爱情的安妮，在八年后与旧爱重逢，终于学会相信自己的判断。"
+      }
+    }
+  }
+]

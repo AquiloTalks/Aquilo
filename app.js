@@ -7,6 +7,7 @@ let siteContent = null;
 let writingPieces = [];
 let criticalNotes = [];
 let extraPosts = [];
+let experiments = [];
 
 async function loadJSON(path) {
   const response = await fetch(path);
@@ -17,12 +18,13 @@ async function loadJSON(path) {
 }
 
 async function loadContentData() {
-  const [content, books, fiction, reflections, extra] = await Promise.all([
+  const [content, books, fiction, reflections, extra, experimentIndex] = await Promise.all([
     loadJSON("data/site-content.json"),
     loadJSON("data/books.json"),
     loadJSON("data/fiction.json"),
     loadJSON("data/reflections.json"),
     loadJSON("data/extra.json"),
+    loadJSON("data/experiments.json").catch(() => []),
   ]);
 
   siteContent = content;
@@ -31,6 +33,7 @@ async function loadContentData() {
   writingPieces = normalizePublicEntries(fiction, "fiction");
   criticalNotes = normalizePublicEntries(reflections, "reflection");
   extraPosts = normalizePublicEntries(extra, "extra");
+  experiments = Array.isArray(experimentIndex) ? experimentIndex : [];
   setLanguageContent(currentLanguage);
 }
 
@@ -756,6 +759,32 @@ function renderExtraPosts() {
   const extraList = document.querySelector("#extra-list");
   if (!extraList) return;
   extraList.replaceChildren(createContentList(extraPosts, t("noExtra"), "extra"));
+  renderExperiments();
+}
+
+function renderExperiments() {
+  const list = document.querySelector("#experiment-list");
+  if (!list) return;
+
+  if (!experiments.length) {
+    list.innerHTML = `<div class="library-empty compact-empty"><p>${t("noExperiments")}</p></div>`;
+    return;
+  }
+
+  list.innerHTML = experiments.map((item) => {
+    const versions = item.languages || {};
+    const localized = versions[currentLanguage] || versions.default || versions.en || versions.zh || {};
+    const href = `experiment.html?id=${encodeURIComponent(item.id)}&lang=${currentLanguage}`;
+    const meta = [t("experimentTypeStory"), t("experimentSteps").replace("{count}", item.steps)].join(" · ");
+    return `
+      <a class="experiment-card" href="${href}">
+        <p class="writing-meta">${escapeHTML(meta)}</p>
+        <h3>${escapeHTML(localized.title)}</h3>
+        ${localized.author ? `<p class="experiment-author">${escapeHTML(localized.author)}</p>` : ""}
+        <p class="experiment-summary">${escapeHTML(localized.summary)}</p>
+        <span class="experiment-open">${t("experimentOpen")} →</span>
+      </a>`;
+  }).join("");
 }
 
 // ===== Book Detail Modal =====

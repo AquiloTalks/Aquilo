@@ -314,6 +314,121 @@ def build_library(section):
     return section["output_file"], len(entries)
 
 
+EXPERIMENTS_SECTION = {
+    "name": "experiments",
+    "source_dir": "content/experiments",
+    "index_file": "data/experiments.json",
+    "detail_dir": "data/experiments",
+}
+
+
+def split_paragraphs(lines):
+    paragraphs, current = [], []
+    for line in lines:
+        if line.strip():
+            current.append(line.strip())
+        elif current:
+            paragraphs.append(" ".join(current))
+            current = []
+    if current:
+        paragraphs.append(" ".join(current))
+    return paragraphs
+
+
+def parse_story_blocks(lines):
+    # A run of "> " lines is one quote; a bare ">" separates its paragraphs.
+    # Everything else is the author's comment, split into paragraphs.
+    blocks, quote_lines, text_lines = [], None, []
+
+    def flush_text():
+        for paragraph in split_paragraphs(text_lines):
+            blocks.append({"type": "text", "text": paragraph})
+        text_lines.clear()
+
+    for line in lines + [""]:
+        if line.startswith(">"):
+            if quote_lines is None:
+                flush_text()
+                quote_lines = []
+            quote_lines.append(line[1:].strip())
+            continue
+        if quote_lines is not None:
+            blocks.append({"type": "quote", "paragraphs": split_paragraphs(quote_lines)})
+            quote_lines = None
+        text_lines.append(line)
+    flush_text()
+    return blocks
+
+
+def parse_story_body(body):
+    # Each "## Title | Label" heading starts one point on the storyline.
+    nodes = []
+    for chunk in re.split(r"^## ", body, flags=re.MULTILINE)[1:]:
+        heading, _, rest = chunk.partition("\n")
+        title, _, label = heading.partition("|")
+        nodes.append(
+            {
+                "title": title.strip(),
+                "label": label.strip(),
+                "blocks": parse_story_blocks(rest.splitlines()),
+            }
+        )
+    return nodes
+
+
+def build_experiments(section):
+    source_dir = ROOT / section["source_dir"]
+    if not source_dir.exists():
+        return section["index_file"], 0
+
+    detail_dir = ROOT / section["detail_dir"]
+    detail_dir.mkdir(parents=True, exist_ok=True)
+
+    index = []
+    for base, versions in sorted(group_markdown_files(section["source_dir"]).items()):
+        parsed = {
+            language: parse_front_matter(path.read_text(encoding="utf-8"))
+            for language, path in versions.items()
+        }
+        metadata = parsed.get("default", parsed.get("en", parsed.get("zh")))[0]
+        experiment_id = slugify(metadata.get("id") or base) or base
+
+        languages = {}
+        for language, (version_metadata, version_body) in parsed.items():
+            key = language if language in LANGUAGES else "default"
+            languages[key] = {
+                "title": version_metadata.get("title") or metadata.get("title") or base,
+                "author": version_metadata.get("author") or metadata.get("author", ""),
+                "summary": version_metadata.get("summary", ""),
+                "notice": version_metadata.get("notice", ""),
+                "closing": split_paragraphs(version_metadata.get("closing", "").splitlines()),
+                "nodes": parse_story_body(version_body),
+            }
+
+        common = {
+            "id": experiment_id,
+            "type": metadata.get("type") or "story",
+            "book": normalize_book_id(metadata.get("book"), ""),
+            "createdAt": to_iso_date(metadata.get("date")),
+            "sourceFiles": [source_file(path) for _, path in sorted(versions.items())],
+        }
+        write_json(f"{section['detail_dir']}/{experiment_id}.json", {**common, "languages": languages})
+        index.append(
+            {
+                **common,
+                "steps": len(next(iter(languages.values()))["nodes"]),
+                "languages": {
+                    language: {key: value[key] for key in ("title", "author", "summary")}
+                    for language, value in languages.items()
+                },
+            }
+        )
+
+    index.sort(key=lambda entry: entry["createdAt"], reverse=True)
+    write_json(section["index_file"], index)
+    return section["index_file"], len(index)
+
+
 def main():
     selected = set(sys.argv[1:])
     run_all = not selected
@@ -323,6 +438,10 @@ def main():
         if library_dir.exists() and any(markdown_files(LIBRARY_SECTION["source_dir"])):
             output_file, count = build_library(LIBRARY_SECTION)
             print(f"{output_file}: {count} entr{entry_suffix(count)}")
+
+    if run_all or "experiments" in selected:
+        output_file, count = build_experiments(EXPERIMENTS_SECTION)
+        print(f"{output_file}: {count} entr{entry_suffix(count)}")
 
     for section in SECTIONS:
         if not run_all and section["name"] not in selected:

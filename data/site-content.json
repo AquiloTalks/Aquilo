@@ -388,7 +388,14 @@
       "recentKicker": "Recently read",
       "recentHeading": "Latest traces",
       "viewAllRead": "All read books →",
-      "metaDescription": "Aquilo — a private literature cabinet of books, reading notes, fiction and reflection."
+      "metaDescription": "Aquilo — a private literature cabinet of books, reading notes, fiction and reflection.",
+      "experimentsKicker": "Experiment",
+      "experimentsHeading": "Interactive reviews",
+      "experimentsDescription": "Book reviews told step by step instead of all at once.",
+      "noExperiments": "No interactive reviews yet.",
+      "experimentTypeStory": "Story",
+      "experimentSteps": "{count} steps",
+      "experimentOpen": "Open"
     },
     "zh": {
       "htmlLang": "zh-CN",
@@ -498,7 +505,14 @@
       "recentKicker": "最近读完",
       "recentHeading": "最新的阅读痕迹",
       "viewAllRead": "全部已读 →",
-      "metaDescription": "Aquilo——私人文学档案柜：书、读后感、小说与思考。"
+      "metaDescription": "Aquilo——私人文学档案柜：书、读后感、小说与思考。",
+      "experimentsKicker": "实验",
+      "experimentsHeading": "互动书评",
+      "experimentsDescription": "不是一次读完的书评，而是一步一步展开。",
+      "noExperiments": "还没有互动书评。",
+      "experimentTypeStory": "讲故事",
+      "experimentSteps": "{count} 步",
+      "experimentOpen": "打开"
     }
   }
 }

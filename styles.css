@@ -1596,3 +1596,56 @@ button {
     padding: 20px;
   }
 }
+
+/* Interactive reviews (Extra page) */
+.experiments-panel {
+  --section-accent: #b0907a;
+  --section-accent-line: rgba(176, 144, 122, 0.3);
+}
+
+.experiment-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 12px;
+}
+
+.experiment-card {
+  display: grid;
+  gap: 8px;
+  align-content: start;
+  padding: 16px 18px;
+  border: 1px solid var(--section-accent-line);
+  border-radius: var(--radius);
+  background: rgba(255, 255, 255, 0.8);
+  color: var(--ink);
+  text-decoration: none;
+  transition: transform var(--transition-base), box-shadow var(--transition-base), border-color var(--transition-base);
+}
+
+.experiment-card:hover,
+.experiment-card:focus-visible {
+  transform: translateY(-2px);
+  border-color: var(--section-accent);
+  box-shadow: var(--shadow-md);
+}
+
+.experiment-card h3 {
+  font-size: 22px;
+}
+
+.experiment-author {
+  color: var(--ink-soft);
+  font-size: 13px;
+}
+
+.experiment-summary {
+  font-size: 14px;
+  line-height: 1.65;
+}
+
+.experiment-open {
+  margin-top: 4px;
+  color: var(--section-accent);
+  font-size: 13px;
+  font-weight: 600;
+}

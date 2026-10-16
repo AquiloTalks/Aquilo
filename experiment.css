@@ -1,0 +1,458 @@
+/* ===== Interactive story review (experiment.html only) ===== */
+
+.experiment-page {
+  --story-accent: #b0907a;
+  --story-accent-text: #8a6a55;
+  --story-accent-soft: rgba(176, 144, 122, 0.1);
+  --story-accent-line: rgba(176, 144, 122, 0.32);
+  --story-pending: rgba(120, 134, 130, 0.22);
+}
+
+.experiment-shell {
+  width: min(760px, 100% - 48px);
+  padding-bottom: 160px;
+}
+
+.experiment-nav {
+  position: sticky;
+  top: 0;
+  z-index: 40;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 0 calc(50% - 50vw) 24px;
+  padding: 14px calc(50vw - 50%) 12px;
+  background: rgba(245, 250, 249, 0.82);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid var(--line);
+}
+
+.experiment-back {
+  color: var(--ink-soft);
+  font-size: 14px;
+  text-decoration: none;
+}
+
+.experiment-back:hover {
+  color: var(--ink);
+}
+
+/* Hero: the one-sentence summary */
+.story-hero {
+  display: grid;
+  gap: 14px;
+  justify-items: start;
+  min-height: 62vh;
+  align-content: center;
+  padding: 24px 0 40px;
+}
+
+.story-hero .kicker {
+  color: var(--story-accent-text);
+  margin: 0;
+}
+
+.story-book-title {
+  font-size: clamp(3rem, 9vw, 5.2rem);
+}
+
+.story-author {
+  color: var(--ink-soft);
+  font-size: 15px;
+}
+
+.story-summary {
+  max-width: 34em;
+  margin-top: 10px;
+  padding-left: 18px;
+  border-left: 3px solid var(--story-accent);
+  font-family: var(--font-display);
+  font-size: clamp(1.25rem, 3.2vw, 1.6rem);
+  line-height: 1.5;
+  color: var(--ink);
+  animation: story-rise 900ms cubic-bezier(0.2, 0.7, 0.2, 1) both;
+}
+
+.story-notice {
+  max-width: 40em;
+  padding: 8px 12px;
+  border-radius: var(--radius);
+  background: var(--story-accent-soft);
+  color: var(--ink-soft);
+  font-size: 13px;
+  line-height: 1.55;
+}
+
+.story-begin,
+.story-button {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 9px 18px;
+  border: 1px solid var(--story-accent);
+  border-radius: 999px;
+  background: var(--story-accent);
+  color: #fff;
+  font: inherit;
+  font-size: 14px;
+  text-decoration: none;
+  cursor: pointer;
+  transition: background var(--transition-base), color var(--transition-base), border-color var(--transition-base);
+}
+
+.story-begin {
+  margin-top: 16px;
+}
+
+.story-begin:hover,
+.story-button:hover {
+  background: #9c7d68;
+  border-color: #9c7d68;
+}
+
+.story-button.is-quiet {
+  background: rgba(255, 255, 255, 0.85);
+  color: var(--ink);
+  border-color: var(--line-strong);
+}
+
+.story-button.is-quiet:hover {
+  background: var(--story-accent-soft);
+  border-color: var(--story-accent-line);
+}
+
+.story-begin:focus-visible,
+.story-button:focus-visible,
+.story-dot:focus-visible {
+  outline: 2px solid var(--story-accent);
+  outline-offset: 3px;
+}
+
+/* Storyline */
+.storyline {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.story-node {
+  position: relative;
+  display: none;
+  padding: 0 0 44px 52px;
+  scroll-margin-top: 84px;
+}
+
+.story-node.is-revealed {
+  display: block;
+}
+
+/* The line grows down from each revealed marker */
+.story-node::before {
+  content: "";
+  position: absolute;
+  top: 34px;
+  bottom: 0;
+  left: 15px;
+  width: 2px;
+  background: linear-gradient(var(--story-accent-line), var(--story-pending));
+  transform-origin: top;
+  animation: story-grow 700ms ease-out both;
+}
+
+.story-marker {
+  position: absolute;
+  top: 2px;
+  left: 0;
+  display: grid;
+  place-items: center;
+  width: 32px;
+  height: 32px;
+  border: 2px solid var(--story-accent);
+  border-radius: 50%;
+  background: var(--paper-strong);
+  color: var(--story-accent);
+  font-size: 13px;
+  font-weight: 600;
+  animation: story-pop 420ms cubic-bezier(0.3, 1.4, 0.5, 1) both;
+}
+
+.story-node.is-current .story-marker {
+  background: var(--story-accent);
+  color: #fff;
+  box-shadow: 0 0 0 6px var(--story-accent-soft);
+}
+
+.story-card {
+  display: grid;
+  gap: 14px;
+  padding: 20px 22px;
+  border: 1px solid var(--story-accent-line);
+  border-radius: var(--radius);
+  background: rgba(255, 255, 255, 0.84);
+  box-shadow: var(--shadow-md);
+  animation: story-rise 600ms cubic-bezier(0.2, 0.7, 0.2, 1) both;
+}
+
+.story-label {
+  color: var(--story-accent-text);
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.story-title {
+  font-size: clamp(1.5rem, 4vw, 2rem);
+}
+
+.story-quotes {
+  display: grid;
+  gap: 12px;
+}
+
+.story-quote {
+  margin: 0;
+  padding: 12px 16px;
+  border-left: 3px solid var(--story-accent-line);
+  border-radius: 0 var(--radius) var(--radius) 0;
+  background: var(--story-accent-soft);
+  animation: story-rise 600ms cubic-bezier(0.2, 0.7, 0.2, 1) both;
+}
+
+.story-quote:nth-child(1) { animation-delay: 150ms; }
+.story-quote:nth-child(2) { animation-delay: 400ms; }
+.story-quote:nth-child(3) { animation-delay: 650ms; }
+
+.story-quote-original {
+  font-family: var(--font-display);
+  font-size: 17px;
+  font-style: italic;
+  line-height: 1.6;
+}
+
+.story-quote-translation {
+  margin-top: 6px;
+  color: var(--ink-soft);
+  font-size: 14px;
+  line-height: 1.65;
+}
+
+.story-comment {
+  display: grid;
+  gap: 8px;
+  padding-top: 12px;
+  border-top: 1px dashed var(--story-accent-line);
+  animation: story-rise 700ms cubic-bezier(0.2, 0.7, 0.2, 1) 850ms both;
+}
+
+.story-comment-label {
+  color: var(--story-accent-text);
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+}
+
+.story-comment-text {
+  font-size: 15.5px;
+  line-height: 1.8;
+}
+
+/* Closing */
+.story-closing {
+  display: none;
+  gap: 14px;
+  margin-top: 8px;
+  padding: 28px 26px;
+  border: 1px solid var(--story-accent-line);
+  border-top: 3px solid var(--story-accent);
+  border-radius: var(--radius);
+  background: rgba(255, 255, 255, 0.9);
+  box-shadow: var(--shadow-lg);
+  scroll-margin-top: 84px;
+}
+
+.story-closing.is-revealed {
+  display: grid;
+  animation: story-rise 800ms cubic-bezier(0.2, 0.7, 0.2, 1) both;
+}
+
+.story-closing .kicker {
+  margin: 0;
+  color: var(--story-accent-text);
+}
+
+.story-closing h2 {
+  font-size: clamp(1.8rem, 5vw, 2.4rem);
+}
+
+.story-closing p {
+  font-size: 16px;
+  line-height: 1.85;
+}
+
+.story-closing .story-closing-summary {
+  margin-top: 6px;
+  padding-left: 14px;
+  border-left: 3px solid var(--story-accent);
+  font-family: var(--font-display);
+  font-size: 18px;
+  line-height: 1.55;
+}
+
+.story-closing-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+/* Bottom controls */
+.story-controls {
+  position: fixed;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 45;
+  background: rgba(245, 250, 249, 0.92);
+  backdrop-filter: blur(10px);
+  border-top: 1px solid var(--line);
+}
+
+.story-progress {
+  height: 3px;
+  background: var(--line);
+}
+
+.story-progress span {
+  display: block;
+  width: 0;
+  height: 100%;
+  background: var(--story-accent);
+  transition: width 500ms ease;
+}
+
+.story-controls-row {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  width: min(760px, 100% - 48px);
+  margin: 0 auto;
+  padding: 10px 0 calc(10px + env(safe-area-inset-bottom));
+}
+
+.story-count {
+  min-width: 48px;
+  color: var(--ink-soft);
+  font-size: 13px;
+  font-variant-numeric: tabular-nums;
+}
+
+.story-dots {
+  display: flex;
+  flex: 1;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.story-dot {
+  width: 10px;
+  height: 10px;
+  padding: 0;
+  border: 0;
+  border-radius: 50%;
+  background: var(--story-pending);
+  cursor: pointer;
+  transition: transform var(--transition-base), background var(--transition-base);
+}
+
+.story-dot:disabled {
+  cursor: default;
+}
+
+.story-dot.is-revealed {
+  background: var(--story-accent-line);
+}
+
+.story-dot.is-current {
+  background: var(--story-accent);
+  transform: scale(1.35);
+}
+
+.story-buttons {
+  display: flex;
+  gap: 8px;
+}
+
+@keyframes story-rise {
+  from { opacity: 0; transform: translateY(14px); }
+  to { opacity: 1; transform: none; }
+}
+
+@keyframes story-grow {
+  from { transform: scaleY(0); }
+  to { transform: scaleY(1); }
+}
+
+@keyframes story-pop {
+  from { transform: scale(0.4); opacity: 0; }
+  to { transform: none; opacity: 1; }
+}
+
+@media (max-width: 768px) {
+  .experiment-shell {
+    width: 100%;
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+
+  .story-hero {
+    min-height: 56vh;
+  }
+
+  .story-node {
+    padding-left: 42px;
+  }
+
+  .story-node::before {
+    left: 13px;
+  }
+
+  .story-marker {
+    width: 28px;
+    height: 28px;
+    font-size: 12px;
+  }
+
+  .story-card {
+    padding: 16px;
+  }
+
+  .story-controls-row {
+    width: 100%;
+    flex-wrap: wrap;
+    gap: 8px 12px;
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+
+  .story-dots {
+    order: 3;
+    flex-basis: 100%;
+  }
+
+  .story-buttons {
+    margin-left: auto;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .story-summary,
+  .story-card,
+  .story-quote,
+  .story-comment,
+  .story-marker,
+  .story-node::before,
+  .story-closing.is-revealed {
+    animation: none;
+  }
+}

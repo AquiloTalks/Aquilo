@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Aquilo - Experiment</title>
+    <meta name="description" content="Aquilo — an interactive book review." />
+    <meta name="theme-color" content="#f5faf9" />
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23eef6f5'/%3E%3Ctext x='32' y='46' font-family='Georgia,serif' font-size='40' text-anchor='middle' fill='%23465652'%3EA%3C/text%3E%3C/svg%3E" />
+    <link rel="stylesheet" href="styles.css?v=2026-10" />
+    <link rel="stylesheet" href="experiment.css?v=2026-10" />
+  </head>
+  <body class="experiment-page">
+    <main class="page-shell experiment-shell">
+      <nav class="experiment-nav">
+        <a class="experiment-back" id="experiment-back" href="index.html#extra">← Aquilo</a>
+        <button class="language-toggle" id="language-toggle" type="button" aria-pressed="false">中文</button>
+      </nav>
+
+      <div id="experiment-root" aria-live="polite"></div>
+    </main>
+
+    <div class="story-controls" id="story-controls" hidden>
+      <div class="story-progress" aria-hidden="true"><span id="story-progress-bar"></span></div>
+      <div class="story-controls-row">
+        <span class="story-count" id="story-count"></span>
+        <div class="story-dots" id="story-dots"></div>
+        <div class="story-buttons">
+          <button type="button" class="story-button is-quiet" id="story-all"></button>
+          <button type="button" class="story-button" id="story-next"></button>
+        </div>
+      </div>
+    </div>
+
+    <script src="experiment.js?v=2026-10"></script>
+  </body>
+</html>
