@@ -236,6 +236,51 @@ function getTopTags(books, limit = 4) {
     .map(([tag]) => tag);
 }
 
+function makeRowLink(item, action) {
+  item.classList.add("is-link");
+  item.tabIndex = 0;
+  item.setAttribute("role", "link");
+  item.addEventListener("click", action);
+  item.addEventListener("keydown", (event) => {
+    if (event.key === "Enter" || event.key === " ") {
+      event.preventDefault();
+      action();
+    }
+  });
+}
+
+function openExtraSection(targetId) {
+  switchSection("extra");
+  if (targetId) {
+    document.querySelector(`#${targetId}`)?.scrollIntoView({ behavior: "smooth", block: "start" });
+  }
+}
+
+// On Home, the Extra rows open the Extra page; the reviews row jumps to its list.
+function createExtraDetailList(items) {
+  const list = createDetailList(items.slice(0, 2));
+  const [postsRow, experimentsRow] = list.children;
+  if (postsRow) makeRowLink(postsRow, () => openExtraSection("extra-list-heading"));
+  if (experimentsRow && experiments.length) {
+    makeRowLink(experimentsRow, () => openExtraSection("experiments-heading"));
+  }
+  return list;
+}
+
+function addExperimentLink(samplePanel) {
+  if (!experiments.length) return;
+  const link = document.createElement("a");
+  link.className = "sample-panel-link";
+  link.href = experimentHref(experiments[0]);
+  link.textContent = `${t("experimentOpen")} →`;
+  samplePanel.append(link);
+}
+
+function localizeExperiment(item) {
+  const versions = item.languages || {};
+  return versions[currentLanguage] || versions.default || versions.en || versions.zh || {};
+}
+
 function getModuleView(moduleId) {
   const base = modules[moduleId] || modules.reading;
   const module = JSON.parse(JSON.stringify(base));
@@ -322,6 +367,23 @@ function getModuleView(moduleId) {
     module.sample = posts.length
       ? [[latest.title, makePreview(latest.body, t("extraDefaultBody"))]]
       : base.sample;
+
+    if (experiments.length) {
+      const latestExperiment = localizeExperiment(experiments[0]);
+      module.includes = [
+        posts.length
+          ? [t("extraFormHeading"), t("extraModuleDescription").replace("{count}", posts.length)]
+          : base.includes[0],
+        [
+          t("experimentsHeading"),
+          t("experimentsModuleBody")
+            .replace("{count}", experiments.length)
+            .replace("{title}", latestExperiment.title),
+        ],
+      ];
+      module.sampleTitle = t("latestExperiment");
+      module.sample = [[latestExperiment.title, latestExperiment.summary]];
+    }
   }
 
   return module;
@@ -404,9 +466,15 @@ function renderModule(moduleId) {
   }
 
   const moduleDetail = document.querySelector("#module-detail");
-  const detailList = moduleId === "reading"
-    ? createReadingDetailList(module.includes, sample)
-    : createDetailList(module.includes.slice(0, 2));
+  let detailList;
+  if (moduleId === "reading") {
+    detailList = createReadingDetailList(module.includes, sample);
+  } else if (moduleId === "fiction") {
+    detailList = createExtraDetailList(module.includes);
+    addExperimentLink(sample);
+  } else {
+    detailList = createDetailList(module.includes.slice(0, 2));
+  }
   moduleDetail.replaceChildren(intro, detailList, sample);
 
   document.querySelectorAll(".module-card").forEach((card) => {
@@ -776,8 +844,7 @@ function renderExperiments() {
   }
 
   list.innerHTML = experiments.map((item) => {
-    const versions = item.languages || {};
-    const localized = versions[currentLanguage] || versions.default || versions.en || versions.zh || {};
+    const localized = localizeExperiment(item);
     const href = experimentHref(item);
     const meta = [t("experimentTypeStory"), t("experimentSteps").replace("{count}", item.steps)].join(" · ");
     return `

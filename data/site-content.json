@@ -396,7 +396,9 @@
       "experimentTypeStory": "Story",
       "experimentSteps": "{count} steps",
       "experimentOpen": "Open",
-      "experimentRead": "Read it as a story"
+      "experimentRead": "Read it as a story",
+      "experimentsModuleBody": "{count} so far. Latest: {title}.",
+      "latestExperiment": "Latest interactive review"
     },
     "zh": {
       "htmlLang": "zh-CN",
@@ -514,7 +516,9 @@
       "experimentTypeStory": "讲故事",
       "experimentSteps": "{count} 步",
       "experimentOpen": "打开",
-      "experimentRead": "以讲故事的方式读这篇书评"
+      "experimentRead": "以讲故事的方式读这篇书评",
+      "experimentsModuleBody": "目前 {count} 篇，最新：{title}。",
+      "latestExperiment": "最新互动书评"
     }
   }
 }
