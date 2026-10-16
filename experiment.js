@@ -82,9 +82,8 @@ function renderNode(node, index) {
   const image = node.blocks.find((block) => block.type === "image");
   const text = node.blocks.filter((block) => block.type === "text");
   const quotes = node.blocks.filter((block) => block.type === "quote");
-  const side = index % 2 === 0 ? "is-left" : "is-right";
   return `
-    <li class="story-node ${side}${image ? "" : " has-no-figure"}" data-index="${index}" id="story-node-${index + 1}">
+    <li class="story-node${image ? "" : " has-no-figure"}" data-index="${index}" id="story-node-${index + 1}">
       <div class="story-marker" aria-hidden="true">
         ${node.label ? `<span class="story-label">${escapeHTML(node.label)}</span>` : ""}
         <span class="story-node-dot">${index + 1}</span>
