@@ -104,8 +104,8 @@ That command updates the matching JSON files in `data/`.
 
 Each file in `experiments/` becomes one interactive review, listed on the Extra page and opened on its own page (`experiment.html`), so it never slows down the rest of the site. The story unfolds as the reader scrolls down. Copy `experiments/_template.md` to start. Use `my-book.en.md` and `my-book.zh.md` for two languages.
 
-- Front matter: `summary` is the one-sentence summary shown first; `closing` is your own summary, shown after the story ends; `book` is the matching Library `id`; `notice` is an optional note shown under the summary.
-- Each `## Title | Label` heading is one part of the story. The label is optional, for example the chapters it covers.
+- Front matter: `summary` is the one-sentence summary shown first; `closing` is your own summary, shown at the end; `book` is the matching Library `id`; `notice` is an optional note shown under the summary.
+- Each `## Title` heading is one part of the story.
 - `![description](path)` on its own line is the picture for that part. Put pictures in `assets/experiments/<book-id>/`; SVG, PNG and JPG all work. The description is shown under the picture.
 - The paragraphs under the heading are your view of that part of the book.
 - Lines starting with `>` are quotations from the book; they are shown after your view, under "From the book". A line with only `>` starts a second paragraph inside the same quotation, such as a translation.

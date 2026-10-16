@@ -15,7 +15,7 @@ closing: |
   It is a quiet, restrained book with almost no dramatic plot, yet every meeting and every unspoken sentence carries more weight than a loud declaration.
 ---
 
-## Kellynch Hall | Chapters 1–3
+## Kellynch Hall
 
 The book opens on the father's mirror, then on the daughter's silence. Sir Walter loves his looks and his rank, and even when the family is in debt his only thought is how not to lose face. In a few pages Austen sets out everything this household values.
 
@@ -25,7 +25,7 @@ Anne is the only clear-sighted person in the family, and the one with the least 
 
 > ...her word had no weight, her convenience was always to give way—she was only Anne.
 
-## The persuasion, eight years ago | Chapter 4
+## The persuasion, eight years ago
 
 The title lives here. Lady Russell is no villain; she truly wants the best for Anne, which is exactly why her advice is so hard to resist. Austen refuses to make her the enemy, and that makes it hurt more: the deepest damage often comes from the people who love us most.
 
@@ -35,7 +35,7 @@ Austen is not asking who was wrong. She is showing what happens when someone who
 
 > She had been forced into prudence in her youth, she learned romance as she grew older: the natural sequel of an unnatural beginning.
 
-## The return | Chapters 7–8
+## The return
 
 Wentworth comes back rich, admired and still angry. The hardest part to read is that Anne has to hide even her grief: she tells herself eight years have passed, and her heart races at every meeting.
 
@@ -45,7 +45,7 @@ Mary passes on his remark carelessly, yet it is the most painful line in the boo
 
 > You were so altered he should not have known you again.
 
-## A nut | Chapters 9–10
+## A nut
 
 Wentworth is talking to Louisa, but every word lands on Anne, hidden behind the hedgerow. He holds firmness up as the highest virtue and reads Anne's old obedience as weakness. At this point he has neither forgiven nor understood her.
 
@@ -55,7 +55,7 @@ The nut is the cleverest prop in the book. It seems to praise Louisa, but it is 
 
 > ...a beautiful glossy nut, which, blessed with original strength, has outlived all the storms of autumn.
 
-## The Cobb at Lyme | Chapters 11–12
+## The Cobb at Lyme
 
 Louisa's firmness turns out to be wilfulness. She will not be told, jumps from the steps, and is knocked senseless. In the panic, the first person to think clearly is Anne, the one supposedly too easily persuaded.
 
@@ -65,7 +65,7 @@ This is the turning point. Wentworth sees for the first time that firmness and s
 
 > "Is there no one to help me?"
 
-## Bath | Chapters 13–21
+## Bath
 
 This is the second persuasion. Lady Russell admires the polished Mr Elliot and hopes Anne will marry him. Unlike eight years before, Anne is not pushed along: she watches, listens, and goes to her old friend Mrs Smith for the truth.
 
@@ -75,7 +75,7 @@ This is where Anne really grows. She no longer needs someone else to decide for 
 
 > Oh! he is black at heart, hollow and black!
 
-## The letter at the White Hart | Chapters 22–23
+## The letter at the White Hart
 
 Anne talks to Captain Harville, but speaks for Wentworth to hear; Wentworth writes at the next table, for Anne to read. Each finally says, in their own way, what went unsaid for eight years.
 
@@ -85,7 +85,7 @@ It is the quietest scene in the book and the most intense. No embrace, no declar
 
 > You pierce my soul. I am half agony, half hope.
 
-## The ending | Chapters 23–24
+## The ending
 
 Anne does not say she was wrong. She says that submitting to Lady Russell was right at the time, though she would never give such advice herself. It is a mature answer: she neither denies the past nor stays bound by it.
 

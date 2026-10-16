@@ -13,7 +13,7 @@ closing: |
   A second paragraph if you need one.
 ---
 
-## First part of the story | Chapters 1–3
+## First part of the story
 
 ![What the picture shows](assets/experiments/book-id/01-first-part.svg)
 
@@ -25,7 +25,7 @@ A second paragraph if you need one.
 >
 > Optional second paragraph, such as a translation.
 
-## Next part of the story | Chapter 4
+## Next part of the story
 
 ![What the picture shows](assets/experiments/book-id/02-next-part.svg)
 

@@ -7,12 +7,7 @@ const UI = {
     htmlLang: "en",
     toggle: "中文",
     back: "← Extra",
-    kicker: "Experiment · Story",
-    scrollHint: "Scroll down to begin",
-    fromBook: "From the book",
-    count: "{current} / {total}",
-    endKicker: "The end",
-    endHeading: "My summary",
+    scrollHint: "Scroll down",
     restart: "Back to the top",
     toLibrary: "See the book in the library",
     toExtra: "Back to Extra",
@@ -23,12 +18,7 @@ const UI = {
     htmlLang: "zh-CN",
     toggle: "EN",
     back: "← 其他",
-    kicker: "实验 · 讲故事",
-    scrollHint: "向下滚动，开始讲故事",
-    fromBook: "书中原文",
-    count: "{current} / {total}",
-    endKicker: "终章",
-    endHeading: "我的总结",
+    scrollHint: "向下滚动",
     restart: "回到开头",
     toLibrary: "在书库中查看这本书",
     toExtra: "回到「其他」",
@@ -84,17 +74,12 @@ function renderNode(node, index) {
   const quotes = node.blocks.filter((block) => block.type === "quote");
   return `
     <li class="story-node${image ? "" : " has-no-figure"}" data-index="${index}" id="story-node-${index + 1}">
-      <div class="story-marker" aria-hidden="true">
-        ${node.label ? `<span class="story-label">${escapeHTML(node.label)}</span>` : ""}
-        <span class="story-node-dot">${index + 1}</span>
-      </div>
+      <span class="story-marker" aria-hidden="true"></span>
       <article class="story-body">
         <h2 class="story-title">${escapeHTML(node.title)}</h2>
-        ${node.label ? `<p class="story-label-inline">${escapeHTML(node.label)}</p>` : ""}
         ${text.map(renderBlock).join("")}
         ${quotes.length ? `
           <div class="story-evidence">
-            <p class="story-evidence-label">${ui("fromBook")}</p>
             ${quotes.map(renderBlock).join("")}
           </div>` : ""}
       </article>
@@ -117,12 +102,11 @@ function render() {
 
   document.querySelector("#experiment-root").innerHTML = `
     <header class="story-hero">
-      <p class="kicker">${ui("kicker")}</p>
       <h1 class="story-book-title">${escapeHTML(data.title)}</h1>
       ${data.author ? `<p class="story-author">${escapeHTML(data.author)}</p>` : ""}
       <p class="story-summary">${escapeHTML(data.summary)}</p>
       ${data.notice ? `<p class="story-notice">${escapeHTML(data.notice)}</p>` : ""}
-      <a class="story-scroll-hint" href="#story-node-1">${ui("scrollHint")} <span aria-hidden="true">↓</span></a>
+      <a class="story-scroll-hint" href="#story-node-1" aria-label="${ui("scrollHint")}"><span aria-hidden="true">↓</span></a>
     </header>
 
     <div class="storyline" id="storyline">
@@ -133,10 +117,7 @@ function render() {
     </div>
 
     <section class="story-closing story-reveal" id="story-closing">
-      <p class="kicker">${ui("endKicker")}</p>
-      <h2>${ui("endHeading")}</h2>
       ${data.closing.map((line) => `<p>${escapeHTML(line)}</p>`).join("")}
-      <p class="story-closing-summary">${escapeHTML(data.summary)}</p>
       <div class="story-closing-links">
         <a class="story-button is-quiet" href="#top" id="story-restart">${ui("restart")} ↑</a>
         ${experiment.book !== "" ? `<a class="story-button is-quiet" href="index.html#library">${ui("toLibrary")}</a>` : ""}
@@ -207,7 +188,6 @@ function updateScrollState() {
   const closingTop = document.querySelector("#story-closing").getBoundingClientRect().top;
   const finished = closingTop <= focusY;
   document.querySelector("#story-controls").hidden = current === 0;
-  document.querySelector("#story-count").textContent = ui("count", { current, total });
   const progress = finished ? 1 : current / (total + 1);
   document.querySelector("#story-progress-bar").style.width = `${progress * 100}%`;
   document.querySelectorAll(".story-dot").forEach((dot) => {
